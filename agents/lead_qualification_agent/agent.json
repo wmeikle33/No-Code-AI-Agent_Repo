@@ -1,1 +1,39 @@
-
+{
+  "metadata": {
+    "name": "lead_qualification_agent",
+    "version": "1.2.0",
+    "description": "Scans incoming emails, summarizes issues, and alerts Slack."
+  },
+  "llm_config": {
+    "provider": "anthropic",
+    "model": "claude-3-5-sonnet",
+    "temperature": 0.2,
+    "max_turns": 5
+  },
+  "behavior": {
+    "system_prompt": "You are an automated support assistant. Be polite. Summarize the user issue into three bullet points. Do not make up facts."
+  },
+  "trigger": {
+    "type": "webhook",
+    "path": "/v1/hooks/incoming-email"
+  },
+  "tools": [
+    {
+      "name": "post_to_slack",
+      "type": "webhook",
+      "url": "https://slack.com",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "channel": { "type": "string", "default": "#support-alerts" },
+          "text": { "type": "string" }
+        },
+        "required": ["text"]
+      }
+    }
+  ],
+  "memory": {
+    "type": "buffer",
+    "window_size": 10
+  }
+}
