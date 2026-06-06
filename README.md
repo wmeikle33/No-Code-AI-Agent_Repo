@@ -12,7 +12,9 @@
 │   └── lead-generator/
 │   │    ├── agent.json
 │   │    └── system_prompt.md
-│   └──
+│   └── financial-analysis/
+│          ├── agent.json
+│          └── system_prompt.md
 ├── tools/                      # No-code tool schemas and webhook maps
 │   ├── webhooks.json           # Definitions for REST APIs and third-party webhook links
 │   └── schemas/
