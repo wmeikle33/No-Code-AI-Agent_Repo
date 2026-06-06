@@ -34,7 +34,7 @@
 │   └── python_executors.json       # Visual schema telling the agent how to call your Python modules
 ├── knowledge/                      # 📚 RETRIEVAL-AUGMENTED GENERATION (RAG) CONTEXT
 │   ├── internal_finance/
-│   │   ├── q3_budget_actuals.csv   # Target spreadsheet data for analysis
+│   │   ├── budget_actuals.csv   # Target spreadsheet data for analysis
 │   │   └── expense_policies.md     # Company rules on what items can be reimbursed
 │   └── product_catalog.csv         # Support text data for the customer bot
 ├── workflows/                      # 🔄 MULTI-AGENT ROUTING LOGIC
