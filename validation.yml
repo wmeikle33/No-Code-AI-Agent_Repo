@@ -1,0 +1,57 @@
+name: Agent Repo Quality Validation
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Pull the codebase into the virtual machine environment
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    # 2. Spin up a clean environment for running tests
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-node-version: '3.11'
+        cache: 'pip'
+
+    # 3. Download the exact dependencies your code modules require
+    - name: Install Python Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f code_modules/requirements.txt ]; then pip install -r code_modules/requirements.txt; fi
+        pip install pytest
+
+    # 4. Enforce that all metadata, tool, and routing profiles are valid JSON
+    - name: Validate JSON Syntax
+      run: |
+        echo "Checking configuration files..."
+        find . -name "*.json" -not -path "*/node_modules/*" | while read -r file; do
+          jq . "$file" > /dev/null || { echo "❌ Invalid JSON syntax in $file"; exit 1; }
+        done
+        echo "✅ All JSON files are structurally sound."
+
+    # 5. Guard against empty system prompts which break AI execution
+    - name: Verify Prompts and Agent Structure
+      run: |
+        echo "Verifying markdown personas exist..."
+        find agents/ -name "system_prompt.md" | while read -r file; do
+          if [ ! -s "$file" ]; then
+            echo "❌ Error: $file is completely empty!"
+            exit 1;
+          fi
+        done
+        echo "✅ System prompts are validated."
+
+    # 6. Execute programmatic unit tests to guarantee calculation accuracy
+    - name: Run Python Calculations Unit Tests
+      run: |
+        echo "Running modular math and validator tests..."
+        pytest code_modules/
