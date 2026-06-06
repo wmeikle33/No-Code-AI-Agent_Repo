@@ -1,3 +1,23 @@
+# No-Code-AI-Agent
+
+No-Code-AI-Agent is an image-analysis and machine-learning pipeline for estimating root biomass from plant images.
+
+The project combines classical computer vision techniques (adaptive thresholding, Frangi filtering, and morphological operations) with deep learning to generate root masks and predict root weight.
+
+This public repository is a redacted demonstration of the model used in the workplace
+
+# Repository Scope
+
+This repository is a redacted demonstration of a proprietary no code AI agent. It is intended to showcase project structure, engineering practices, testing, CI/CD, and workflows while protecting confidential intellectual property.
+
+Included
+
+Public-facing project architecture and package organization 
+
+Excluded
+
+Proprietary datasets and annotations Production-trained model weights Internal research code and experimental algorithms Customer-specific workflows and deployment infrastructure Confidential performance benchmarks derived from private data The included code is representative of the overall system design but does not contain all components used in production environments.
+
 # No-Code-AI-Agent-Repo
 
 ```bash
