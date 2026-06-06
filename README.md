@@ -21,6 +21,7 @@
 │   ├── data_transformers/          # 📊 Formatting raw data into LLM-readable layouts
 │   │   ├── stripe_cleaner.py       # Converts complex billing JSON into clean tables
 │   │   └── csv_to_markdown.py      # Shrinks massive bank CSVs to save token costs
+        └── inventory_actions.py  
 │   └── custom_validators/          # 🛡️ Safety limits and risk rules
 │       ├── budget_guardrails.py    # Hard-stops workflow if spend requests exceed $5,000
 │       └── anomaly_detector.py     # Checks for duplicate invoices or statistical outliers
