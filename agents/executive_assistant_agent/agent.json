@@ -10,12 +10,14 @@
     "recommended": "gpt-5",
     "fallback": "gpt-5-mini"
   },
-  "llm_config": {
-    "provider": "anthropic",
-    "model": "claude-3-5-sonnet",
-    "temperature": 0.2,
-    "max_turns": 5
-  },
+  "system_prompt": "./system_prompt.md",
+  "knowledge_sources": [
+    "hr-policies",
+    "benefits-documents",
+    "it-helpdesk-kb",
+    "employee-handbook",
+    "onboarding-guides"
+  ],
   "behavior": {
     "system_prompt": "You are an automated support assistant. Be polite. Summarize the user issue into three bullet points. Do not make up facts."
   },
