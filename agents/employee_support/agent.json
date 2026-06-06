@@ -1,0 +1,90 @@
+{
+  "id": "employee-support-agent",
+  "name": "Employee Support Agent",
+  "version": "1.0.0",
+  "description": "Provides employees with answers to HR, IT, payroll, benefits, onboarding, and company policy questions.",
+  "category": "employee-support",
+  "owner": "HR Operations",
+  "model": {
+    "tier": "mid",
+    "recommended": "gpt-5",
+    "fallback": "gpt-5-mini"
+  },
+  "system_prompt": "./system_prompt.md",
+  "knowledge_sources": [
+    "hr-policies",
+    "benefits-documents",
+    "it-helpdesk-kb",
+    "employee-handbook",
+    "onboarding-guides"
+  ],
+  "tools": [
+    {
+      "name": "knowledge_search",
+      "required": true
+    },
+    {
+      "name": "ticket_creation",
+      "required": false
+    },
+    {
+      "name": "employee_directory",
+      "required": false
+    }
+  ],
+  "capabilities": [
+    "policy_qa",
+    "hr_support",
+    "it_support",
+    "benefits_guidance",
+    "ticket_triage",
+    "resource_recommendation"
+  ],
+  "escalation_rules": {
+    "hr": [
+      "leave_requests",
+      "payroll_disputes",
+      "benefits_questions",
+      "employee_relations"
+    ],
+    "it": [
+      "account_lockout",
+      "password_reset",
+      "software_access",
+      "hardware_issue"
+    ],
+    "security": [
+      "phishing",
+      "credential_exposure",
+      "lost_device"
+    ]
+  },
+  "response_format": {
+    "answer": true,
+    "steps": true,
+    "resources": true,
+    "escalation_path": true
+  },
+  "guardrails": {
+    "do_not": [
+      "invent_company_policy",
+      "provide_legal_advice",
+      "provide_medical_advice",
+      "approve_leave_requests",
+      "modify_payroll_records",
+      "request_passwords"
+    ]
+  },
+  "success_metrics": [
+    "first_contact_resolution_rate",
+    "employee_satisfaction_score",
+    "ticket_deflection_rate",
+    "escalation_accuracy"
+  ],
+  "tags": [
+    "hr",
+    "employee",
+    "support",
+    "internal-helpdesk"
+  ]
+}
