@@ -10,8 +10,9 @@
 │   │   ├── agent.json          # Agent metadata, selected model, & baseline parameters
 │   │   └── system_prompt.md    # Persona, behavioral guardrails, and explicit rules
 │   └── lead-generator/
-│       ├── agent.json
-│       └── system_prompt.md
+│   │    ├── agent.json
+│   │    └── system_prompt.md
+│   └──
 ├── tools/                      # No-code tool schemas and webhook maps
 │   ├── webhooks.json           # Definitions for REST APIs and third-party webhook links
 │   └── schemas/
