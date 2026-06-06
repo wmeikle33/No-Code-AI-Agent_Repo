@@ -1,8 +1,14 @@
 {
-  "metadata": {
-    "name": "customer_support_agent",
-    "version": "1.2.0",
-    "description": "Scans incoming emails, summarizes issues, and alerts Slack."
+  "id": "executive-assistant-agent",
+  "name": "Executice Assitant Agent",
+  "version": "1.0.0",
+  "description": "Provides employees with answers to HR, IT, payroll, benefits, onboarding, and company policy questions.",
+  "category": "executive-assistant",
+  "owner": "HR Operations",
+  "model": {
+    "tier": "mid",
+    "recommended": "gpt-5",
+    "fallback": "gpt-5-mini"
   },
   "llm_config": {
     "provider": "anthropic",
