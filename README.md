@@ -2,8 +2,6 @@
 
 No-Code-AI-Agent is an image-analysis and machine-learning pipeline for estimating root biomass from plant images.
 
-The project combines classical computer vision techniques (adaptive thresholding, Frangi filtering, and morphological operations) with deep learning to generate root masks and predict root weight.
-
 This public repository is a redacted demonstration of the model used in the workplace
 
 # Repository Scope
