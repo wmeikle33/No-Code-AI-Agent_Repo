@@ -12,7 +12,9 @@
 │   └── financial-analyst/
 │   │   ├── agent.json              # Model configs (e.g., Claude 3.5 Sonnet, high reasoning)
 │   │   └── system_prompt.md        # Compliance instructions (tells agent when to use Python)
-    └── employee-support/
+│   └── employee-support/
+│       ├── agent.json
+│       └── system_prompt.md    
 ├── code_modules/                   # 🐍 MODULAR PYTHON ENGINES (Referenced by Agents)
 │   ├── __init__.py
 │   ├── requirements.txt            # Shared dependencies (pandas, numpy, scipy, requests)
