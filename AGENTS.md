@@ -1,3 +1,5 @@
+## Project Purpose
+
 This repository supports building, documenting, and deploying no-code AI agents. The goal is to make agent workflows understandable, reusable, and easy to maintain for non-technical users.
 Agent Instructions
 When working in this repository:
