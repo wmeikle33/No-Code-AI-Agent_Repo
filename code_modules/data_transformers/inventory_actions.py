@@ -1,3 +1,4 @@
+import pandas as pd
 
 def update_inventory(product_name: str, quantity: int, df : pd.DataFrame):
     df[product_name] = quantity
