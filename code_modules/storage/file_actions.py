@@ -40,3 +40,5 @@ def rename_file(old_path, new_name):
         print(f"Error: A file named '{new_name}' already exists in that folder.")
     except Exception as e:
         print(f"Error renaming file: {e}")
+
+def search_file():
