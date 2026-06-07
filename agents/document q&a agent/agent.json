@@ -2,7 +2,7 @@
   "metadata": {
     "name": "document_q&a_agent",
     "version": "1.2.0",
-    "description": "Scans incoming emails, summarizes issues, and alerts Slack."
+    "description": "Reads and interprets requests and provides responses based on company documentation."
   },
   "llm_config": {
     "provider": "anthropic",
