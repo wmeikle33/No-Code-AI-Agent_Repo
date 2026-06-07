@@ -2,7 +2,7 @@
   "metadata": {
     "name": "meeting_notes_agent",
     "version": "1.2.0",
-    "description": "Scans incoming emails, summarizes issues, and alerts Slack."
+    "description": "Scans meeting notes and summarizes the content."
   },
   "llm_config": {
     "provider": "anthropic",
