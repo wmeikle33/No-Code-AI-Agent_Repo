@@ -1,1 +1,48 @@
+{
+  "executors": [
+    {
+      "id": "safe_python",
+      "name": "Safe Python Executor",
 
+      "description": "Restricted Python execution for data analysis and reporting.",
+
+      "enabled": true,
+
+      "allowed_agents": [
+        "research-assistant",
+        "kpi-monitor",
+        "executive-assistant"
+      ],
+
+      "allowed_packages": [
+        "pandas",
+        "numpy",
+        "matplotlib",
+        "scipy",
+        "openpyxl"
+      ],
+
+      "blocked_packages": [
+        "subprocess",
+        "socket",
+        "requests",
+        "paramiko"
+      ],
+
+      "file_system_access": {
+        "read": true,
+        "write": true,
+        "allowed_paths": [
+          "/workspace/tmp",
+          "/workspace/reports"
+        ]
+      },
+
+      "network_access": false,
+
+      "max_execution_time_seconds": 60,
+
+      "max_memory_mb": 512
+    }
+  ]
+}
