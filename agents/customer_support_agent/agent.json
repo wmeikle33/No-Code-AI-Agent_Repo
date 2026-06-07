@@ -19,7 +19,8 @@
     }],,
     "tools": [
     "knowledge_search",
-    "web_search"
+    "web_search",
+    "document_search", 
   ]
   ,
   "memory": {
