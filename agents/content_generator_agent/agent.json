@@ -1,26 +1,45 @@
 {
-  "metadata": {
-    "name": "content_generator_agent",
-    "version": "1.2.0",
-    "description": "Reads user prompts and generates a response."
+  "id": "content-generator-agent",
+  "name": "Content Generator Agent",
+  "category": "content-creation",
+
+  "model": {
+    "tier": "mid",
+    "recommended": "gpt-5"
   },
-  "llm_config": {
-    "provider": "anthropic",
-    "model": "claude-3-5-sonnet",
-    "temperature": 0.2,
-    "max_turns": 5
-  },
-  "behavior": {
-    "system_prompt": "You are a content creator agent. Please generate content according to the user's prompts."
-  },
-  "trigger": {
-    "type": "webhook",
-    "path": "/v1/hooks/incoming-email"
-  },
-  "tools": [
+
+  "system_prompt": "./system_prompt.md",
+
+  "capabilities": [
+    "generate_content",
+    "rewrite_content",
+    "summarize_content",
+    "adjust_tone",
+    "seo_optimization"
   ],
-  "memory": {
-    "type": "buffer",
-    "window_size": 10
-  }
+
+  "supported_content_types": [
+    "blog_post",
+    "newsletter",
+    "social_post",
+    "email",
+    "documentation"
+  ],
+
+  "tools": [
+    "knowledge_search",
+    "web_search"
+  ],
+
+  "templates": [
+    "blog_post",
+    "newsletter",
+    "social_post"
+  ],
+
+  "output_formats": [
+    "markdown",
+    "html",
+    "plain_text"
+  ]
 }
