@@ -17,7 +17,23 @@
     "type": "webhook",
     "path": "/v1/hooks/incoming-email"
   },
-  "tools": [
+  "tools":  "tools": [
+    {
+      "name": "crm_lookup",
+      "required": true
+    },
+    {
+      "name": "company_enrichment",
+      "required": true
+    },
+    {
+      "name": "lead_scoring",
+      "required": true
+    },
+    {
+      "name": "crm_update",
+      "required": true
+    }
   ],
   "memory": {
     "type": "buffer",
