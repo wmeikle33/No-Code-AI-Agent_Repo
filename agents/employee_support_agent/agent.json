@@ -2,93 +2,231 @@
   "id": "employee-support-agent",
   "name": "Employee Support Agent",
   "version": "1.0.0",
-  "description": "Provides employees with answers to HR, IT, payroll, benefits, onboarding, and company policy questions.",
+  "description": "Helps employees answer HR, IT, payroll, benefits, onboarding, and internal policy questions, while routing sensitive or unresolved issues to the correct team.",
   "category": "employee-support",
-  "owner": "HR Operations",
+  "status": "active",
+
   "model": {
     "tier": "mid",
-    "recommended": "gpt-5",
-    "fallback": "gpt-5-mini"
+    "recommended": "gpt-5-mini",
+    "fallback": "gemma-4",
+    "upgrade_model": "gpt-5",
+    "upgrade_when": [
+      "request involves HR policy interpretation",
+      "request involves legal, payroll, benefits, security, or compliance risk",
+      "employee issue is sensitive or urgent",
+      "multiple internal systems must be checked"
+    ]
   },
+
   "system_prompt": "./system_prompt.md",
-  "knowledge_sources": [
-    "hr-policies",
-    "benefits-documents",
-    "it-helpdesk-kb",
-    "employee-handbook",
-    "onboarding-guides"
+
+  "triggers": [
+    {
+      "type": "manual",
+      "description": "Employee manually asks for help"
+    },
+    {
+      "type": "email_received",
+      "source": "employee_helpdesk"
+    },
+    {
+      "type": "ticket_created",
+      "source": "internal_helpdesk"
+    },
+    {
+      "type": "chat_message",
+      "source": "slack_or_teams"
+    }
   ],
+
+  "capabilities": [
+    "answer_policy_questions",
+    "explain_internal_processes",
+    "troubleshoot_basic_it_issues",
+    "route_employee_requests",
+    "create_internal_support_tickets",
+    "summarize_employee_issues",
+    "recommend_resources",
+    "draft_employee_responses"
+  ],
+
   "tools": [
     {
       "name": "knowledge_search",
-      "required": true
+      "required": true,
+      "description": "Search HR, IT, payroll, benefits, onboarding, and company policy documentation"
+    },
+    {
+      "name": "employee_directory_lookup",
+      "required": false,
+      "description": "Find employee, manager, department, or location information"
     },
     {
       "name": "ticket_creation",
-      "required": false
+      "required": true,
+      "description": "Create HR, IT, finance, security, or operations support tickets"
     },
     {
-      "name": "employee_directory",
-      "required": false
+      "name": "ticket_lookup",
+      "required": false,
+      "description": "Look up existing internal support tickets"
     }
   ],
-   "triggers": [
-    {
-      "type": "manual"
-    }],
-  "capabilities": [
-    "policy_qa",
-    "hr_support",
-    "it_support",
-    "benefits_guidance",
-    "ticket_triage",
-    "resource_recommendation"
+
+  "knowledge_sources": [
+    "employee_handbook",
+    "hr_policies",
+    "benefits_documents",
+    "payroll_faqs",
+    "it_helpdesk_articles",
+    "onboarding_guides",
+    "security_policies",
+    "expense_policy"
   ],
-  "escalation_rules": {
-    "hr": [
-      "leave_requests",
-      "payroll_disputes",
-      "benefits_questions",
-      "employee_relations"
+
+  "input_schema": {
+    "required": [
+      "employee_message"
     ],
-    "it": [
-      "account_lockout",
-      "password_reset",
-      "software_access",
-      "hardware_issue"
-    ],
-    "security": [
-      "phishing",
-      "credential_exposure",
-      "lost_device"
+    "optional": [
+      "employee_id",
+      "department",
+      "location",
+      "role",
+      "manager",
+      "ticket_id",
+      "urgency"
     ]
   },
-  "response_format": {
-    "answer": true,
-    "steps": true,
-    "resources": true,
-    "escalation_path": true
+
+  "output_formats": [
+    "markdown",
+    "plain_text",
+    "json"
+  ],
+
+  "response_structure": {
+    "include_answer": true,
+    "include_steps": true,
+    "include_resources": true,
+    "include_escalation_path": true,
+    "include_ticket_summary": true
   },
+
+  "routing": {
+    "escalation_conditions": [
+      {
+        "condition": "benefits_or_leave_question",
+        "route_to": "hr_support"
+      },
+      {
+        "condition": "payroll_dispute",
+        "route_to": "payroll_support"
+      },
+      {
+        "condition": "account_lockout_or_device_issue",
+        "route_to": "it_support"
+      },
+      {
+        "condition": "expense_or_reimbursement_issue",
+        "route_to": "finance_support"
+      },
+      {
+        "condition": "harassment_discrimination_or_workplace_concern",
+        "route_to": "hr_employee_relations"
+      },
+      {
+        "condition": "security_incident",
+        "route_to": "security_team"
+      },
+      {
+        "condition": "legal_or_compliance_issue",
+        "route_to": "legal_compliance"
+      }
+    ]
+  },
+
   "guardrails": {
     "do_not": [
       "invent_company_policy",
-      "provide_legal_advice",
-      "provide_medical_advice",
-      "approve_leave_requests",
+      "approve_or_deny_leave_requests",
       "modify_payroll_records",
-      "request_passwords"
+      "change_benefits_enrollment",
+      "make_employment_decisions",
+      "provide_legal_medical_tax_or_financial_advice",
+      "request_passwords",
+      "request_mfa_codes",
+      "request_full_ssn",
+      "request_full_bank_account_details",
+      "share_private_employee_data"
+    ],
+    "requires_human_review": [
+      "payroll_change",
+      "benefits_change",
+      "leave_exception",
+      "workplace_complaint",
+      "harassment_or_discrimination_report",
+      "termination_or_disciplinary_issue",
+      "security_incident",
+      "legal_or_compliance_question"
     ]
   },
+
+  "permissions": {
+    "allowed_tools": [
+      "knowledge_search",
+      "employee_directory_lookup",
+      "ticket_creation",
+      "ticket_lookup"
+    ],
+    "restricted_tools": [
+      "payroll_edit",
+      "benefits_approval",
+      "employee_termination",
+      "disciplinary_record_access",
+      "security_override",
+      "admin_access_grant"
+    ],
+    "allowed_data": [
+      "public_hr_policies",
+      "it_helpdesk_articles",
+      "employee_directory_basic",
+      "benefits_general_information",
+      "ticket_status"
+    ],
+    "restricted_data": [
+      "salary_history",
+      "medical_records",
+      "disciplinary_records",
+      "full_ssn",
+      "bank_account_details",
+      "private_hr_case_files"
+    ]
+  },
+
+  "templates": [
+    "employee_support_response",
+    "internal_ticket_summary",
+    "escalation_message",
+    "policy_answer",
+    "it_troubleshooting_steps"
+  ],
+
   "success_metrics": [
     "first_contact_resolution_rate",
-    "employee_satisfaction_score",
     "ticket_deflection_rate",
-    "escalation_accuracy"
+    "employee_satisfaction_score",
+    "escalation_accuracy",
+    "average_response_time"
   ],
+
   "tags": [
+    "employee-support",
     "hr",
-    "employee",
-    "support",
-    "internal-helpdesk"
+    "it-helpdesk",
+    "benefits",
+    "payroll",
+    "internal-operations"
   ]
 }
