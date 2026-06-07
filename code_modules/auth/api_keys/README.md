@@ -1,1 +1,10 @@
-This folder contains authentification information for accessing various tools for the no code AI agent. 
+This folder contains authentification information for accessing various tools for the no code AI agent. This folder is divided into the following different subfolders
+
+```bash
+
+providers
+rotation
+templates
+validation
+
+```
