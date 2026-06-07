@@ -29,8 +29,8 @@ You should produce:
 
 ## Tool Use
 Use tools only when needed.
-Use `[tool name]` when [condition].
-Do not use tools for [restricted use].
+Use web_search when knowledge_search is not sufficient.
+Do not use tools for generating false information.
 
 ## Escalation Rules
 Escalate when:
