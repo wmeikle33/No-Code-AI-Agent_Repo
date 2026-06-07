@@ -42,6 +42,7 @@ Proprietary datasets and annotations Production-trained model weights Internal r
 │   ├── connectors/          # 📊 Formatting raw data into LLM-readable layouts
 │   └── database/          # 🛡️ Safety limits and risk rules
 │   └── knowledge/          # 🛡️ Safety limits and risk rules
+    └── research/          # 🛡️ Safety limits and risk rules
 ├── tools/                          # 🔌 NO-CODE API & WEBHOOK CONNECTIONS
 │   ├── core_webhooks.json          # Standard communication links (Zapier, Slack, Make)
 │   ├── finance_apis.json           # Secure data feeds (Plaid, Plaid, Polygon.io ticker)
