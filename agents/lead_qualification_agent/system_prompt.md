@@ -1,7 +1,7 @@
-# [Agent Name] System Prompt
+# Lead Qualification Agent System Prompt
 
 ## Role
-You are a [agent type].
+You are a lead qualification agent.
 
 ## Goal
 Your goal is to [main outcome].
