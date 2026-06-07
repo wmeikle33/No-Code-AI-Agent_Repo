@@ -1,36 +1,219 @@
 {
-  "metadata": {
-    "name": "customer_support_agent",
-    "version": "1.2.0",
-    "description": "Reads and interprets customer requests and provides answers based on available information."
+  "id": "customer-support-agent",
+  "name": "Customer Support Agent",
+  "version": "1.0.0",
+  "description": "Answers customer questions, troubleshoots common issues, creates support tickets, and escalates unresolved or sensitive requests.",
+  "category": "customer-support",
+  "status": "active",
+
+  "model": {
+    "tier": "mid",
+    "recommended": "gpt-5-mini",
+    "fallback": "gemma-4",
+    "upgrade_model": "gpt-5",
+    "upgrade_when": [
+      "complex troubleshooting is required",
+      "the issue involves billing, legal, security, or account access",
+      "multiple systems must be checked",
+      "customer sentiment is highly negative"
+    ]
   },
-  "llm_config": {
-    "provider": "anthropic",
-    "model": "claude-3-5-sonnet",
-    "temperature": 0.2,
-    "max_turns": 5
-  },
-  "behavior": {
-    "system_prompt": "You are an automated support assistant. Be polite. Summarize the user issue into three bullet points. Do not make up facts."
-  },
+
+  "system_prompt": "./system_prompt.md",
+
   "triggers": [
     {
-      "type": "manual"
-    }],,
-    "tools": [
-    "knowledge_search",
-    "web_search",
-    "document_search", 
-  ]
-  ,
-   "output_formats": [
+      "type": "manual",
+      "description": "User manually asks the agent to handle a support request"
+    },
+    {
+      "type": "email_received",
+      "source": "support_inbox"
+    },
+    {
+      "type": "ticket_created",
+      "source": "helpdesk"
+    },
+    {
+      "type": "chat_message",
+      "source": "customer_chat_widget"
+    }
+  ],
+
+  "capabilities": [
+    "answer_faqs",
+    "troubleshoot_common_issues",
+    "classify_support_requests",
+    "summarize_customer_issues",
+    "create_support_tickets",
+    "draft_customer_replies",
+    "recommend_escalation",
+    "detect_customer_sentiment"
+  ],
+
+  "tools": [
+    {
+      "name": "knowledge_search",
+      "required": true,
+      "description": "Search approved product documentation, FAQs, and support articles"
+    },
+    {
+      "name": "ticket_creation",
+      "required": true,
+      "description": "Create support tickets for unresolved issues"
+    },
+    {
+      "name": "ticket_lookup",
+      "required": false,
+      "description": "Look up existing customer support tickets"
+    },
+    {
+      "name": "customer_lookup",
+      "required": false,
+      "description": "Retrieve basic customer account information"
+    },
+    {
+      "name": "email_sender",
+      "required": false,
+      "description": "Send or draft customer support replies"
+    }
+  ],
+
+  "knowledge_sources": [
+    "product_documentation",
+    "support_faqs",
+    "troubleshooting_guides",
+    "refund_policy",
+    "billing_policy",
+    "service_status_updates"
+  ],
+
+  "input_schema": {
+    "required": [
+      "customer_message"
+    ],
+    "optional": [
+      "customer_id",
+      "email",
+      "product",
+      "ticket_id",
+      "priority",
+      "channel",
+      "attachments"
+    ]
+  },
+
+  "output_formats": [
     "markdown",
-    "html",
-    "plain_text"
+    "plain_text",
+    "json"
+  ],
+
+  "response_structure": {
+    "include_answer": true,
+    "include_steps": true,
+    "include_resources": true,
+    "include_escalation_path": true,
+    "include_ticket_summary": true
+  },
+
+  "routing": {
+    "escalation_conditions": [
+      {
+        "condition": "billing_dispute",
+        "route_to": "billing_support"
+      },
+      {
+        "condition": "security_issue",
+        "route_to": "security_team"
+      },
+      {
+        "condition": "legal_or_compliance_issue",
+        "route_to": "legal_team"
+      },
+      {
+        "condition": "bug_report",
+        "route_to": "engineering_support"
+      },
+      {
+        "condition": "angry_or_high_value_customer",
+        "route_to": "senior_support"
+      }
+    ]
+  },
+
+  "guardrails": {
+    "do_not": [
+      "invent_product_features",
+      "invent_company_policy",
+      "promise_refunds",
+      "promise_discounts",
+      "make_legal_commitments",
+      "request_passwords",
+      "request_full_payment_information",
+      "share_private_customer_data",
+      "blame_the_customer"
+    ],
+    "requires_human_review": [
+      "refund_request",
+      "account_termination",
+      "billing_dispute",
+      "security_incident",
+      "legal_complaint",
+      "customer_data_request"
+    ]
+  },
+
+  "permissions": {
+    "allowed_tools": [
+      "knowledge_search",
+      "ticket_creation",
+      "ticket_lookup",
+      "customer_lookup",
+      "email_sender"
+    ],
+    "restricted_tools": [
+      "payment_processing",
+      "refund_approval",
+      "account_deletion",
+      "admin_override",
+      "customer_database_write"
+    ],
+    "allowed_data": [
+      "support_articles",
+      "public_product_docs",
+      "customer_basic_account_status",
+      "ticket_history"
+    ],
+    "restricted_data": [
+      "full_payment_details",
+      "passwords",
+      "security_tokens",
+      "private_customer_files",
+      "internal_financial_records"
+    ]
+  },
+
+  "templates": [
+    "support_response",
+    "troubleshooting_steps",
+    "ticket_summary",
+    "escalation_message",
+    "follow_up_email"
+  ],
+
+  "success_metrics": [
+    "first_contact_resolution_rate",
+    "average_response_time",
+    "customer_satisfaction_score",
+    "ticket_deflection_rate",
+    "escalation_accuracy"
+  ],
+
+  "tags": [
+    "customer-support",
+    "helpdesk",
+    "tickets",
+    "faq",
+    "troubleshooting"
   ]
-},
-  "memory": {
-    "type": "buffer",
-    "window_size": 10
-  }
-}
