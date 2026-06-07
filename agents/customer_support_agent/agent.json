@@ -23,6 +23,12 @@
     "document_search", 
   ]
   ,
+   "output_formats": [
+    "markdown",
+    "html",
+    "plain_text"
+  ]
+},
   "memory": {
     "type": "buffer",
     "window_size": 10
