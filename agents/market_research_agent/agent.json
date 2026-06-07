@@ -2,7 +2,7 @@
   "metadata": {
     "name": "market_research_agent",
     "version": "1.2.0",
-    "description": "Scans incoming emails, summarizes issues, and alerts Slack."
+    "description": "Reads user requests and conducts market research."
   },
   "llm_config": {
     "provider": "anthropic",
@@ -13,25 +13,34 @@
   "behavior": {
     "system_prompt": "You are an automated support assistant. Be polite. Summarize the user issue into three bullet points. Do not make up facts."
   },
-  "trigger": {
-    "type": "webhook",
-    "path": "/v1/hooks/incoming-email"
-  },
-  "tools": [
+  "triggers": [
     {
-      "name": "post_to_slack",
-      "type": "webhook",
-      "url": "https://slack.com",
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "channel": { "type": "string", "default": "#support-alerts" },
-          "text": { "type": "string" }
-        },
-        "required": ["text"]
-      }
+      "type": "manual"
+    },
+    {
+      "type": "workflow_dispatch",
+      "source": "marketing_campaign"
     }
-  ],
+  ]
+  },
+   "tools": [
+    {
+      "name": "crm_lookup",
+      "required": true
+    },
+    {
+      "name": "company_enrichment",
+      "required": true
+    },
+    {
+      "name": "lead_scoring",
+      "required": true
+    },
+    {
+      "name": "crm_update",
+      "required": true
+    }
+  ]
   "memory": {
     "type": "buffer",
     "window_size": 10
