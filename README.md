@@ -38,16 +38,9 @@ Proprietary datasets and annotations Production-trained model weights Internal r
 ├── code_modules/                   # 🐍 MODULAR PYTHON ENGINES (Referenced by Agents)
 │   ├── __init__.py
 │   ├── requirements.txt            # Shared dependencies (pandas, numpy, scipy, requests)
-│   ├── math_engines/               # 🧮 Heavy calculations to prevent LLM math errors
-│   │   ├── investment_metrics.py   # IRR, NPV, ROI logic
-│   │   └── tax_brackets.py         # Capital gains and tax deduction algorithms
+│   ├── auth/               # 🧮 Heavy calculations to prevent LLM math errors
 │   ├── data_transformers/          # 📊 Formatting raw data into LLM-readable layouts
-│   │   ├── stripe_cleaner.py       # Converts complex billing JSON into clean tables
-│   │   └── csv_to_markdown.py      # Shrinks massive bank CSVs to save token costs
-        └── inventory_actions.py  
 │   └── custom_validators/          # 🛡️ Safety limits and risk rules
-│       ├── budget_guardrails.py    # Hard-stops workflow if spend requests exceed $5,000
-│       └── anomaly_detector.py     # Checks for duplicate invoices or statistical outliers
 ├── tools/                          # 🔌 NO-CODE API & WEBHOOK CONNECTIONS
 │   ├── core_webhooks.json          # Standard communication links (Zapier, Slack, Make)
 │   ├── finance_apis.json           # Secure data feeds (Plaid, Plaid, Polygon.io ticker)
