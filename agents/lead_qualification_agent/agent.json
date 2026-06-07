@@ -2,7 +2,7 @@
   "metadata": {
     "name": "lead_qualification_agent",
     "version": "1.2.0",
-    "description": "Scans incoming emails, summarizes issues, and alerts Slack."
+    "description": "Evaluate prospects based on available information and provide recommendations."
   },
   "llm_config": {
     "provider": "anthropic",
