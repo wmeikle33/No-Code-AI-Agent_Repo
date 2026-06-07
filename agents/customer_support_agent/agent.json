@@ -17,6 +17,10 @@
     "type": "webhook",
     "path": "/v1/hooks/incoming-email"
   },
+    "tools": [
+    "knowledge_search",
+    "web_search"
+  ]
   ,
   "memory": {
     "type": "buffer",
