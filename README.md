@@ -4,7 +4,7 @@ No-Code-AI-Agent is an image-analysis and machine-learning pipeline for estimati
 
 This public repository is a redacted demonstration of the model used in the workplace
 
-# Repository Scope
+## Repository Scope
 
 This repository is a redacted demonstration of a proprietary no code AI agent. It is intended to showcase project structure, engineering practices, testing, CI/CD, and workflows while protecting confidential intellectual property.
 
@@ -24,7 +24,7 @@ Proprietary datasets and annotations Production-trained model weights Internal r
 
 ```
 
-# No-Code-AI-Agent-Repo
+## No-Code-AI-Agent-Repo
 
 ```bash
 
