@@ -21,10 +21,10 @@
   "behavior": {
     "system_prompt": "You are an automated support assistant. Be polite. Summarize the user issue into three bullet points. Do not make up facts."
   },
-  "trigger": {
-    "type": "webhook",
-    "path": "/v1/hooks/incoming-email"
-  },
+   "triggers": [
+    {
+      "type": "manual"
+    }],
   "tools": [
     {
       "name": "post_to_slack",
