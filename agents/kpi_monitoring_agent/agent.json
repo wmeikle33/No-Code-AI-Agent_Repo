@@ -17,6 +17,10 @@
     "adjust_tone",
     "seo_optimization"
   ],
+   "triggers": [
+    {
+      "type": "manual"
+    }],
 
   "supported_content_types": [
     "blog_post",
