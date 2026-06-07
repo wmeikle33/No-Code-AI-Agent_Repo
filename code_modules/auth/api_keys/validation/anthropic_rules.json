@@ -1,0 +1,38 @@
+{
+  "provider": "Anthropic",
+  "required_environment_variables": [
+    "ANTHROPIC_API_KEY"
+  ],
+
+  "supported_capabilities": [
+    "chat_completion",
+    "reasoning",
+    "embeddings",
+    "structured_outputs",
+    "function_calling"
+  ],
+
+  "validation": {
+    "must_exist": true,
+    "must_not_be_placeholder": true,
+    "minimum_length": 20
+  },
+
+  "security": {
+    "never_commit_to_git": true,
+    "never_log": true,
+    "never_return_to_user": true
+  },
+
+  "agent_requirements": {
+    "research-assistant": {
+      "required": true
+    },
+    "document-qa": {
+      "required": true
+    },
+    "employee-support": {
+      "optional": true
+    }
+  }
+}
