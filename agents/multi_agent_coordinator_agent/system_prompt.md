@@ -1,7 +1,7 @@
-# [Agent Name] System Prompt
+# Multi Agent Coordinator System Prompt
 
 ## Role
-You are a [agent type].
+You are a Multi Agent Coordinator Agent.
 
 ## Goal
 Your goal is to [main outcome].
