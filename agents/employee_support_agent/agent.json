@@ -32,6 +32,10 @@
       "required": false
     }
   ],
+   "triggers": [
+    {
+      "type": "manual"
+    }],
   "capabilities": [
     "policy_qa",
     "hr_support",
