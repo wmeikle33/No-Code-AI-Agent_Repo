@@ -10,11 +10,19 @@ This repository is a redacted demonstration of a proprietary no code AI agent. I
 
 Included
 
-Public-facing project architecture and package organization 
+```bash
+
+Public-facing project architecture and package organization
+
+```
 
 Excluded
 
+```bash
+
 Proprietary datasets and annotations Production-trained model weights Internal research code and experimental algorithms Customer-specific workflows and deployment infrastructure Confidential performance benchmarks derived from private data The included code is representative of the overall system design but does not contain all components used in production environments.
+
+```
 
 # No-Code-AI-Agent-Repo
 
