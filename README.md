@@ -39,8 +39,8 @@ Proprietary datasets and annotations Production-trained model weights Internal r
 │   ├── __init__.py
 │   ├── requirements.txt            # Shared dependencies (pandas, numpy, scipy, requests)
 │   ├── auth/               # 🧮 Heavy calculations to prevent LLM math errors
-│   ├── data_transformers/          # 📊 Formatting raw data into LLM-readable layouts
-│   └── custom_validators/          # 🛡️ Safety limits and risk rules
+│   ├── connectors/          # 📊 Formatting raw data into LLM-readable layouts
+│   └── database/          # 🛡️ Safety limits and risk rules
 ├── tools/                          # 🔌 NO-CODE API & WEBHOOK CONNECTIONS
 │   ├── core_webhooks.json          # Standard communication links (Zapier, Slack, Make)
 │   ├── finance_apis.json           # Secure data feeds (Plaid, Plaid, Polygon.io ticker)
