@@ -1,39 +1,222 @@
 {
-  "metadata": {
-    "name": "document_q&a_agent",
-    "version": "1.2.0",
-    "description": "Reads and interprets requests and provides responses based on company documentation."
+  "id": "document-qa-agent",
+  "name": "Document Q&A Agent",
+  "version": "1.0.0",
+  "description": "Answers user questions using only approved documents, retrieved knowledge chunks, and citations.",
+  "category": "knowledge-management",
+  "status": "active",
+
+  "model": {
+    "tier": "mid",
+    "recommended": "gpt-5-mini",
+    "fallback": "gemma-4",
+    "upgrade_model": "gpt-5",
+    "upgrade_when": [
+      "multiple documents must be compared",
+      "answer requires complex synthesis",
+      "retrieved sources disagree",
+      "question involves policy, compliance, legal, finance, or HR interpretation"
+    ]
   },
-  "llm_config": {
-    "provider": "anthropic",
-    "model": "claude-3-5-sonnet",
-    "temperature": 0.2,
-    "max_turns": 5
-  },
-  "behavior": {
-    "system_prompt": "You are an automated support assistant. Be polite. Summarize the user issue into three bullet points. Do not make up facts."
-  },
-  "trigger": {
-    "type": "webhook",
-    "path": "/v1/hooks/incoming-email"
-  },
-  "tools": [
+
+  "system_prompt": "./system_prompt.md",
+
+  "triggers": [
     {
-      "name": "post_to_slack",
-      "type": "webhook",
-      "url": "https://slack.com",
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "channel": { "type": "string", "default": "#support-alerts" },
-          "text": { "type": "string" }
-        },
-        "required": ["text"]
-      }
+      "type": "manual",
+      "description": "User asks a question about uploaded or indexed documents"
+    },
+    {
+      "type": "file_uploaded",
+      "source": "document_repository",
+      "description": "A new document is uploaded and made available for Q&A"
+    },
+    {
+      "type": "workflow_dispatch",
+      "source": "knowledge_workflow",
+      "description": "Another workflow requests document-based answering"
     }
   ],
-  "memory": {
-    "type": "buffer",
-    "window_size": 10
-  }
+
+  "capabilities": [
+    "document_question_answering",
+    "knowledge_retrieval",
+    "source_grounded_answering",
+    "citation_generation",
+    "document_summarization",
+    "document_comparison",
+    "evidence_extraction",
+    "answer_confidence_assessment"
+  ],
+
+  "tools": [
+    {
+      "name": "knowledge_search",
+      "required": true,
+      "description": "Search indexed document chunks for relevant information"
+    },
+    {
+      "name": "document_lookup",
+      "required": true,
+      "description": "Retrieve metadata or full text for a specific document"
+    },
+    {
+      "name": "citation_generator",
+      "required": true,
+      "description": "Generate citations from retrieved document metadata"
+    },
+    {
+      "name": "evidence_extractor",
+      "required": false,
+      "description": "Extract short supporting passages from retrieved chunks"
+    },
+    {
+      "name": "document_summarizer",
+      "required": false,
+      "description": "Summarize full documents or selected sections"
+    }
+  ],
+
+  "knowledge_sources": [
+    "uploaded_documents",
+    "company_knowledge_base",
+    "policy_documents",
+    "product_documentation",
+    "training_materials",
+    "internal_wikis"
+  ],
+
+  "input_schema": {
+    "required": [
+      "question"
+    ],
+    "optional": [
+      "document_id",
+      "document_collection",
+      "user_role",
+      "citation_style",
+      "answer_format",
+      "max_sources"
+    ]
+  },
+
+  "output_formats": [
+    "markdown",
+    "plain_text",
+    "json"
+  ],
+
+  "response_structure": {
+    "include_direct_answer": true,
+    "include_supporting_evidence": true,
+    "include_citations": true,
+    "include_confidence": true,
+    "include_not_found_message": true
+  },
+
+  "retrieval_settings": {
+    "default_top_k": 5,
+    "max_top_k": 12,
+    "use_hybrid_search": true,
+    "use_reranking": true,
+    "require_citations": true,
+    "minimum_confidence_threshold": 0.65
+  },
+
+  "citation_settings": {
+    "required": true,
+    "include_document_title": true,
+    "include_section": true,
+    "include_page_number": true,
+    "include_source_url": false,
+    "default_style": "document_section"
+  },
+
+  "guardrails": {
+    "do_not": [
+      "answer_without_document_support",
+      "invent_citations",
+      "invent_document_content",
+      "use_outside_knowledge_unless_allowed",
+      "ignore_conflicting_sources",
+      "expose_restricted_documents",
+      "provide_legal_medical_or_financial_advice"
+    ],
+    "must_do": [
+      "state_when_answer_is_not_found",
+      "cite_retrieved_sources",
+      "separate_document_facts_from_assumptions",
+      "flag_low_confidence_answers",
+      "respect_document_permissions"
+    ]
+  },
+
+  "permissions": {
+    "allowed_tools": [
+      "knowledge_search",
+      "document_lookup",
+      "citation_generator",
+      "evidence_extractor",
+      "document_summarizer"
+    ],
+    "restricted_tools": [
+      "web_search",
+      "crm_update",
+      "employee_record_edit",
+      "database_write",
+      "ticket_creation"
+    ],
+    "allowed_data": [
+      "approved_documents",
+      "indexed_chunks",
+      "document_metadata"
+    ],
+    "restricted_data": [
+      "documents_without_user_permission",
+      "confidential_hr_records",
+      "private_customer_files",
+      "security_credentials",
+      "payroll_records"
+    ]
+  },
+
+  "routing": {
+    "handoff_conditions": [
+      {
+        "condition": "question_requires_external_research",
+        "route_to": "research-assistant-agent"
+      },
+      {
+        "condition": "question_requires_policy_decision",
+        "route_to": "human_reviewer"
+      },
+      {
+        "condition": "restricted_document_access_requested",
+        "route_to": "access_review"
+      }
+    ]
+  },
+
+  "templates": [
+    "document_qa_response",
+    "document_summary",
+    "source_cited_answer",
+    "not_found_response"
+  ],
+
+  "success_metrics": [
+    "answer_accuracy",
+    "citation_coverage",
+    "retrieval_precision",
+    "user_satisfaction",
+    "not_found_accuracy"
+  ],
+
+  "tags": [
+    "document-qa",
+    "rag",
+    "knowledge-base",
+    "citations",
+    "retrieval"
+  ]
 }
