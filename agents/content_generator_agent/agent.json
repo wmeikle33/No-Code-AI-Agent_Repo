@@ -22,6 +22,7 @@
     "blog_post",
     "newsletter",
     "social_post",
+    "article",
     "email",
     "documentation"
   ],
@@ -35,6 +36,7 @@
     "blog_post",
     "newsletter",
     "social_post"
+    "news_article"
   ],
 
   "output_formats": [
