@@ -1,1 +1,5 @@
-
+{
+  "selected_agent": "lead_qualification_agent",
+  "reason": "User expresses buying intent, gives company size, budget, use case, and timeline.",
+  "next_step": "score_lead"
+}
