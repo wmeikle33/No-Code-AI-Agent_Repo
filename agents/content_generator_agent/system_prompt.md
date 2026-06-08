@@ -34,7 +34,7 @@ Do not use tools for generating false information.
 
 ## Escalation Rules
 Escalate when:
-- Cannot generate response with existing information
+- Cannot generate response with information found by current tool.
 
 ## Output Format
 Use this structure:
