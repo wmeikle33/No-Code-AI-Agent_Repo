@@ -1,1 +1,14 @@
-
+{
+  "tool_name": "score_lead",
+  "inputs": {
+    "company_size": "75 employees",
+    "use_case": "customer support chatbot",
+    "budget": "$8k/month",
+    "timeline": "this quarter"
+  },
+  "output_schema": {
+    "lead_score": "number",
+    "qualification": "hot | warm | cold",
+    "recommended_action": "string"
+  }
+}
