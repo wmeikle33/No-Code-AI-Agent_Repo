@@ -1,25 +1,29 @@
 import os
-import mysql.connector
-from mysql.connector import Error
+from pymongo import MongoClient
+from pymongo.errors import ConnectionFailure, ConfigurationError
 
-
-def create_mysql_connection():
+def get_mongodb_client(uri: str) -> MongoClient | None:
     """
-    Creates a connection to a MySQL database using environment variables.
+    Establishes a connection to a MongoDB instance.
+    
+    :param uri: The MongoDB connection string URI.
+    :return: A MongoClient instance if successful, or None if the connection fails.
     """
-
     try:
-        connection = mysql.connector.connect(
-            host=os.getenv("MYSQL_HOST"),
-            port=os.getenv("MYSQL_PORT", "3306"),
-            database=os.getenv("MYSQL_DATABASE"),
-            user=os.getenv("MYSQL_USER"),
-            password=os.getenv("MYSQL_PASSWORD")
-        )
-
-        if connection.is_connected():
-            return connection
-
-    except Error as e:
-        print(f"MySQL connection failed: {e}")
+        # Initialize the client. By default, it connects in the background.
+        client = MongoClient(uri)
+        
+        # Force a call to verify the connection is successful
+        client.admin.command('ping')
+        print("Successfully connected to MongoDB!")
+        return client
+        
+    except ConfigurationError as ce:
+        print(f"Configure error: Check your connection string format. Details: {ce}")
+        return None
+    except ConnectionFailure as cf:
+        print(f"Server not available: {cf}")
+        return None
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
         return None
