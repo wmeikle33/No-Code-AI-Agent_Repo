@@ -1,0 +1,29 @@
+{
+  "provider_id": "google",
+
+  "provider_name": "Google Workspace",
+
+  "provider_type": "productivity_suite",
+
+  "authentication_method": "OAuth 2.0",
+
+  "authorization_endpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+
+  "token_endpoint": "https://oauth2.googleapis.com/token",
+
+  "default_scopes": [
+    "openid",
+    "email",
+    "profile"
+  ],
+
+  "optional_scopes": [
+    "gmail.readonly",
+    "gmail.send",
+    "calendar.readonly",
+    "calendar"
+  ],
+
+  "status": "active",
+  "version": "1.0"
+}
