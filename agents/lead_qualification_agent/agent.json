@@ -1,191 +1,243 @@
 {
-"id": "kpi-monitoring-agent",
-"name": "KPI Monitoring Agent",
-"version": "1.0.0",
-"description": "Monitors business metrics, detects anomalies, identifies trends, generates performance reports, and recommends actions based on KPI performance.",
-"category": "analytics",
-"status": "active",
-"model": {
-"tier": "high",
-"recommended": "gpt-5",
-"fallback": "gpt-5-mini",
-"upgrade_when": [
-"root cause analysis is required",
-"multiple datasets must be compared",
-"executive recommendations are requested",
-"trend forecasting is required"
-]
-},
-"system_prompt": "./system_prompt.md",
-"triggers": [
-{
-"type": "schedule",
-"frequency": "daily",
-"time": "08:00"
-},
-{
-"type": "schedule",
-"frequency": "weekly",
-"time": "07:00"
-},
-{
-"type": "database_event",
-"event": "kpi_threshold_breach"
-},
-{
-"type": "manual"
-}
-],
-"capabilities": [
-"kpi_tracking",
-"anomaly_detection",
-"trend_analysis",
-"root_cause_analysis",
-"executive_reporting",
-"forecasting",
-"threshold_monitoring",
-"recommendation_generation"
-],
-"tools": [
-{
-"name": "database_query",
-"required": true,
-"description": "Retrieve KPI and operational metrics"
-},
-{
-"name": "analytics_engine",
-"required": true,
-"description": "Perform trend and statistical analysis"
-},
-{
-"name": "report_generator",
-"required": true,
-"description": "Generate KPI reports and dashboards"
-},
-{
-"name": "python_executor",
-"required": false,
-"description": "Run advanced calculations and data analysis"
-},
-{
-"name": "notification_sender",
-"required": false,
-"description": "Notify stakeholders when thresholds are exceeded"
-}
-],
-"kpis": [
-"revenue",
-"customer_growth",
-"customer_churn",
-"monthly_recurring_revenue",
-"net_promoter_score",
-"ticket_resolution_time",
-"employee_satisfaction",
-"conversion_rate"
-],
-"data_sources": [
-"data_warehouse",
-"crm",
-"analytics_platform",
-"helpdesk",
-"finance_system"
-],
-"input_schema": {
-"required": [
-"kpi_request"
-],
-"optional": [
-"date_range",
-"department",
-"metric",
-"comparison_period",
-"report_type"
-]
-},
-"output_formats": [
-"markdown",
-"json",
-"csv",
-"xlsx"
-],
-"response_structure": {
-"include_summary": true,
-"include_kpi_values": true,
-"include_trends": true,
-"include_anomalies": true,
-"include_recommendations": true,
-"include_risk_assessment": true
-},
-"thresholds": {
-"critical": 20,
-"warning": 10
-},
-"routing": {
-"handoff_conditions": [
-{
-"condition": "requires_deeper_research",
-"route_to": "research-assistant-agent"
-},
-{
-"condition": "revenue_risk_detected",
-"route_to": "executive-assistant-agent"
-},
-{
-"condition": "customer_churn_spike",
-"route_to": "customer-support-agent"
-}
-]
-},
-"guardrails": {
-"do_not": [
-"invent_metrics",
-"modify_source_data",
-"hide_negative_results",
-"provide_financial_advice",
-"make_budget_decisions"
-],
-"must_do": [
-"cite_data_sources",
-"show_calculation_dates",
-"identify_missing_data",
-"flag_low_confidence_analysis"
-]
-},
-"permissions": {
-"allowed_tools": [
-"database_query",
-"analytics_engine",
-"report_generator",
-"python_executor",
-"notification_sender"
-],
-"restricted_tools": [
-"database_write",
-"payroll_edit",
-"crm_update",
-"financial_transaction_processing"
-]
-},
-"templates": [
-"daily_kpi_report",
-"weekly_kpi_report",
-"executive_dashboard",
-"anomaly_alert",
-"trend_analysis_report"
-],
-"success_metrics": [
-"anomaly_detection_accuracy",
-"report_accuracy",
-"forecast_accuracy",
-"alert_relevance",
-"stakeholder_satisfaction"
-],
-"tags": [
-"kpi",
-"analytics",
-"reporting",
-"business-intelligence",
-"monitoring",
-"forecasting"
-]
+  "id": "lead-qualification-agent",
+  "name": "Lead Qualification Agent",
+  "version": "1.0.0",
+  "description": "Evaluates inbound leads, enriches lead data, scores fit, identifies missing qualification details, and recommends the next sales action.",
+  "category": "sales",
+  "status": "active",
+
+  "model": {
+    "tier": "mid",
+    "recommended": "gpt-5-mini",
+    "fallback": "gemma-4",
+    "upgrade_model": "gpt-5",
+    "upgrade_when": [
+      "lead requires complex account research",
+      "multiple data sources disagree",
+      "enterprise opportunity sizing is needed",
+      "strategic account prioritization is required"
+    ]
+  },
+
+  "system_prompt": "./system_prompt.md",
+
+  "triggers": [
+    {
+      "type": "form_submission",
+      "source": "website_lead_form"
+    },
+    {
+      "type": "crm_event",
+      "event": "new_lead_created"
+    },
+    {
+      "type": "email_received",
+      "source": "sales_inbox"
+    },
+    {
+      "type": "manual"
+    }
+  ],
+
+  "capabilities": [
+    "lead_scoring",
+    "lead_enrichment",
+    "company_research",
+    "crm_lookup",
+    "crm_update",
+    "ideal_customer_profile_matching",
+    "missing_information_detection",
+    "sales_routing_recommendation",
+    "follow_up_message_drafting"
+  ],
+
+  "tools": [
+    {
+      "name": "crm_lookup",
+      "required": true,
+      "description": "Retrieve existing lead, contact, company, and opportunity information"
+    },
+    {
+      "name": "company_enrichment",
+      "required": true,
+      "description": "Find company size, industry, location, website, and other firmographic details"
+    },
+    {
+      "name": "lead_scoring",
+      "required": true,
+      "description": "Score the lead against qualification criteria"
+    },
+    {
+      "name": "crm_update",
+      "required": false,
+      "description": "Update lead score, status, notes, and routing recommendation in the CRM"
+    },
+    {
+      "name": "email_draft",
+      "required": false,
+      "description": "Draft a personalized follow-up message"
+    }
+  ],
+
+  "knowledge_sources": [
+    "ideal_customer_profile",
+    "sales_playbook",
+    "qualification_criteria",
+    "pricing_guidelines",
+    "case_studies",
+    "territory_rules"
+  ],
+
+  "input_schema": {
+    "required": [
+      "lead_name",
+      "company"
+    ],
+    "optional": [
+      "email",
+      "job_title",
+      "company_website",
+      "industry",
+      "company_size",
+      "message",
+      "source",
+      "budget",
+      "timeline",
+      "use_case",
+      "crm_record_id"
+    ]
+  },
+
+  "output_formats": [
+    "markdown",
+    "plain_text",
+    "json"
+  ],
+
+  "qualification_framework": {
+    "default": "fit_urgency_authority_need",
+    "scoring_scale": "0_to_10",
+    "criteria": [
+      "company_fit",
+      "role_authority",
+      "business_need",
+      "urgency",
+      "budget_signal",
+      "use_case_match",
+      "engagement_signal"
+    ]
+  },
+
+  "response_structure": {
+    "include_lead_summary": true,
+    "include_fit_score": true,
+    "include_positive_signals": true,
+    "include_risks": true,
+    "include_missing_information": true,
+    "include_recommended_next_action": true,
+    "include_follow_up_draft": true
+  },
+
+  "routing": {
+    "handoff_conditions": [
+      {
+        "condition": "high_fit_enterprise_lead",
+        "route_to": "enterprise_sales"
+      },
+      {
+        "condition": "high_fit_mid_market_lead",
+        "route_to": "mid_market_sales"
+      },
+      {
+        "condition": "low_fit_or_student_request",
+        "route_to": "nurture_campaign"
+      },
+      {
+        "condition": "support_or_existing_customer_request",
+        "route_to": "customer-support-agent"
+      },
+      {
+        "condition": "partnership_request",
+        "route_to": "partnerships_team"
+      }
+    ]
+  },
+
+  "guardrails": {
+    "do_not": [
+      "invent_company_information",
+      "promise_pricing",
+      "promise_discounts",
+      "make_contractual_commitments",
+      "guarantee_sales_outcomes",
+      "disqualify_leads_without_reason",
+      "store_sensitive_personal_information"
+    ],
+    "must_do": [
+      "separate known facts from assumptions",
+      "flag missing qualification data",
+      "explain the score",
+      "recommend a clear next action"
+    ],
+    "requires_human_review": [
+      "enterprise_account_assignment",
+      "pricing_or_discount_request",
+      "legal_or_procurement_question",
+      "strategic_partnership_interest"
+    ]
+  },
+
+  "permissions": {
+    "allowed_tools": [
+      "crm_lookup",
+      "company_enrichment",
+      "lead_scoring",
+      "crm_update",
+      "email_draft"
+    ],
+    "restricted_tools": [
+      "contract_generation",
+      "discount_approval",
+      "payment_processing",
+      "customer_database_delete",
+      "legal_approval"
+    ],
+    "allowed_data": [
+      "lead_contact_information",
+      "company_firmographics",
+      "crm_notes",
+      "public_company_information",
+      "sales_playbook"
+    ],
+    "restricted_data": [
+      "payment_details",
+      "private_customer_files",
+      "legal_contracts_without_permission",
+      "sensitive_personal_data"
+    ]
+  },
+
+  "templates": [
+    "lead_scorecard",
+    "qualification_report",
+    "sales_handoff_note",
+    "follow_up_email",
+    "disqualification_reason"
+  ],
+
+  "success_metrics": [
+    "qualification_accuracy",
+    "sales_acceptance_rate",
+    "conversion_to_meeting_rate",
+    "crm_field_completion_rate",
+    "routing_accuracy"
+  ],
+
+  "tags": [
+    "sales",
+    "lead-qualification",
+    "crm",
+    "lead-scoring",
+    "revenue-operations"
+  ]
 }
