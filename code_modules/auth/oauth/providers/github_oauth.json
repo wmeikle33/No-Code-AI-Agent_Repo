@@ -1,0 +1,49 @@
+{
+  "provider": "GitHub",
+  "provider_type": "source_control",
+  "authentication_method": "OAuth 2.0",
+
+  "authorization_url": "https://github.com/login/oauth/authorize",
+  "token_url": "https://github.com/login/oauth/access_token",
+
+  "grant_type": "authorization_code",
+
+  "required_scopes": [
+    "read:user",
+    "user:email",
+    "repo"
+  ],
+
+  "optional_scopes": [
+    "workflow",
+    "read:org"
+  ],
+
+  "redirect_uri": "${GITHUB_REDIRECT_URI}",
+
+  "capabilities": [
+    "read_repositories",
+    "read_issues",
+    "read_pull_requests",
+    "create_issues",
+    "manage_pull_requests"
+  ],
+
+  "authorized_agents": [
+    "executive_assistant_agent",
+    "document_qa_agent",
+    "customer_support_agent",
+    "multi_agent_coordinator"
+  ],
+
+  "security_requirements": {
+    "require_https": true,
+    "token_storage": "encrypted",
+    "least_privilege": true
+  },
+
+  "metadata": {
+    "provider_website": "https://github.com",
+    "documentation": "https://docs.github.com/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps",
+    "version": "1.0"
+  }
