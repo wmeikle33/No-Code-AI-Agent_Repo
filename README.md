@@ -8,23 +8,23 @@ This public repository is a redacted demonstration of the model used in the work
 
 This repository is a redacted demonstration of a proprietary no code AI agent. It is intended to showcase project structure, engineering practices, testing, CI/CD, and workflows while protecting confidential intellectual property.
 
-Included
+### Included
 
-```bash
+- Public-facing project architecture
+- Agent personas and instructions
+- Example workflow routing logic
+- Example tool schemas
+- Sample retrieval/context files
+- CI validation and basic testing structure
 
-Public-facing project architecture and package organization
+### Excluded
 
-```
-
-Excluded
-
-```bash
-
-Proprietary datasets and annotations.
-Production-trained model weights Internal research code and experimental algorithms.
-Customer-specific workflows and deployment infrastructure.
-Confidential performance benchmarks derived from private data.
-
+- Proprietary datasets and annotations
+- Production-trained model weights
+- Internal research code
+- Customer-specific workflows
+- Deployment infrastructure
+- Confidential performance benchmarks
 
 ```
 
