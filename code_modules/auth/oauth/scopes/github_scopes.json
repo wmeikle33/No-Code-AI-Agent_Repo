@@ -1,0 +1,30 @@
+{
+  "provider": "github",
+
+  "scope_definitions": {
+    "read:user": {
+      "description": "Read user profile information",
+      "risk_level": "low"
+    },
+
+    "user:email": {
+      "description": "Access user email addresses",
+      "risk_level": "low"
+    },
+
+    "repo": {
+      "description": "Full repository access",
+      "risk_level": "high"
+    },
+
+    "workflow": {
+      "description": "Manage GitHub Actions workflows",
+      "risk_level": "high"
+    },
+
+    "read:org": {
+      "description": "Read organization membership",
+      "risk_level": "medium"
+    }
+  }
+}
