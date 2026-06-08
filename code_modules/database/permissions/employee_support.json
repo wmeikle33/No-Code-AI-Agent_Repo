@@ -1,0 +1,15 @@
+{
+  "agent": "employee_support",
+  "role": "support_specialist",
+  "allowed_actions": [
+    "read_hr_policies",
+    "create_support_ticket",
+    "draft_email"
+  ],
+  "denied_actions": [
+    "modify_payroll",
+    "delete_employee_record",
+    "approve_expense"
+  ],
+  "risk_level": "low"
+}
