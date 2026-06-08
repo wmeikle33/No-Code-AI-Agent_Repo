@@ -14,3 +14,9 @@ Agent misuse
 Connector security incidents
 ```
 The goal is to minimize impact, restore secure operations, and document lessons learned.
+
+Process
+
+- Understand the severity of the security breach
+- Inform relevant parties
+- -Shut down API usage until breach has been dealth with
