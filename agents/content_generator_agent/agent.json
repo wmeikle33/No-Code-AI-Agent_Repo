@@ -41,5 +41,6 @@
     "markdown",
     "html",
     "plain_text"
+    "pdf"
   ]
 }
