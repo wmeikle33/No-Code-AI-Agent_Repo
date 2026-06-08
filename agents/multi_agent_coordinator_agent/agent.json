@@ -1,39 +1,202 @@
 {
-  "metadata": {
-    "name": "multi_agent_coordinator_agent",
-    "version": "1.2.0",
-    "description": "Scans meeting notes and summarizes the content."
+  "id": "multi-agent-coordinator",
+  "name": "Multi-Agent Coordinator",
+  "version": "1.0.0",
+  "description": "Routes complex requests across specialized agents, coordinates multi-step workflows, combines outputs, and manages handoffs.",
+  "category": "orchestration",
+  "status": "active",
+
+  "model": {
+    "tier": "high",
+    "recommended": "gpt-5",
+    "fallback": "gpt-5-mini",
+    "reasoning_required": true
   },
-  "llm_config": {
-    "provider": "anthropic",
-    "model": "claude-3-5-sonnet",
-    "temperature": 0.2,
-    "max_turns": 5
-  },
-  "behavior": {
-    "system_prompt": "You are an automated support assistant. Be polite. Summarize the user issue into three bullet points. Do not make up facts."
-  },
-   "triggers": [
+
+  "system_prompt": "./system_prompt.md",
+
+  "triggers": [
     {
-      "type": "manual"
-    }],
-  "tools": [
+      "type": "manual",
+      "description": "User submits a complex request requiring multiple agents"
+    },
     {
-      "name": "post_to_slack",
-      "type": "webhook",
-      "url": "https://slack.com",
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "channel": { "type": "string", "default": "#support-alerts" },
-          "text": { "type": "string" }
-        },
-        "required": ["text"]
-      }
+      "type": "workflow_dispatch",
+      "source": "business_workflow"
+    },
+    {
+      "type": "agent_handoff",
+      "description": "Another agent escalates or delegates work"
     }
   ],
-  "memory": {
-    "type": "buffer",
-    "window_size": 10
-  }
+
+  "capabilities": [
+    "intent_classification",
+    "agent_selection",
+    "workflow_planning",
+    "task_decomposition",
+    "agent_handoff",
+    "tool_routing",
+    "output_synthesis",
+    "conflict_resolution",
+    "escalation_management"
+  ],
+
+  "tools": [
+    {
+      "name": "agent_registry_lookup",
+      "required": true,
+      "description": "Find available agents and their capabilities"
+    },
+    {
+      "name": "workflow_dispatch",
+      "required": true,
+      "description": "Start the correct workflow or agent handoff"
+    },
+    {
+      "name": "routing_engine",
+      "required": true,
+      "description": "Apply routing, escalation, and priority rules"
+    },
+    {
+      "name": "output_synthesizer",
+      "required": true,
+      "description": "Combine multiple agent outputs into one final response"
+    }
+  ],
+
+  "managed_agents": [
+    "employee-support-agent",
+    "customer-support-agent",
+    "document-qa-agent",
+    "executive-assistant-agent",
+    "kpi-monitoring-agent",
+    "lead-qualification-agent",
+    "market-research-agent",
+    "meeting-notes-agent",
+    "content-generator-agent"
+  ],
+
+  "routing": {
+    "default_agent": "document-qa-agent",
+    "handoff_conditions": [
+      {
+        "condition": "employee_internal_help_request",
+        "route_to": "employee-support-agent"
+      },
+      {
+        "condition": "customer_support_request",
+        "route_to": "customer-support-agent"
+      },
+      {
+        "condition": "document_question",
+        "route_to": "document-qa-agent"
+      },
+      {
+        "condition": "meeting_transcript_or_notes",
+        "route_to": "meeting-notes-agent"
+      },
+      {
+        "condition": "market_or_competitor_research",
+        "route_to": "market-research-agent"
+      },
+      {
+        "condition": "sales_lead_evaluation",
+        "route_to": "lead-qualification-agent"
+      },
+      {
+        "condition": "business_metric_or_kpi_analysis",
+        "route_to": "kpi-monitoring-agent"
+      },
+      {
+        "condition": "executive_briefing_or_follow_up",
+        "route_to": "executive-assistant-agent"
+      },
+      {
+        "condition": "content_creation_request",
+        "route_to": "content-generator-agent"
+      }
+    ]
+  },
+
+  "workflow_rules": {
+    "max_agents_per_workflow": 5,
+    "max_handoff_depth": 3,
+    "require_final_synthesis": true,
+    "avoid_duplicate_agent_calls": true,
+    "stop_when_human_review_required": true
+  },
+
+  "response_structure": {
+    "include_task_breakdown": true,
+    "include_agents_used": true,
+    "include_final_answer": true,
+    "include_open_questions": true,
+    "include_next_steps": true
+  },
+
+  "guardrails": {
+    "do_not": [
+      "perform_specialized_tasks_directly_when_a_specialist_agent_exists",
+      "route_sensitive_requests_to_unapproved_agents",
+      "hide_conflicting_agent_outputs",
+      "invent_agent_capabilities",
+      "bypass_human_review_requirements",
+      "start_destructive_actions_without_confirmation"
+    ],
+    "must_do": [
+      "choose the smallest sufficient set of agents",
+      "explain handoffs when useful",
+      "combine outputs clearly",
+      "flag conflicts or uncertainty",
+      "respect each agent's permissions and guardrails"
+    ],
+    "requires_human_review": [
+      "legal_or_compliance_decision",
+      "financial_commitment",
+      "employment_decision",
+      "security_incident",
+      "customer_data_deletion",
+      "external_message_sending"
+    ]
+  },
+
+  "permissions": {
+    "allowed_tools": [
+      "agent_registry_lookup",
+      "workflow_dispatch",
+      "routing_engine",
+      "output_synthesizer"
+    ],
+    "restricted_tools": [
+      "direct_database_write",
+      "payment_processing",
+      "contract_approval",
+      "payroll_edit",
+      "admin_override"
+    ]
+  },
+
+  "templates": [
+    "multi_agent_plan",
+    "workflow_summary",
+    "handoff_summary",
+    "final_synthesis"
+  ],
+
+  "success_metrics": [
+    "routing_accuracy",
+    "workflow_completion_rate",
+    "handoff_accuracy",
+    "duplicate_work_reduction",
+    "user_satisfaction"
+  ],
+
+  "tags": [
+    "orchestration",
+    "multi-agent",
+    "routing",
+    "workflow",
+    "coordination"
+  ]
 }
