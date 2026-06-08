@@ -1,1 +1,20 @@
-
+{
+  "name": "support_to_lead",
+  "trigger": "customer asks about buying, pricing, demo, or implementation",
+  "steps": [
+    {
+      "tool": "search_catalog",
+      "input": "customer_interest"
+    },
+    {
+      "condition": "customer provides email or asks for follow-up",
+      "tool": "create_lead",
+      "input": {
+        "name": "customer_name",
+        "email": "customer_email",
+        "interest": "matched_product"
+      }
+    }
+  ],
+  "output": "lead_creation_result"
+}
