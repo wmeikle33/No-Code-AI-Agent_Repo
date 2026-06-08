@@ -2,9 +2,9 @@
 
 Purpose
 
-```bash
-
 This document defines the procedures for responding to security incidents involving:
+
+```bash
 Exposed API keys
 Leaked OAuth tokens
 Unauthorized access
