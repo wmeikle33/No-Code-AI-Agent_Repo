@@ -1,0 +1,8 @@
+{
+  "required_checks": [
+    "exists",
+    "not_expired",
+    "provider_match",
+    "format_valid"
+  ]
+}
