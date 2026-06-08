@@ -1,5 +1,14 @@
 import win32com.client as win32
 
+def create_calendar_event(title, start, end):
+    return {
+        "platform": "outlook",
+        "action": "create_event",
+        "title": title,
+        "start": start,
+        "end": end
+    }
+
 def send_outlook_email(to_address, subject, body, attachment_path=None):
     # Connect to Outlook
     outlook = win32.Dispatch("Outlook.Application")
