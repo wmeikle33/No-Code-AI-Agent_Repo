@@ -1,42 +1,191 @@
 {
-  "metadata": {
-    "name": "lead_qualification_agent",
-    "version": "1.2.0",
-    "description": "Evaluate prospects based on available information and provide recommendations."
-  },
-  "llm_config": {
-    "provider": "anthropic",
-    "model": "claude-3-5-sonnet",
-    "temperature": 0.2,
-    "max_turns": 5
-  },
-  "behavior": {
-    "system_prompt": "You are an automated support assistant. Be polite. Summarize the user issue into three bullet points. Do not make up facts."
-  },
-  "trigger": {
-    "type": "webhook",
-    "path": "/v1/hooks/incoming-email"
-  },
-  "tools":  "tools": [
-    {
-      "name": "crm_lookup",
-      "required": true
-    },
-    {
-      "name": "company_enrichment",
-      "required": true
-    },
-    {
-      "name": "lead_scoring",
-      "required": true
-    },
-    {
-      "name": "crm_update",
-      "required": true
-    }
-  ],
-  "memory": {
-    "type": "buffer",
-    "window_size": 10
-  }
+"id": "kpi-monitoring-agent",
+"name": "KPI Monitoring Agent",
+"version": "1.0.0",
+"description": "Monitors business metrics, detects anomalies, identifies trends, generates performance reports, and recommends actions based on KPI performance.",
+"category": "analytics",
+"status": "active",
+"model": {
+"tier": "high",
+"recommended": "gpt-5",
+"fallback": "gpt-5-mini",
+"upgrade_when": [
+"root cause analysis is required",
+"multiple datasets must be compared",
+"executive recommendations are requested",
+"trend forecasting is required"
+]
+},
+"system_prompt": "./system_prompt.md",
+"triggers": [
+{
+"type": "schedule",
+"frequency": "daily",
+"time": "08:00"
+},
+{
+"type": "schedule",
+"frequency": "weekly",
+"time": "07:00"
+},
+{
+"type": "database_event",
+"event": "kpi_threshold_breach"
+},
+{
+"type": "manual"
+}
+],
+"capabilities": [
+"kpi_tracking",
+"anomaly_detection",
+"trend_analysis",
+"root_cause_analysis",
+"executive_reporting",
+"forecasting",
+"threshold_monitoring",
+"recommendation_generation"
+],
+"tools": [
+{
+"name": "database_query",
+"required": true,
+"description": "Retrieve KPI and operational metrics"
+},
+{
+"name": "analytics_engine",
+"required": true,
+"description": "Perform trend and statistical analysis"
+},
+{
+"name": "report_generator",
+"required": true,
+"description": "Generate KPI reports and dashboards"
+},
+{
+"name": "python_executor",
+"required": false,
+"description": "Run advanced calculations and data analysis"
+},
+{
+"name": "notification_sender",
+"required": false,
+"description": "Notify stakeholders when thresholds are exceeded"
+}
+],
+"kpis": [
+"revenue",
+"customer_growth",
+"customer_churn",
+"monthly_recurring_revenue",
+"net_promoter_score",
+"ticket_resolution_time",
+"employee_satisfaction",
+"conversion_rate"
+],
+"data_sources": [
+"data_warehouse",
+"crm",
+"analytics_platform",
+"helpdesk",
+"finance_system"
+],
+"input_schema": {
+"required": [
+"kpi_request"
+],
+"optional": [
+"date_range",
+"department",
+"metric",
+"comparison_period",
+"report_type"
+]
+},
+"output_formats": [
+"markdown",
+"json",
+"csv",
+"xlsx"
+],
+"response_structure": {
+"include_summary": true,
+"include_kpi_values": true,
+"include_trends": true,
+"include_anomalies": true,
+"include_recommendations": true,
+"include_risk_assessment": true
+},
+"thresholds": {
+"critical": 20,
+"warning": 10
+},
+"routing": {
+"handoff_conditions": [
+{
+"condition": "requires_deeper_research",
+"route_to": "research-assistant-agent"
+},
+{
+"condition": "revenue_risk_detected",
+"route_to": "executive-assistant-agent"
+},
+{
+"condition": "customer_churn_spike",
+"route_to": "customer-support-agent"
+}
+]
+},
+"guardrails": {
+"do_not": [
+"invent_metrics",
+"modify_source_data",
+"hide_negative_results",
+"provide_financial_advice",
+"make_budget_decisions"
+],
+"must_do": [
+"cite_data_sources",
+"show_calculation_dates",
+"identify_missing_data",
+"flag_low_confidence_analysis"
+]
+},
+"permissions": {
+"allowed_tools": [
+"database_query",
+"analytics_engine",
+"report_generator",
+"python_executor",
+"notification_sender"
+],
+"restricted_tools": [
+"database_write",
+"payroll_edit",
+"crm_update",
+"financial_transaction_processing"
+]
+},
+"templates": [
+"daily_kpi_report",
+"weekly_kpi_report",
+"executive_dashboard",
+"anomaly_alert",
+"trend_analysis_report"
+],
+"success_metrics": [
+"anomaly_detection_accuracy",
+"report_accuracy",
+"forecast_accuracy",
+"alert_relevance",
+"stakeholder_satisfaction"
+],
+"tags": [
+"kpi",
+"analytics",
+"reporting",
+"business-intelligence",
+"monitoring",
+"forecasting"
+]
 }
