@@ -26,7 +26,6 @@ This repository is a redacted demonstration of a proprietary no code AI agent. I
 - Deployment infrastructure
 - Confidential performance benchmarks
 
-```
 
 The included code is representative of the overall system design but does not contain all components used in production environments.
 
