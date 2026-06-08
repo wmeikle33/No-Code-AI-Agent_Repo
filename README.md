@@ -1,6 +1,6 @@
 # No-Code-AI-Agent
 
-No-Code-AI-Agent is an image-analysis and machine-learning pipeline for estimating root biomass from plant images.
+No-Code-AI-Agent is a LLM based agent that allows users to write and execute code automatically.
 
 This public repository is a redacted demonstration of the model used in the workplace
 
