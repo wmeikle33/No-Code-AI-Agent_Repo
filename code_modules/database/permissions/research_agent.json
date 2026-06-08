@@ -1,0 +1,14 @@
+{
+  "agent": "research_agent",
+  "role": "research",
+  "allowed_actions": [
+    "web_search",
+    "document_analysis",
+    "knowledge_lookup"
+  ],
+  "denied_actions": [
+    "send_email",
+    "modify_database"
+  ],
+  "risk_level": "low"
+}
