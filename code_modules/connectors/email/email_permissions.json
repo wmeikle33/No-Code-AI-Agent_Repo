@@ -1,0 +1,11 @@
+{
+  "allowed_actions": [
+    "draft_email",
+    "send_email",
+    "reply_email"
+  ],
+  "requires_approval": [
+    "bulk_send",
+    "external_recipients"
+  ]
+}
