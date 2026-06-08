@@ -2,7 +2,7 @@ import os
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure, ConfigurationError
 
-def get_mongodb_client(uri: str) -> MongoClient | None:
+def mongodb_connector(uri: str) -> MongoClient | None:
     """
     Establishes a connection to a MongoDB instance.
     
