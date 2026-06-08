@@ -47,7 +47,6 @@ The included code is representative of the overall system design but does not co
 ├── tools/                    # Tool and API schemas
 ├── workflows/                # Multi-agent routing logic
 ├── .env.example              # Environment variable template
-
-```
 ├── AGENTS.md                 # Agent interaction guide
 └── README.md
+````
