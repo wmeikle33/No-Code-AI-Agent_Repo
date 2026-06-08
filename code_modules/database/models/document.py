@@ -1,1 +1,2 @@
-
+@dataclass
+class Document:
