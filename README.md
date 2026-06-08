@@ -34,7 +34,6 @@ The included code is representative of the overall system design but does not co
 - Route customer-support requests to sales or finance workflows
 - Reconcile invoices against expense policies
 - Use retrieval context to answer employee or product-support questions
-- Connect no-code tools such as Slack, Zapier, Make, or finance APIs
 
 ## Repo Structure
 
