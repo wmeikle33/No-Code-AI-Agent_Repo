@@ -1,5 +1,5 @@
 CREATE TABLE tickets (
-    employee_id UUID PRIMARY KEY,
+    ticket_id UUID PRIMARY KEY,
     first_name VARCHAR(100),
     last_name VARCHAR(100),
     department VARCHAR(100),
