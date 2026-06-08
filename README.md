@@ -1,8 +1,8 @@
 # No-Code-AI-Agent
 
-No-Code-AI-Agent is a LLM based agent that allows users to write and execute code automatically.
+No-Code-AI-Agent is a LLM based agent that allows users to write and execute code automatically according to user requests.
 
-This public repository is a redacted demonstration of the model used in the workplace
+This public repository is a redacted demonstration of the model used in the workplace.
 
 ## Repository Scope
 
@@ -20,9 +20,15 @@ Excluded
 
 ```bash
 
-Proprietary datasets and annotations Production-trained model weights Internal research code and experimental algorithms Customer-specific workflows and deployment infrastructure Confidential performance benchmarks derived from private data The included code is representative of the overall system design but does not contain all components used in production environments.
+Proprietary datasets and annotations.
+Production-trained model weights Internal research code and experimental algorithms.
+Customer-specific workflows and deployment infrastructure.
+Confidential performance benchmarks derived from private data.
+
 
 ```
+
+The included code is representative of the overall system design but does not contain all components used in production environments.
 
 ## Repo Structure
 
