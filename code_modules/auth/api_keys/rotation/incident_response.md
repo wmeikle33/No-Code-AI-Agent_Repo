@@ -19,4 +19,4 @@ Process
 
 - Understand the severity of the security breach
 - Inform relevant parties
-- -Shut down API usage until breach has been dealth with
+- Shut down API usage until breach has been dealth with
