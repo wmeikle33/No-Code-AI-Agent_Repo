@@ -1,1 +1,12 @@
-
+{
+  "provider": "Google",
+  "authorization_type": "OAuth 2.0",
+  "authorization_url": "https://accounts.google.com/o/oauth2/v2/auth",
+  "token_url": "https://oauth2.googleapis.com/token",
+  "grant_type": "authorization_code",
+  "required_scopes": [
+    "gmail.readonly",
+    "calendar.readonly"
+  ],
+  "redirect_uri": "${GOOGLE_REDIRECT_URI}"
+}
