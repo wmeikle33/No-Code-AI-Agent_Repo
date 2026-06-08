@@ -1,4 +1,4 @@
-Incident Response Policy
+## Incident Response Policy
 
 Purpose
 
