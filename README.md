@@ -30,41 +30,24 @@ Confidential performance benchmarks derived from private data.
 
 The included code is representative of the overall system design but does not contain all components used in production environments.
 
+## Example Use Cases
+
+- Route customer-support requests to sales or finance workflows
+- Reconcile invoices against expense policies
+- Use retrieval context to answer employee or product-support questions
+- Connect no-code tools such as Slack, Zapier, Make, or finance APIs
+
 ## Repo Structure
 
-```bash
-
-├── .github/
-│   └── workflows/
-│       └── validation.yml          # Auto-tests prompt formatting and runs Python unit tests
-├── agents/                         # 🤖 AGENT PERSONAS & INSTRUCTIONS
-│   ├── customer-support/
-│   └── financial-analyst/
-│   └── employee-support/
-├── code_modules/                   # 🐍 MODULAR PYTHON ENGINES (Referenced by Agents)
-│   ├── __init__.py
-│   ├── requirements.txt            # Shared dependencies (pandas, numpy, scipy, requests)
-│   ├── auth/               # 🧮 Heavy calculations to prevent LLM math errors
-│   ├── connectors/          # 📊 Formatting raw data into LLM-readable layouts
-│   └── database/          # 🛡️ Safety limits and risk rules
-│   └── knowledge/          
-│   └── research/
-│   └── routing/
-│   └── templates/   
-├── tools/                          # 🔌 NO-CODE API & WEBHOOK CONNECTIONS
-│   ├── core_webhooks.json          # Standard communication links (Zapier, Slack, Make)
-│   ├── finance_apis.json           # Secure data feeds (Plaid, Plaid, Polygon.io ticker)
-│   └── python_executors.json       # Visual schema telling the agent how to call your Python modules
-├── knowledge/                      # 📚 RETRIEVAL-AUGMENTED GENERATION (RAG) CONTEXT
-│   ├── internal_finance/
-│   │   ├── budget_actuals.csv   # Target spreadsheet data for analysis
-│   │   └── expense_policies.md     # Company rules on what items can be reimbursed
-│   └── product_catalog.csv         # Support text data for the customer bot
-├── workflows/                      # 🔄 MULTI-AGENT ROUTING LOGIC
-│   ├── support_to_lead.json        # Directs sales leads from support over to marketing
-│   └── invoice_reconciliation.json # Step-by-step routing for financial approvals
-├── .env.example                    # Template for your LLM and API keys (Never commit raw keys)
-├── AGENTS.md                       # High-level map showing how your agents talk to each other
-└── README.md                       # Comprehensive guide on setup and deployment instructions
+```text
+├── .github/workflows/        # CI validation
+├── agents/                   # Agent personas and instructions
+├── code_modules/             # Python modules used by agents
+├── knowledge/                # Retrieval/context files
+├── tools/                    # Tool and API schemas
+├── workflows/                # Multi-agent routing logic
+├── .env.example              # Environment variable template
 
 ```
+├── AGENTS.md                 # Agent interaction guide
+└── README.md
