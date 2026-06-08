@@ -15,7 +15,8 @@
       "complex troubleshooting is required",
       "the issue involves billing, legal, security, or account access",
       "multiple systems must be checked",
-      "customer sentiment is highly negative"
+      "customer sentiment is highly negative",
+      "it requires a higher level of permission access"
     ]
   },
 
@@ -26,18 +27,6 @@
       "type": "manual",
       "description": "User manually asks the agent to handle a support request"
     },
-    {
-      "type": "email_received",
-      "source": "support_inbox"
-    },
-    {
-      "type": "ticket_created",
-      "source": "helpdesk"
-    },
-    {
-      "type": "chat_message",
-      "source": "customer_chat_widget"
-    }
   ],
 
   "capabilities": [
