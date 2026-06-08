@@ -1,0 +1,47 @@
+  {
+  "provider_id": "github",
+  "provider_name": "GitHub",
+
+  "provider_type": "source_control",
+
+  "authentication_method": "OAuth 2.0",
+
+  "authorization_endpoint": "https://github.com/login/oauth/authorize",
+  "token_endpoint": "https://github.com/login/oauth/access_token",
+
+  "grant_types_supported": [
+    "authorization_code"
+  ],
+
+  "default_scopes": [
+    "read:user",
+    "user:email"
+  ],
+
+  "optional_scopes": [
+    "repo",
+    "workflow",
+    "read:org",
+    "admin:repo_hook"
+  ],
+
+  "redirect_uri_variable": "GITHUB_REDIRECT_URI",
+
+  "token_storage_policy": {
+    "encrypted": true,
+    "rotation_required": true
+  },
+
+  "capabilities": [
+    "user_authentication",
+    "repository_access",
+    "issue_management",
+    "pull_request_management",
+    "workflow_management"
+  ],
+
+  "documentation_url": "https://docs.github.com/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps",
+
+  "status": "active",
+  "version": "1.0"
+}
