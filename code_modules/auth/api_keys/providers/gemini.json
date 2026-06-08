@@ -1,1 +1,8 @@
-
+{
+  "provider": "Gemini",
+  "auth_type": "api_key",
+  "env_variable": "GEMINI_API_KEY",
+  "header_name": "Authorization",
+  "header_format": "Bearer {API_KEY}",
+  "required": true
+}
