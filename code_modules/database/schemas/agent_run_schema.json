@@ -1,0 +1,27 @@
+{
+  "title": "AgentRun",
+  "type": "object",
+  "required": ["id", "agent_name", "user_message", "status", "created_at"],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "agent_name": {
+      "type": "string"
+    },
+    "user_message": {
+      "type": "string"
+    },
+    "final_response": {
+      "type": ["string", "null"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["running", "completed", "failed"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
