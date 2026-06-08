@@ -1,0 +1,14 @@
+{
+  "email": {
+    "supports": ["draft", "send", "reply"]
+  },
+  "outlook": {
+    "supports": ["email", "calendar"]
+  },
+  "teams": {
+    "supports": ["messaging", "approvals"]
+  },
+  "whatsapp": {
+    "supports": ["messaging", "notifications"]
+  }
+}
