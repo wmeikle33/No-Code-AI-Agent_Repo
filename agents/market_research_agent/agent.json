@@ -1,49 +1,230 @@
 {
-  "metadata": {
-    "name": "market_research_agent",
-    "version": "1.2.0",
-    "description": "Reads user requests and conducts market research."
+  "id": "market-research-agent",
+  "name": "Market Research Agent",
+  "version": "1.0.0",
+  "description": "Researches markets, industries, competitors, customer segments, trends, opportunities, and risks to support business decisions.",
+  "category": "research",
+  "status": "active",
+
+  "model": {
+    "tier": "high",
+    "recommended": "gpt-5",
+    "fallback": "gpt-5-mini",
+    "upgrade_when": [
+      "multiple sources must be compared",
+      "market sizing or strategic recommendations are required",
+      "sources conflict",
+      "research involves investment, pricing, or go-to-market strategy"
+    ]
   },
-  "llm_config": {
-    "provider": "anthropic",
-    "model": "claude-3-5-sonnet",
-    "temperature": 0.2,
-    "max_turns": 5
-  },
-  "behavior": {
-    "system_prompt": "You are an automated support assistant. Be polite. Summarize the user issue into three bullet points. Do not make up facts."
-  },
+
+  "system_prompt": "./system_prompt.md",
+
   "triggers": [
     {
-      "type": "manual"
+      "type": "manual",
+      "description": "User requests market research"
+    },
+    {
+      "type": "schedule",
+      "frequency": "weekly",
+      "description": "Generate recurring market updates"
     },
     {
       "type": "workflow_dispatch",
-      "source": "marketing_campaign"
+      "source": "strategy_planning_workflow"
     }
-  ]
-  },
-   "tools": [
+  ],
+
+  "capabilities": [
+    "market_analysis",
+    "industry_research",
+    "competitor_research",
+    "customer_segment_analysis",
+    "trend_identification",
+    "market_sizing",
+    "opportunity_analysis",
+    "risk_analysis",
+    "source_synthesis",
+    "research_report_generation"
+  ],
+
+  "tools": [
     {
-      "name": "crm_lookup",
-      "required": true
+      "name": "web_search",
+      "required": true,
+      "description": "Find market, industry, and competitor information"
+    },
+    {
+      "name": "news_search",
+      "required": false,
+      "description": "Find recent market and competitor developments"
     },
     {
       "name": "company_enrichment",
-      "required": true
+      "required": false,
+      "description": "Retrieve company size, industry, funding, and firmographic details"
     },
     {
-      "name": "lead_scoring",
-      "required": true
+      "name": "citation_generator",
+      "required": true,
+      "description": "Generate citations for research sources"
     },
     {
-      "name": "crm_update",
-      "required": true
+      "name": "report_generator",
+      "required": true,
+      "description": "Create structured market research reports"
     }
-  ]
-  "memory": {
-    "type": "buffer",
-    "window_size": 10
-  }
-}
+  ],
 
+  "knowledge_sources": [
+    "industry_reports",
+    "competitor_profiles",
+    "customer_research",
+    "sales_notes",
+    "product_positioning",
+    "market_trend_database"
+  ],
+
+  "input_schema": {
+    "required": [
+      "research_topic"
+    ],
+    "optional": [
+      "market",
+      "industry",
+      "geography",
+      "customer_segment",
+      "competitors",
+      "time_period",
+      "research_depth",
+      "output_format"
+    ]
+  },
+
+  "output_formats": [
+    "markdown",
+    "plain_text",
+    "json",
+    "pdf"
+  ],
+
+  "response_structure": {
+    "include_executive_summary": true,
+    "include_market_overview": true,
+    "include_key_trends": true,
+    "include_competitor_landscape": true,
+    "include_customer_segments": true,
+    "include_opportunities": true,
+    "include_risks": true,
+    "include_recommendations": true,
+    "include_sources": true
+  },
+
+  "research_settings": {
+    "require_sources": true,
+    "minimum_sources": 3,
+    "prefer_recent_sources": true,
+    "separate_facts_from_assumptions": true,
+    "flag_low_confidence_claims": true
+  },
+
+  "routing": {
+    "handoff_conditions": [
+      {
+        "condition": "requires_sales_follow_up",
+        "route_to": "lead-qualification-agent"
+      },
+      {
+        "condition": "requires_executive_briefing",
+        "route_to": "executive-assistant-agent"
+      },
+      {
+        "condition": "requires_kpi_or_dataset_analysis",
+        "route_to": "kpi-monitoring-agent"
+      },
+      {
+        "condition": "requires_content_creation",
+        "route_to": "content-generator-agent"
+      }
+    ]
+  },
+
+  "guardrails": {
+    "do_not": [
+      "invent_market_size",
+      "invent_statistics",
+      "present_assumptions_as_facts",
+      "use_outdated_sources_without_disclosure",
+      "make_investment_guarantees",
+      "make_legal_or_financial_advice_claims"
+    ],
+    "must_do": [
+      "cite sources",
+      "include dates for time-sensitive findings",
+      "state uncertainty",
+      "separate evidence from interpretation",
+      "flag conflicting information"
+    ],
+    "requires_human_review": [
+      "investment_decision_support",
+      "pricing_strategy_recommendation",
+      "market_entry_recommendation",
+      "legal_or_regulatory_claims"
+    ]
+  },
+
+  "permissions": {
+    "allowed_tools": [
+      "web_search",
+      "news_search",
+      "company_enrichment",
+      "citation_generator",
+      "report_generator"
+    ],
+    "restricted_tools": [
+      "crm_update",
+      "database_write",
+      "email_sender",
+      "contract_generation",
+      "financial_transaction_processing"
+    ],
+    "allowed_data": [
+      "public_market_information",
+      "approved_internal_research",
+      "competitor_profiles",
+      "industry_reports",
+      "sales_notes"
+    ],
+    "restricted_data": [
+      "confidential_customer_data",
+      "private_employee_records",
+      "unapproved_financial_records",
+      "legal_privileged_documents"
+    ]
+  },
+
+  "templates": [
+    "market_research_report",
+    "competitor_analysis",
+    "industry_overview",
+    "customer_segment_analysis",
+    "executive_brief"
+  ],
+
+  "success_metrics": [
+    "source_quality",
+    "research_accuracy",
+    "insight_relevance",
+    "recommendation_usefulness",
+    "report_completeness"
+  ],
+
+  "tags": [
+    "market-research",
+    "industry-analysis",
+    "competitor-research",
+    "strategy",
+    "research"
+  ]
+}
