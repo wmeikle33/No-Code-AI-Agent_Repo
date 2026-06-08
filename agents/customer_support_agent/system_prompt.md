@@ -27,7 +27,7 @@ You should produce:
 
 ## Tool Use
 Use tools only when needed.
-Use `web_search` when 'knowledge_search' is not sufficient.
+Use `web_search` when `knowledge_search` is not sufficient.
 Do not use tools for providing incorrect information.
 
 ## Escalation Rules
