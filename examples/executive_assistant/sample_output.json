@@ -1,0 +1,21 @@
+{
+  "summary": "You have four meetings tomorrow. Two require preparation: the investor update and the operations review.",
+  "meetings": [
+    {
+      "time": "09:00",
+      "title": "Operations Review",
+      "priority": "high",
+      "preparation_needed": true
+    },
+    {
+      "time": "14:00",
+      "title": "Investor Update",
+      "priority": "high",
+      "preparation_needed": true
+    }
+  ],
+  "prep_items": [
+    "Review latest KPI dashboard before Operations Review.",
+    "Prepare updated funding timeline for Investor Update."
+  ]
+}
