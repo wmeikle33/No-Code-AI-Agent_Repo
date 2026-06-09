@@ -1,0 +1,17 @@
+[
+  {
+    "tool": "calendar_lookup",
+    "purpose": "Retrieve tomorrow's meetings",
+    "mocked": true
+  },
+  {
+    "tool": "email_search",
+    "purpose": "Find recent emails related to those meetings",
+    "mocked": true
+  },
+  {
+    "tool": "document_search",
+    "purpose": "Find attached agendas or prep materials",
+    "mocked": true
+  }
+]
