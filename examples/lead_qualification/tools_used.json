@@ -1,0 +1,16 @@
+  {
+    "tool": "crm_lookup",
+    "purpose": "Check whether the company already exists in CRM",
+    "mocked": true
+  },
+  {
+    "tool": "company_enrichment",
+    "purpose": "Estimate company size, sector, and fit",
+    "mocked": true
+  },
+  {
+    "tool": "calendar_availability",
+    "purpose": "Suggest follow-up meeting slots",
+    "mocked": true
+  }
+]
