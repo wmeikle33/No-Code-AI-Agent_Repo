@@ -4,5 +4,5 @@ This folder contains authentification information for accessing various tools fo
 
 - Providers: This page provides a list of the different providers that are incorporated in this repo, including relevant security information.
 - Rotation: This page provides the rotation policy for information related to the different agents.
-- Templates:
-- validation
+- Templates: This page contains formatting for the environments for calling and running the agents.
+- Validation: 
