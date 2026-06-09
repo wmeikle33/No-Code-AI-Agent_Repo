@@ -1,0 +1,7 @@
+{
+  "source": "support_portal",
+  "customer_id": "cust_10492",
+  "subject": "Unable to access dashboard",
+  "message": "I can log in, but the analytics dashboard shows a blank screen. This started after yesterday's update.",
+  "priority": "normal"
+}
