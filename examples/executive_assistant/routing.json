@@ -1,0 +1,6 @@
+{
+  "selected_agent": "executive_assistant_agent",
+  "confidence": 0.94,
+  "reason": "The user is asking for calendar summarization and preparation support.",
+  "next_agent_if_needed": "meeting_notes_agent"
+}
