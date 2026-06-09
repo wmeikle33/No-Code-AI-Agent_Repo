@@ -1,0 +1,6 @@
+{
+  "selected_agent": "document_qa_agent",
+  "confidence": 0.98,
+  "reason": "The user is asking a specific question about an uploaded document.",
+  "next_agent_if_needed": "legal_review_agent"
+}
