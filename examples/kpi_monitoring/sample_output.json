@@ -1,0 +1,11 @@
+{
+  "status": "watch",
+  "summary": "Overall operations are stable, but power utilization is approaching the upper threshold.",
+  "alerts": [
+    "Power utilization is at 82%, approaching the 85% warning threshold."
+  ],
+  "recommended_actions": [
+    "Review capacity forecast for the next 30 days.",
+    "Check whether upcoming customer deployments will exceed available headroom."
+  ]
+}
