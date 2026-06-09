@@ -167,7 +167,8 @@
       "workflow_dispatch",
       "routing_engine",
       "output_synthesizer"
-      "user_preferences"
+      "user_preferences",
+      "company_preferences"
     ],
     "restricted_tools": [
       "direct_database_write",
