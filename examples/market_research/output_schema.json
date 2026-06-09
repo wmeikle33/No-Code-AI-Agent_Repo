@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "required": ["executive_summary", "ranked_regions", "risks", "recommended_next_steps"],
+  "properties": {
+    "executive_summary": { "type": "string" },
+    "ranked_regions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "region": { "type": "string" },
+          "score": { "type": "integer" },
+          "rationale": { "type": "string" }
+        }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "recommended_next_steps": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
