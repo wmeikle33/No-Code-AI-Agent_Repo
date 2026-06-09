@@ -1,0 +1,6 @@
+{
+  "selected_agent": "meeting_notes_agent",
+  "confidence": 0.96,
+  "reason": "The input is a meeting transcript requiring summary, decisions, and action item extraction.",
+  "next_agent_if_needed": "executive_assistant_agent"
+}
