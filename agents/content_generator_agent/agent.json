@@ -35,8 +35,8 @@
   "templates": [
     "blog_post",
     "newsletter",
-    "social_post"
-    "news_article"
+    "social_post",
+    "news_article",
     "presentation"
   ],
 
