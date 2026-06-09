@@ -1,0 +1,6 @@
+{
+  "selected_agent": "lead_qualification_agent",
+  "confidence": 0.94,
+  "reason": "Request contains buyer intent, capacity requirement, budget signal, and timeline.",
+  "next_agent_if_needed": "solution_architect_agent"
+}
