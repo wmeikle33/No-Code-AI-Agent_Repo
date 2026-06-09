@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "required": ["answer", "citations", "confidence", "limitations"],
+  "properties": {
+    "answer": { "type": "string" },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "document": { "type": "string" },
+          "page": { "type": "integer" },
+          "section": { "type": "string" }
+        }
+      }
+    },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
+    "limitations": { "type": "string" }
+  }
+}
