@@ -1,0 +1,9 @@
+{
+  "dashboard_name": "ai-agent-platform",
+  "metrics": [
+    "workflow_executions",
+    "agent_response_time",
+    "tool_failures",
+    "successful_completions",
+    "api_requests"
+  ]
