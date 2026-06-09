@@ -1,0 +1,22 @@
+{
+  "summary": "The team reviewed operational priorities related to cooling vendor selection, capacity planning, and grid connection assumptions.",
+  "decisions": [
+    "Cooling vendor shortlist must be finalized by Friday."
+  ],
+  "action_items": [
+    {
+      "owner": "Sarah",
+      "task": "Update the capacity model.",
+      "due_date": "Friday"
+    },
+    {
+      "owner": "Tom",
+      "task": "Confirm grid connection assumptions.",
+      "due_date": "Friday"
+    }
+  ],
+  "open_questions": [
+    "Which cooling vendors remain under consideration?",
+    "Are grid connection assumptions confirmed with the utility provider?"
+  ]
+}
