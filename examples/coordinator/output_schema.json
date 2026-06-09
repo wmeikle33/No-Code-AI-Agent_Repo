@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "required": ["workflow_plan", "agent_sequence", "final_output"],
+  "properties": {
+    "workflow_plan": { "type": "string" },
+    "agent_sequence": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "final_output": { "type": "object" }
+  }
+}
