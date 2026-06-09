@@ -80,5 +80,28 @@ def initiate_reorder_function(condition):
     }
     
 def process_sale(sku, quantity_sold):
+    if sku not in INVENTORY:
+        return {
+            "status": "error",
+            "message": f"SKU {sku} not found."
+        }
+
+    product = INVENTORY[sku]
+
+    if quantity_sold > product["quantity"]:
+        return {
+            "status": "error",
+            "message": "Insufficient inventory."
+        }
+
+    product["quantity"] -= quantity_sold
+
+    return {
+        "status": "success",
+        "sku": sku,
+        "quantity_sold": quantity_sold,
+        "remaining_inventory": product["quantity"]
+    }
+
 
 def check_reorder_alerts():
