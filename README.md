@@ -1,4 +1,4 @@
-# No-Code AI Agent Repository
+# Greenscale No-Code AI Agent Repository
 
 A modular no-code AI agent framework that enables organizations to build,
 orchestrate, and deploy multi-agent workflows without extensive software
