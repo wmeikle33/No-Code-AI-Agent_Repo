@@ -197,7 +197,8 @@
     "action_items",
     "decision_log",
     "follow_up_email",
-    "executive_meeting_brief"
+    "executive_meeting_brief",
+    "presentation"
   ],
 
   "success_metrics": [
