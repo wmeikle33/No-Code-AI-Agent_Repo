@@ -1,1 +1,6 @@
-
+{
+  "bucket": "ai-agent-artifacts",
+  "purpose": "Store workflow outputs and model artifacts",
+  "encryption": true,
+  "versioning": true
+}
