@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "required": ["summary", "decisions", "action_items", "open_questions"],
+  "properties": {
+    "summary": { "type": "string" },
+    "decisions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "action_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "owner": { "type": "string" },
+          "task": { "type": "string" },
+          "due_date": { "type": "string" }
+        }
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
