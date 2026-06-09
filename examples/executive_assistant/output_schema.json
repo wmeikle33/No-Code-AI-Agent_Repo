@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "required": ["summary", "meetings", "prep_items"],
+  "properties": {
+    "summary": { "type": "string" },
+    "meetings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "time": { "type": "string" },
+          "title": { "type": "string" },
+          "priority": { "type": "string" },
+          "preparation_needed": { "type": "boolean" }
+        }
+      }
+    },
+    "prep_items": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
