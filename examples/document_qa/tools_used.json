@@ -1,0 +1,12 @@
+[
+  {
+    "tool": "document_retrieval",
+    "purpose": "Find relevant clauses in the uploaded agreement",
+    "mocked": true
+  },
+  {
+    "tool": "citation_extractor",
+    "purpose": "Return source sections and page references",
+    "mocked": true
+  }
+]
