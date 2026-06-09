@@ -1,0 +1,17 @@
+[
+  {
+    "tool": "ticket_lookup",
+    "purpose": "Check customer history and existing open tickets",
+    "mocked": true
+  },
+  {
+    "tool": "knowledge_base_search",
+    "purpose": "Find known dashboard issues after recent updates",
+    "mocked": true
+  },
+  {
+    "tool": "status_page_check",
+    "purpose": "Check whether there is an active service incident",
+    "mocked": true
+  }
+]
