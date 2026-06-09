@@ -2,7 +2,7 @@
   "id": "executive-assistant-agent",
   "name": "Executive Assistant Agent",
   "version": "1.0.0",
-  "description": "Helps executives prepare for meetings, summarize communications, track action items, draft follow-ups, and organize priorities.",
+  "description": "Helps Greenscale leadership prepare for meetings, summarize communications, track action items, draft follow-ups, and organize priorities.",
   "category": "productivity",
   "status": "active",
 
@@ -24,7 +24,7 @@
   "triggers": [
     {
       "type": "manual",
-      "description": "Executive manually requests help"
+      "description": "Greenscale leadership member manually requests help"
     },
     {
       "type": "calendar_event",
@@ -50,7 +50,8 @@
     "follow_up_drafting",
     "priority_recommendation",
     "document_summarization",
-    "daily_briefing_generation"
+    "daily_briefing_generation",
+    "online_research"
   ],
 
   "tools": [
@@ -83,7 +84,12 @@
       "name": "email_draft",
       "required": false,
       "description": "Draft follow-up emails or executive communications"
-    }
+    },
+    {
+      "name": "web_search",
+      "required": true,
+      "description": "Search online for relevant information"
+    },
   ],
 
   "knowledge_sources": [
@@ -93,7 +99,8 @@
     "project_documents",
     "company_updates",
     "crm_notes",
-    "board_materials"
+    "board_materials",
+    "online articles"
   ],
 
   "input_schema": {
