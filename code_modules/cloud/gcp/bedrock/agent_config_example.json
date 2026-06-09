@@ -1,0 +1,12 @@
+{
+  "agent_name": "lead_qualification_agent",
+  "foundation_model": "anthropic.claude-3-sonnet",
+  "temperature": 0.2,
+  "max_tokens": 4000,
+  "tools": [
+    "crm_lookup",
+    "lead_scoring",
+    "email_generator"
+  ],
+  "workflow": "lead_qualification_workflow"
+}
