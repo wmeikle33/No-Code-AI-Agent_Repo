@@ -1,0 +1,12 @@
+[
+  {
+    "tool": "hr_policy_search",
+    "purpose": "Retrieve the relevant remote work policy",
+    "mocked": true
+  },
+  {
+    "tool": "employee_profile_lookup",
+    "purpose": "Check employee location and department-specific rules",
+    "mocked": true
+  }
+]
