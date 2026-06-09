@@ -31,6 +31,7 @@
 
   "capabilities": [
     "answer_faqs",
+    "recommend_products",
     "troubleshoot_common_issues",
     "classify_support_requests",
     "summarize_customer_issues",
@@ -74,7 +75,8 @@
     "troubleshooting_guides",
     "refund_policy",
     "billing_policy",
-    "service_status_updates"
+    "service_status_updates",
+    "Greenscale data"
   ],
 
   "input_schema": {
