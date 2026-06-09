@@ -1,0 +1,17 @@
+[
+  {
+    "tool": "agent_router",
+    "purpose": "Select the correct specialist agents",
+    "mocked": true
+  },
+  {
+    "tool": "workflow_state_manager",
+    "purpose": "Track intermediate outputs across agents",
+    "mocked": true
+  },
+  {
+    "tool": "final_response_composer",
+    "purpose": "Combine specialist outputs into one final answer",
+    "mocked": true
+  }
+]
