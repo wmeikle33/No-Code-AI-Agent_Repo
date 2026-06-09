@@ -1,0 +1,9 @@
+{
+  "provider": "azure",
+  "service": "api_gateway",
+  "region": "us-east-1",
+  "authentication": "api_key",
+  "logging_enabled": true,
+  "rate_limit_per_minute": 100,
+  "deployment_stage": "production"
+}
