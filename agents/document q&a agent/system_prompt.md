@@ -80,6 +80,8 @@ You may receive:
 - Knowledge base articles
 - Technical documentation
 - Research papers
+- Raw Data
+- Photos
 
 ## Outputs
 
