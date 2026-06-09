@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "required": ["status", "summary", "alerts", "recommended_actions"],
+  "properties": {
+    "status": { "type": "string", "enum": ["normal", "watch", "alert"] },
+    "summary": { "type": "string" },
+    "alerts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "recommended_actions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
