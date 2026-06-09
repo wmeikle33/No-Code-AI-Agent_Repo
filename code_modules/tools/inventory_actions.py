@@ -103,5 +103,31 @@ def process_sale(sku, quantity_sold):
         "remaining_inventory": product["quantity"]
     }
 
-
 def check_reorder_alerts():
+    alerts = []
+
+    for sku, item in INVENTORY.items():
+
+        inventory_health = (
+            item["quantity"] / item["reorder_point"]
+        )
+
+        if inventory_health <= 1:
+
+            alerts.append({
+                "sku": sku,
+                "risk_level": (
+                    "critical"
+                    if inventory_health < 0.5
+                    else "warning"
+                ),
+                "current_quantity": item["quantity"],
+                "reorder_point": item["reorder_point"],
+                "recommended_reorder_quantity": item["reorder_quantity"]
+            })
+
+    return {
+        "generated_at": datetime.utcnow().isoformat(),
+        "alerts_found": len(alerts),
+        "alerts": alerts
+    }
