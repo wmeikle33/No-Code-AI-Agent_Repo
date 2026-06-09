@@ -1,0 +1,16 @@
+[
+  {
+    "tool": "metrics_database",
+    "purpose": "Retrieve historical KPI baselines",
+    "mocked": true
+  },
+  {
+    "tool": "threshold_checker",
+    "purpose": "Compare current metrics against alert thresholds",
+    "mocked": true
+  },
+  {
+    "tool": "alerting_system",
+    "purpose": "Notify operations team if required",
+    "mocked": true
+  }
