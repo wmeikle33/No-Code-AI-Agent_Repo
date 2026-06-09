@@ -1,0 +1,10 @@
+{
+  "api_name": "ml-pipeline-api",
+  "endpoint": "/ml-pipeline",
+  "method": "POST",
+  "supported_operations": [
+    "dataset_validation",
+    "feature_profiling",
+    "model_evaluation",
+    "deployment_readiness"
+  ]
