@@ -1,0 +1,17 @@
+[
+  {
+    "tool": "web_search",
+    "purpose": "Collect recent market and infrastructure data",
+    "mocked": true
+  },
+  {
+    "tool": "source_ranker",
+    "purpose": "Prioritize reliable sources",
+    "mocked": true
+  },
+  {
+    "tool": "region_scoring_model",
+    "purpose": "Score regions against expansion criteria",
+    "mocked": true
+  }
+]
