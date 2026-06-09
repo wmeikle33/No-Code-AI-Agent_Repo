@@ -1,6 +1,7 @@
 {
-  "source": "email",
-  "message": "We are evaluating 15MW AI data centre capacity in Europe within 6 months.",
-  "timeline": "6 months",
-  "region": "Europe"
+  "source": "support_portal",
+  "customer_id": "cust_10492",
+  "subject": "Unable to access dashboard",
+  "message": "I can log in, but the analytics dashboard shows a blank screen. This started after yesterday's update.",
+  "priority": "normal"
 }
