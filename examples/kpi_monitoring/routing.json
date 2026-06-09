@@ -1,0 +1,6 @@
+{
+  "selected_agent": "kpi_monitoring_agent",
+  "confidence": 0.97,
+  "reason": "The input contains operational metrics that need monitoring and anomaly detection.",
+  "next_agent_if_needed": "operations_alert_agent"
+}
