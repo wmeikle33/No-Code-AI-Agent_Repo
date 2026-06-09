@@ -63,6 +63,21 @@ def calculate_reorder_point(daily_sales_velocity: float, lead_time_days: int, sa
     return int(reorder_point)
     
 def initiate_reorder_function(condition):
+    reorder_id = f"PO-{len(REORDER_QUEUE)+1:05d}"
+
+    reorder = {
+        "reorder_id": reorder_id,
+        "condition": condition,
+        "status": "pending",
+        "created_at": datetime.utcnow().isoformat()
+    }
+
+    REORDER_QUEUE.append(reorder)
+
+    return {
+        "status": "success",
+        "reorder": reorder
+    }
     
 def process_sale(sku, quantity_sold):
 
