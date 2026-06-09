@@ -1,0 +1,10 @@
+{
+  "issue_summary": "Customer can authenticate but cannot view the analytics dashboard after a recent update.",
+  "priority": "high",
+  "recommended_response": "Thanks for reporting this. We are checking whether your dashboard issue is related to yesterday's release. Please try clearing your browser cache and using an incognito window while we investigate.",
+  "next_steps": [
+    "Check browser console logs if available.",
+    "Confirm whether other users in the same account are affected.",
+    "Escalate to engineering if issue persists after cache reset."
+  ]
+}
