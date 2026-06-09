@@ -1,0 +1,8 @@
+{
+  "source": "user_request",
+  "research_question": "Which European regions are most attractive for sustainable AI data centre expansion?",
+  "constraints": {
+    "region": "Europe",
+    "focus": ["renewable_energy", "grid_capacity", "connectivity", "regulation"]
+  }
+}
