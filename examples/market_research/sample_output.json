@@ -1,0 +1,23 @@
+{
+  "executive_summary": "Nordic and selected Southern European markets appear attractive due to renewable power availability, growing AI demand, and strategic connectivity.",
+  "ranked_regions": [
+    {
+      "region": "Nordics",
+      "score": 91,
+      "rationale": "Strong renewable energy profile, cool climate, and established data centre market."
+    },
+    {
+      "region": "Iberia",
+      "score": 84,
+      "rationale": "Strong solar potential and improving connectivity, but grid constraints require diligence."
+    }
+  ],
+  "risks": [
+    "Grid interconnection timelines may delay projects.",
+    "Permitting requirements vary significantly by country."
+  ],
+  "recommended_next_steps": [
+    "Run detailed site selection analysis.",
+    "Compare power purchase agreement availability by region."
+  ]
+}
