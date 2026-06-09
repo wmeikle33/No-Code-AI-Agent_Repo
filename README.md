@@ -24,6 +24,32 @@ that combines:
 
 to rapidly deploy AI-powered business workflows.
 
+```mermaid
+flowchart TD
+
+A[User Request]
+
+A --> B[Coordinator Agent]
+
+B --> C[Support Agent]
+B --> D[Lead Qualification Agent]
+B --> E[Market Research Agent]
+B --> F[Employee Support Agent]
+B --> G[KPI Monitoring Agent]
+B --> H[Meeting Notes Agent]
+
+C --> I[Tools Layer]
+D --> I
+E --> I
+F --> I
+G --> I
+H --> I
+
+I --> J[Workflow Orchestration]
+
+J --> K[Structured Output]
+```
+
 ## Repository Scope
 
 This repository is a redacted demonstration of a proprietary no code AI agent. It is intended to showcase project structure, engineering practices, testing, CI/CD, and workflows while protecting confidential intellectual property.
