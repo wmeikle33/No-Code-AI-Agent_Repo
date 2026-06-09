@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "required": ["answer", "policy_reference", "requires_hr_review"],
+  "properties": {
+    "answer": { "type": "string" },
+    "policy_reference": { "type": "string" },
+    "requires_hr_review": { "type": "boolean" }
+  }
+}
