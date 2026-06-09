@@ -1,11 +1,11 @@
 {
   "type": "object",
-  "required": ["lead_score", "priority", "recommended_action", "reasoning"],
+  "required": ["issue_summary", "priority", "recommended_response", "next_steps"],
   "properties": {
-    "lead_score": { "type": "integer", "minimum": 0, "maximum": 100 },
-    "priority": { "type": "string", "enum": ["low", "medium", "high"] },
-    "recommended_action": { "type": "string" },
-    "reasoning": {
+    "issue_summary": { "type": "string" },
+    "priority": { "type": "string", "enum": ["low", "normal", "high", "urgent"] },
+    "recommended_response": { "type": "string" },
+    "next_steps": {
       "type": "array",
       "items": { "type": "string" }
     }
