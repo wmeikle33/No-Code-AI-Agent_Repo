@@ -1,0 +1,12 @@
+[
+  {
+    "tool": "transcript_parser",
+    "purpose": "Extract key topics, decisions, and action items",
+    "mocked": true
+  },
+  {
+    "tool": "task_creator",
+    "purpose": "Create follow-up tasks from action items",
+    "mocked": true
+  }
+]
