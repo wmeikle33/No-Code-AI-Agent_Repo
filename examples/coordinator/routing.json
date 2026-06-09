@@ -1,0 +1,10 @@
+{
+  "selected_agent": "coordinator_agent",
+  "confidence": 0.99,
+  "reason": "The request requires multiple steps and likely multiple agents.",
+  "planned_agents": [
+    "lead_qualification_agent",
+    "market_research_agent",
+    "executive_assistant_agent"
+  ]
+}
