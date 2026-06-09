@@ -24,12 +24,14 @@
     "social_post",
     "article",
     "email",
-    "documentation"
+    "documentation",
+    "research_article"
   ],
 
   "tools": [
     "knowledge_search",
-    "web_search"
+    "web_search",
+    "academic_search"
   ],
 
   "templates": [
