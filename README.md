@@ -1,8 +1,28 @@
-# No-Code-AI-Agent
+# No-Code AI Agent Repository
 
-No-Code-AI-Agent is a LLM based agent that allows users to write and execute code automatically according to user requests.
+A modular no-code AI agent framework that enables organizations to build,
+orchestrate, and deploy multi-agent workflows without extensive software
+development.
 
-This public repository is a redacted demonstration of the model used in the workplace.
+## Problem
+
+Many companies want to automate support, lead qualification, research,
+documentation, and internal operations using AI, but building custom AI
+systems requires engineering resources, infrastructure, and maintenance.
+
+## Solution
+
+This repository demonstrates a reusable no-code AI agent architecture
+that combines:
+
+- Agent personas
+- Workflow orchestration
+- Tool integrations
+- Structured outputs
+- Human-in-the-loop review
+- Monitoring and testing
+
+to rapidly deploy AI-powered business workflows.
 
 ## Repository Scope
 
