@@ -1,0 +1,10 @@
+{
+  "source": "scheduled_job",
+  "metric_group": "data_centre_operations",
+  "metrics": {
+    "power_utilization": 82,
+    "pue": 1.29,
+    "uptime": 99.98,
+    "cooling_efficiency": 91
+  }
+}
