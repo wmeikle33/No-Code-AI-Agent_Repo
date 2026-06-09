@@ -1,0 +1,6 @@
+{
+  "selected_agent": "employee_support_agent",
+  "confidence": 0.95,
+  "reason": "The user is asking an internal HR policy question.",
+  "next_agent_if_needed": "hr_escalation_agent"
+}
