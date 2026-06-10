@@ -43,38 +43,15 @@
 
   "tools": [
     {
-      "name": "transcript_parser",
+      "name": "data_reader",
       "required": true,
-      "description": "Parse raw meeting transcripts or notes"
+      "description": "Read and interpret raw data"
     },
-    {
-      "name": "speaker_identifier",
-      "required": false,
-      "description": "Identify speakers when transcript labels are available"
-    },
-    {
-      "name": "task_creation",
-      "required": false,
-      "description": "Create tasks from action items"
-    },
-    {
-      "name": "email_draft",
-      "required": false,
-      "description": "Draft meeting recap or follow-up email"
-    },
-    {
-      "name": "calendar_lookup",
-      "required": false,
-      "description": "Retrieve meeting metadata, attendees, and timing"
-    }
+
   ],
 
   "knowledge_sources": [
-    "meeting_transcripts",
-    "calendar_events",
-    "project_documents",
-    "previous_meeting_notes",
-    "task_lists"
+    "raw data"
   ],
 
   "input_schema": {
