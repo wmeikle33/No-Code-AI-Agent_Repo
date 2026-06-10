@@ -16,7 +16,7 @@ Use this folder to document and configure:
 - deny-by-default policies
 - approval requirements for sensitive actions
 
-## Recommended Structure
+## Folder Structure
 
 ```text
 auth/permissions/
