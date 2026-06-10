@@ -1,5 +1,5 @@
 {
-  "id": "document-qa-agent",
+  "id": "document_qa_agent",
   "name": "Document Q&A Agent",
   "version": "1.0.0",
   "description": "Answers user questions using only approved documents, retrieved knowledge chunks, and citations.",
