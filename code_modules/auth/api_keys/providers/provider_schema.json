@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "required": ["provider", "env_var", "required", "description"],
+  "properties": {
+    "provider": { "type": "string" },
+    "env_var": { "type": "string" },
+    "required": { "type": "boolean" },
+    "description": { "type": "string" },
+    "docs_url": { "type": "string" },
+    "allowed_models": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
