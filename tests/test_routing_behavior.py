@@ -1,6 +1,5 @@
 from code_modules.routing.router import route_request
 
-
 def test_routes_support_question_to_support_agent():
     result = route_request("I need help with my account")
 
