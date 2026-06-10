@@ -1,1 +1,225 @@
+{
+  "id": "experiment-tracking-agent",
+  "name": Experiment Tracking Agent",
+  "version": "1.0.0",
+  "description": "Assist executives with various tasks.",
+  "category": "productivity",
+  "status": "active",
+
+  "model": {
+    "tier": "mid",
+    "recommended": "gpt-5-mini",
+    "fallback": "gemma-4",
+    "upgrade_model": "gpt-5",
+    "upgrade_when": [
+      "task requires strategic reasoning",
+      "multiple documents or meetings must be synthesized",
+      "request involves sensitive business decisions",
+      "complex prioritization is required"
+    ]
+  },
+
+  "system_prompt": "./system_prompt.md",
+
+  "triggers": [
+    {
+      "type": "manual",
+      "description": "Greenscale leadership member manually requests help"
+    },
+    {
+      "type": "workflow_dispatch",
+      "source": "daily_briefing_workflow"
+    }
+  ],
+
+  "capabilities": [
+    "meeting_brief_generation",
+    "email_summarization",
+    "calendar_review",
+    "action_item_tracking",
+    "follow_up_drafting",
+    "priority_recommendation",
+    "document_summarization",
+    "daily_briefing_generation",
+    "online_research"
+  ],
+
+  "tools": [
+    {
+      "name": "calendar_lookup",
+      "required": true,
+      "description": "Review meetings, attendees, timing, and agenda details"
+    },
+    {
+      "name": "email_search",
+      "required": false,
+      "description": "Find relevant emails for summaries and follow-ups"
+    },
+    {
+      "name": "knowledge_search",
+      "required": false,
+      "description": "Search company documents, notes, and project materials"
+    },
+    {
+      "name": "document_lookup",
+      "required": false,
+      "description": "Retrieve meeting notes, reports, or briefing documents"
+    },
+    {
+      "name": "task_creation",
+      "required": false,
+      "description": "Create tasks or reminders from action items"
+    },
+    {
+      "name": "email_draft",
+      "required": false,
+      "description": "Draft follow-up emails or executive communications"
+    },
+    {
+      "name": "web_search",
+      "required": true,
+      "description": "Search online for relevant information"
+    },
+  ],
+
+  "knowledge_sources": [
+    "calendar_events",
+    "executive_emails",
+    "meeting_notes",
+    "project_documents",
+    "company_updates",
+    "crm_notes",
+    "board_materials",
+    "online articles"
+  ],
+
+  "input_schema": {
+    "required": [
+      "request"
+    ],
+    "optional": [
+      "date_range",
+      "meeting_id",
+      "email_thread_id",
+      "project_name",
+      "attendee_names",
+      "priority_level",
+      "output_format"
+    ]
+  },
+
+  "output_formats": [
+    "markdown",
+    "plain_text",
+    "json"
+  ],
+
+  "response_structure": {
+    "include_summary": true,
+    "include_priorities": true,
+    "include_action_items": true,
+    "include_decisions": true,
+    "include_follow_up_draft": true,
+    "include_open_questions": true
+  },
+
+  "routing": {
+    "handoff_conditions": [
+      {
+        "condition": "requires_research",
+        "route_to": "research-assistant-agent"
+      },
+      {
+        "condition": "requires_meeting_transcript_processing",
+        "route_to": "meeting-notes-agent"
+      },
+      {
+        "condition": "requires_customer_or_pipeline_context",
+        "route_to": "lead-qualification-agent"
+      },
+      {
+        "condition": "requires_sensitive_legal_or_financial_review",
+        "route_to": "human_reviewer"
+      }
+    ]
+  },
+
+  "guardrails": {
+    "do_not": [
+      "invent_meeting_context",
+      "invent_commitments",
+      "send_emails_without_approval",
+      "schedule_or_cancel_meetings_without_confirmation",
+      "share_confidential_information_with_unauthorized_users",
+      "make_final business decisions",
+      "provide_legal_financial_or_hr_advice"
+    ],
+    "requires_human_review": [
+      "external_email_sending",
+      "meeting_cancellation",
+      "board_or_investor_communication",
+      "legal_or_financial_commitment",
+      "sensitive_personnel_topic",
+      "public_statement"
+    ]
+  },
+
+  "permissions": {
+    "allowed_tools": [
+      "calendar_lookup",
+      "email_search",
+      "knowledge_search",
+      "document_lookup",
+      "task_creation",
+      "email_draft"
+    ],
+    "restricted_tools": [
+      "email_send_without_review",
+      "calendar_delete",
+      "contract_approval",
+      "payroll_access",
+      "admin_override"
+    ],
+    "allowed_data": [
+      "calendar_metadata",
+      "meeting_notes",
+      "approved_project_documents",
+      "email_threads_with_permission",
+      "task_lists"
+    ],
+    "restricted_data": [
+      "private_employee_records",
+      "legal_privileged_documents",
+      "board_materials_without_permission",
+      "personal_credentials",
+      "payroll_records"
+    ]
+  },
+
+  "templates": [
+    "daily_briefing",
+    "meeting_brief",
+    "email_summary",
+    "follow_up_email",
+    "action_item_list",
+    "executive_summary"
+  ],
+
+  "success_metrics": [
+    "time_saved",
+    "briefing_accuracy",
+    "action_item_capture_rate",
+    "follow_up_completion_rate",
+    "executive_satisfaction_score"
+  ],
+
+  "tags": [
+    "executive-assistant",
+    "productivity",
+    "meetings",
+    "email",
+    "briefings",
+    "action-items"
+  ]
+}
 
