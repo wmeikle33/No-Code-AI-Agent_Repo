@@ -1,29 +1,21 @@
 {
-  "provider_id": "google",
-
-  "provider_name": "Google Workspace",
-
-  "provider_type": "productivity_suite",
-
-  "authentication_method": "OAuth 2.0",
-
-  "authorization_endpoint": "https://accounts.google.com/o/oauth2/v2/auth",
-
-  "token_endpoint": "https://oauth2.googleapis.com/token",
-
+  "provider": "google",
+  "display_name": "Google",
+  "auth_type": "oauth2",
+  "supported_flows": [
+    "authorization_code",
+    "pkce",
+    "service_account"
+  ],
+  "authorization_url": "https://accounts.google.com/o/oauth2/v2/auth",
+  "token_url": "https://oauth2.googleapis.com/token",
+  "userinfo_endpoint": "https://openidconnect.googleapis.com/v1/userinfo",
   "default_scopes": [
     "openid",
     "email",
     "profile"
   ],
-
-  "optional_scopes": [
-    "gmail.readonly",
-    "gmail.send",
-    "calendar.readonly",
-    "calendar"
-  ],
-
-  "status": "active",
-  "version": "1.0"
+  "refresh_tokens_supported": true,
+  "pkce_required": false,
+  "service_account_supported": true
 }
