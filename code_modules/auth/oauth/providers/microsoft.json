@@ -1,0 +1,20 @@
+{
+  "provider": "microsoft",
+  "display_name": "Microsoft",
+  "auth_type": "oauth2",
+  "supported_flows": [
+    "authorization_code",
+    "pkce",
+    "client_credentials"
+  ],
+  "authorization_url": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+  "token_url": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+  "default_scopes": [
+    "openid",
+    "email",
+    "profile"
+  ],
+  "refresh_tokens_supported": true,
+  "pkce_required": false,
+  "service_account_supported": false
+}
