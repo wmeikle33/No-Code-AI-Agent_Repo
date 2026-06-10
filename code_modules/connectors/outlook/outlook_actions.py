@@ -1,4 +1,20 @@
 import win32com.client as win32
+from typing import Any
+
+import requests
+
+
+class OutlookConnector:
+    def __init__(self, access_token: str):
+        if not access_token:
+            raise ValueError("Microsoft Graph access token is required")
+
+        self.access_token = access_token
+        self.base_url = "https://graph.microsoft.com/v1.0"
+        self.headers = {
+            "Authorization": f"Bearer {self.access_token}",
+            "Content-Type": "application/json",
+        }
 
 def create_calendar_event(title, start, end):
     return {
