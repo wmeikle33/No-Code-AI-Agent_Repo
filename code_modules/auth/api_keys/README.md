@@ -1,8 +1,16 @@
-## API Keys
+# API Key Management
 
-This folder contains authentification information for accessing various tools for the no code AI agent. This folder is divided into the following different subfolders
+This folder defines how API keys and provider credentials are documented, validated, and rotated for the no-code AI agent system.
 
-- Providers: This page provides a list of the different providers that are incorporated in this repo, including relevant security information.
-- Rotation: This page provides the rotation policy for information related to the different agents.
-- Templates: This page contains formatting for the environments for calling and running the agents.
-- Validation: This page contains the validation rules for the different providers used in the repo.
+No real API keys should ever be stored in this folder.
+
+## Folder Structure
+
+```text
+auth/api_keys/
+├── providers/      # Provider metadata such as env var names and supported models
+├── templates/      # Safe example .env files for local, Docker, and CI setup
+├── validation/     # Rules and scripts for checking provider key configuration
+├── rotation/       # Key rotation, incident response, and compromise procedures
+└── README.md
+```
