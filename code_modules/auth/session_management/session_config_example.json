@@ -1,0 +1,31 @@
+{
+  "session_backend": "redis",
+
+  "default_timeout_minutes": 60,
+
+  "extend_on_activity": true,
+
+  "max_session_duration_hours": 24,
+
+  "cookie_settings": {
+    "http_only": true,
+    "secure": true,
+    "same_site": "strict"
+  },
+
+  "session_types": {
+    "user": {
+      "timeout_minutes": 60
+    },
+
+    "agent": {
+      "timeout_minutes": 120
+    },
+
+    "workflow": {
+      "timeout_minutes": 240
+    }
+  },
+
+  "audit_logging": true
+}
