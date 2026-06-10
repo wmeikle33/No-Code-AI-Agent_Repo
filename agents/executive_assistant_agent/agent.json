@@ -1,8 +1,8 @@
 {
-  "id": "executive-assistant-agent",
-  "name": "Executive Assistant Agent",
+  "id": "experiment-tracking-agent",
+  "name": Experiment Tracking Agent",
   "version": "1.0.0",
-  "description": "Helps Greenscale leadership prepare for meetings, summarize communications, track action items, draft follow-ups, and organize priorities.",
+  "description": "Conduct experiments to compare models and analysis techniques.",
   "category": "productivity",
   "status": "active",
 
@@ -25,16 +25,6 @@
     {
       "type": "manual",
       "description": "Greenscale leadership member manually requests help"
-    },
-    {
-      "type": "calendar_event",
-      "source": "calendar",
-      "description": "Upcoming meeting requires preparation"
-    },
-    {
-      "type": "email_received",
-      "source": "executive_inbox",
-      "description": "Important email requires summary or follow-up"
     },
     {
       "type": "workflow_dispatch",
