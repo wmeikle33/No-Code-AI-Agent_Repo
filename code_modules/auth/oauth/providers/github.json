@@ -1,47 +1,17 @@
-  {
-  "provider_id": "github",
-  "provider_name": "GitHub",
-
-  "provider_type": "source_control",
-
-  "authentication_method": "OAuth 2.0",
-
-  "authorization_endpoint": "https://github.com/login/oauth/authorize",
-  "token_endpoint": "https://github.com/login/oauth/access_token",
-
-  "grant_types_supported": [
+ {
+  "provider": "github",
+  "display_name": "GitHub",
+  "auth_type": "oauth2",
+  "supported_flows": [
     "authorization_code"
   ],
-
+  "authorization_url": "https://github.com/login/oauth/authorize",
+  "token_url": "https://github.com/login/oauth/access_token",
+  "api_base_url": "https://api.github.com",
   "default_scopes": [
-    "read:user",
-    "user:email"
+    "read:user"
   ],
-
-  "optional_scopes": [
-    "repo",
-    "workflow",
-    "read:org",
-    "admin:repo_hook"
-  ],
-
-  "redirect_uri_variable": "GITHUB_REDIRECT_URI",
-
-  "token_storage_policy": {
-    "encrypted": true,
-    "rotation_required": true
-  },
-
-  "capabilities": [
-    "user_authentication",
-    "repository_access",
-    "issue_management",
-    "pull_request_management",
-    "workflow_management"
-  ],
-
-  "documentation_url": "https://docs.github.com/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps",
-
-  "status": "active",
-  "version": "1.0"
+  "refresh_tokens_supported": false,
+  "pkce_required": false,
+  "service_account_supported": false
 }
