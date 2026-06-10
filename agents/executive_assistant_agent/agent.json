@@ -1,8 +1,8 @@
 {
-  "id": "experiment-tracking-agent",
+  "id": "executive-assitant-agent",
   "name": Experiment Tracking Agent",
   "version": "1.0.0",
-  "description": "Conduct experiments to compare models and analysis techniques.",
+  "description": "Assist executives with various tasks.",
   "category": "productivity",
   "status": "active",
 
