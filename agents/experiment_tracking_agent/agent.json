@@ -2,7 +2,7 @@
   "id": "experiment-tracking-agent",
   "name": "Experiment Tracking Agent",
   "version": "1.0.0",
-  "description": "Assist executives with various tasks.",
+  "description": "Use esperiments to evaluate different models and data pipelines, comparing the results.",
   "category": "productivity",
   "status": "active",
 
