@@ -31,14 +31,8 @@
   ],
 
   "capabilities": [
-    "meeting_summarization",
-    "decision_extraction",
-    "action_item_extraction",
-    "owner_detection",
-    "deadline_detection",
-    "follow_up_email_drafting",
-    "topic_grouping",
-    "meeting_record_generation"
+    "data_analysis",
+    "data_pipeline_evaluation",
   ],
 
   "tools": [
@@ -53,19 +47,6 @@
   "knowledge_sources": [
     "raw data"
   ],
-
-  "input_schema": {
-    "required": [
-      "meeting_content"
-    ],
-    "optional": [
-      "meeting_title",
-      "meeting_date",
-      "attendees",
-      "transcript_file",
-      "project_name",
-      "desired_output_format"
-    ]
   },
 
   "output_formats": [
@@ -78,9 +59,7 @@
     "include_overview": true,
     "include_key_topics": true,
     "include_decisions": true,
-    "include_action_items": true,
-    "include_owners": true,
-    "include_due_dates": true,
+    "include_diagram": true,
     "include_open_questions": true,
     "include_follow_up_draft": true
   },
