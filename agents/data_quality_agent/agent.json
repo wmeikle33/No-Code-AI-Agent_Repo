@@ -1,1 +1,40 @@
+{
+  "id": "data_quality_agent",
+  "name": "data_quality Agent",
+  "category": "data_manipulation",
 
+  "model": {
+    "tier": "mid",
+    "recommended": "gpt-5"
+  },
+
+  "system_prompt": "./system_prompt.md",
+
+  "capabilities": [
+    "view_data",
+    "compare_data",
+    "evaluate_model",
+    "compare_model"
+  ],
+
+  "supported_content_types": [
+    "raw data",
+    "model outputs",
+    "model",
+  ],
+
+  "tools": [
+    "model_evaulation",
+  ],
+
+  "templates": [
+    "summary",
+  ],
+
+  "output_formats": [
+    "markdown",
+    "html",
+    "plain_text"
+    "pdf"
+  ]
+}
