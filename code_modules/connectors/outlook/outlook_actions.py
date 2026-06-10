@@ -1,60 +1,120 @@
-import win32com.client as win32
 from typing import Any
 
 import requests
 
 
-class OutlookConnector:
+class TeamsConnector:
     def __init__(self, access_token: str):
         if not access_token:
             raise ValueError("Microsoft Graph access token is required")
 
-        self.access_token = access_token
         self.base_url = "https://graph.microsoft.com/v1.0"
         self.headers = {
-            "Authorization": f"Bearer {self.access_token}",
+            "Authorization": f"Bearer {access_token}",
             "Content-Type": "application/json",
         }
 
-def create_calendar_event(title, start, end):
-    return {
-        "platform": "outlook",
-        "action": "create_event",
-        "title": title,
-        "start": start,
-        "end": end
-    }
+    def health_check(self) -> dict:
+        response = requests.get(
+            f"{self.base_url}/me",
+            headers=self.headers,
+            timeout=10,
+        )
+        response.raise_for_status()
 
-def send_outlook_email(to_address, subject, body, attachment_path=None):
-    # Connect to Outlook
-    outlook = win32.Dispatch("Outlook.Application")
-    mail = outlook.CreateItem(0) # 0 = Mail Item
-    
-    # Configure Email Fields
-    mail.To = to_address
-    mail.Subject = subject
-    mail.Body = body  # Use mail.HTMLBody for HTML formatted text
-    
-    # Optional: Attach a file
-    if attachment_path:
-        mail.Attachments.Add(attachment_path)
-    
-    # Send or Preview
-    # mail.Display() # Uncomment to preview the email before sending
-    mail.Send()
+        profile = response.json()
 
-def read_inbox_emails(limit=5):
-    outlook = win32.Dispatch("Outlook.Application").GetNamespace("MAPI")
-    inbox = outlook.GetDefaultFolder(6)  # 6 refers to Inbox
-    messages = inbox.Items
-    
-    # Sort messages by received time (newest first)
-    messages.Sort("[ReceivedTime]", True)
-    
-    for i, message in enumerate(messages):
-        if i >= limit:
-            break
-        print(f"Subject: {message.Subject}")
-        print(f"Sender: {message.SenderName}")
-        print(f"Received: {message.ReceivedTime}")
-        print(f"Body snippet: {message.Body[:100]}\n")
+        return {
+            "status": "healthy",
+            "connector": "teams",
+            "user": profile.get("userPrincipalName"),
+        }
+
+    def list_joined_teams(self) -> list[dict[str, Any]]:
+        response = requests.get(
+            f"{self.base_url}/me/joinedTeams",
+            headers=self.headers,
+            timeout=10,
+        )
+        response.raise_for_status()
+
+        return response.json().get("value", [])
+
+    def list_channels(self, team_id: str) -> list[dict[str, Any]]:
+        response = requests.get(
+            f"{self.base_url}/teams/{team_id}/channels",
+            headers=self.headers,
+            timeout=10,
+        )
+        response.raise_for_status()
+
+        return response.json().get("value", [])
+
+    def get_channel_messages(
+        self,
+        team_id: str,
+        channel_id: str,
+        max_results: int = 20,
+    ) -> list[dict[str, Any]]:
+        response = requests.get(
+            f"{self.base_url}/teams/{team_id}/channels/{channel_id}/messages",
+            headers=self.headers,
+            params={"$top": max_results},
+            timeout=10,
+        )
+        response.raise_for_status()
+
+        return response.json().get("value", [])
+
+    def send_channel_message(
+        self,
+        team_id: str,
+        channel_id: str,
+        content: str,
+    ) -> dict:
+        payload = {
+            "body": {
+                "contentType": "html",
+                "content": content,
+            }
+        }
+
+        response = requests.post(
+            f"{self.base_url}/teams/{team_id}/channels/{channel_id}/messages",
+            headers=self.headers,
+            json=payload,
+            timeout=10,
+        )
+        response.raise_for_status()
+
+        return {
+            "status": "sent",
+            "connector": "teams",
+            "team_id": team_id,
+            "channel_id": channel_id,
+        }
+
+    def send_chat_message(
+        self,
+        chat_id: str,
+        content: str,
+    ) -> dict:
+        payload = {
+            "body": {
+                "content": content,
+            }
+        }
+
+        response = requests.post(
+            f"{self.base_url}/chats/{chat_id}/messages",
+            headers=self.headers,
+            json=payload,
+            timeout=10,
+        )
+        response.raise_for_status()
+
+        return {
+            "status": "sent",
+            "connector": "teams",
+            "chat_id": chat_id,
+        }
