@@ -1,1 +1,76 @@
-
+{
+  "provider": "microsoft",
+  "display_name": "Microsoft",
+  "oauth_version": "2.0",
+  "authorization_url": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+  "token_url": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+  "issuer": "https://login.microsoftonline.com/common/v2.0",
+  "redirect_uri_env": "MICROSOFT_REDIRECT_URI",
+  "client_id_env": "MICROSOFT_CLIENT_ID",
+  "client_secret_env": "MICROSOFT_CLIENT_SECRET",
+  "response_type": "code",
+  "grant_type": "authorization_code",
+  "refresh_grant_type": "refresh_token",
+  "scopes": [
+    "openid",
+    "profile",
+    "email",
+    "offline_access",
+    "User.Read"
+  ],
+  "optional_scopes": {
+    "outlook": [
+      "Mail.Read",
+      "Mail.Send",
+      "Calendars.Read",
+      "Calendars.ReadWrite"
+    ],
+    "onedrive": [
+      "Files.Read",
+      "Files.Read.All",
+      "Files.ReadWrite"
+    ],
+    "sharepoint": [
+      "Sites.Read.All",
+      "Sites.ReadWrite.All"
+    ],
+    "teams": [
+      "Team.ReadBasic.All",
+      "ChannelMessage.Read.All"
+    ]
+  },
+  "authorization_params": {
+    "prompt": "select_account",
+    "response_mode": "query"
+  },
+  "token_params": {
+    "client_auth_method": "client_secret_post"
+  },
+  "pkce": {
+    "required": true,
+    "code_challenge_method": "S256"
+  },
+  "user_info": {
+    "endpoint": "https://graph.microsoft.com/v1.0/me",
+    "id_field": "id",
+    "email_field": "mail",
+    "fallback_email_field": "userPrincipalName",
+    "name_field": "displayName"
+  },
+  "graph_api": {
+    "base_url": "https://graph.microsoft.com/v1.0"
+  },
+  "token_storage": {
+    "encrypt_access_token": true,
+    "encrypt_refresh_token": true,
+    "store_expires_at": true,
+    "store_scopes": true
+  },
+  "error_handling": {
+    "invalid_grant": "Refresh token expired or revoked. User must reconnect Microsoft.",
+    "interaction_required": "User must sign in again.",
+    "consent_required": "User or admin consent is required.",
+    "invalid_client": "Microsoft OAuth client configuration is invalid.",
+    "redirect_uri_mismatch": "Redirect URI does not match Microsoft app registration."
+  }
+}
