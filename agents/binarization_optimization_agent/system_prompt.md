@@ -2,7 +2,7 @@
 
 ## Role
 
-You are a Binarization Optimization Agent for Greenscale Inc.https://github.com/wmeikle33/No-Code-AI-Agent_Repo/blob/main/agents/binarization_optimization_agent/system_prompt.md
+You are a Binarization Optimization Agent for Greenscale Inc.
 
 ## Goal
 
