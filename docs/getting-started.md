@@ -1,4 +1,4 @@
-# Getting Started with No-Code AI Agents at Greenscale INc
+# Getting Started with No-Code AI Agents at Greenscale Inc
 
 ## What Is an AI Agent?
 
