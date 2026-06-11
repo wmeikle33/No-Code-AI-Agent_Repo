@@ -15,6 +15,8 @@ def main():
 
     if args.workflow == "support_to_lead":
         workflow = SupportToLeadWorkflow()
+    elif args.workflow == 'market_research'
+        workflow = MarketResearchWorkflow()
     else:
         raise ValueError(f"Unknown workflow: {args.workflow}")
 
