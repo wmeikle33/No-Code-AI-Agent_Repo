@@ -1,1 +1,86 @@
+{
+  "agent_id": "pipeline_orchestration_agent",
+  "name": "Pipeline Orchestration Agent",
+  "version": "1.0.0",
+  "description": "Coordinates multi-step workflows, delegates tasks to specialized agents, monitors execution status, and aggregates results.",
 
+  "agent_type": "orchestrator",
+
+  "entry_points": [
+    "workflow_start",
+    "workflow_resume",
+    "scheduled_execution",
+    "event_trigger"
+  ],
+
+  "responsibilities": [
+    "workflow_routing",
+    "agent_selection",
+    "task_delegation",
+    "execution_monitoring",
+    "result_aggregation",
+    "error_handling"
+  ],
+
+  "supported_workflows": [
+    "customer_support_workflow",
+    "support_to_lead_workflow",
+    "document_qa_workflow",
+    "market_research_workflow",
+    "executive_briefing_workflow",
+    "meeting_notes_workflow"
+  ],
+
+  "allowed_agents": [
+    "customer_support_agent",
+    "document_qa_agent",
+    "employee_support_agent",
+    "executive_assistant_agent",
+    "lead_qualification_agent",
+    "market_research_agent",
+    "meeting_notes_agent"
+  ],
+
+  "allowed_tools": [
+    "workflow_router",
+    "tool_runner",
+    "execution_tracker",
+    "notification_service"
+  ],
+
+  "permissions_file": "../../code_modules/auth/permissions/agent_permissions/pipeline_orchestration_agent.json",
+
+  "prompt_file": "system_prompt.md",
+
+  "memory": {
+    "short_term": true,
+    "conversation_history": true,
+    "workflow_state": true
+  },
+
+  "error_handling": {
+    "retry_failed_steps": true,
+    "max_retries": 3,
+    "escalate_on_failure": true
+  },
+
+  "logging": {
+    "log_workflow_events": true,
+    "log_agent_calls": true,
+    "log_tool_calls": true
+  },
+
+  "monitoring": {
+    "track_latency": true,
+    "track_failures": true,
+    "track_completion_rate": true
+  },
+
+  "output_format": {
+    "include_execution_summary": true,
+    "include_agent_trace": true,
+    "include_tool_trace": true
+  },
+
+  "status": "active"
+}
