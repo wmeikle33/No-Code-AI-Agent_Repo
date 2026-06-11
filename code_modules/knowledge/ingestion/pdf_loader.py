@@ -1,7 +1,12 @@
-def load_pdf()
+from pypdf import PdfReader
 
-def extract_text():
+class PDFLoader:
 
-def extract_metadata():
+    def load(self, path):
+        reader = PdfReader(path)
+        text = "\n".join(page.extract_text() for page in reader.pages)
 
-def validate_pdf():
+        return {
+            "text": text,
+            "metadata": {"source": path, "type": "pdf"}
+        }
