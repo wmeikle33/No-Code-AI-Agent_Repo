@@ -80,6 +80,7 @@ The included code is representative of the overall system design but does not co
 - Route customer-support requests to sales or finance workflows
 - Reconcile invoices against expense policies
 - Use retrieval context to answer employee or product-support questions
+- Optimize Greenscale specific data pipelines and workflows
 
 ## Repo Structure
 
