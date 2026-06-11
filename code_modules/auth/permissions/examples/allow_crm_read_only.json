@@ -1,1 +1,37 @@
+{
+  "policy_id": "allow_crm_read_only",
+  "version": "1.0",
+  "description": "Example policy granting read-only access to CRM data.",
+  "effect": "allow",
 
+  "resources": [
+    "crm.contacts",
+    "crm.companies",
+    "crm.leads",
+    "crm.activities"
+  ],
+
+  "actions": [
+    "read",
+    "list",
+    "search"
+  ],
+
+  "conditions": {
+    "deny_write_operations": true
+  },
+
+  "explicitly_denied_actions": [
+    "create",
+    "update",
+    "delete",
+    "bulk_update",
+    "bulk_delete",
+    "export"
+  ],
+
+  "audit": {
+    "log_access": true,
+    "log_searches": true
+  }
+}
