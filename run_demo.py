@@ -1,7 +1,8 @@
 import argparse
 import json
 
-from code_modules.workflows.support_to_lead import SupportToLeadWorkflow, MarketResearchWorflow
+from workflows.support_to_lead import SupportToLeadWorkflow, 
+from workflows.research import ResearchWorkflow
 
 
 def main():
