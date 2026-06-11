@@ -1,1 +1,112 @@
+{
+  "agent_id": "failure_analysis_agent",
+  "name": "Failure Analysis Agent",
+  "version": "1.0.0",
+  "description": "Analyzes model failures, segmentation errors, outliers, and poor predictions in the Greenscale machine learning pipeline.",
 
+  "agent_type": "analysis",
+  "domain": "computer_vision_and_machine_learning",
+
+  "responsibilities": [
+    "identify_failed_predictions",
+    "analyze_segmentation_errors",
+    "detect_outliers",
+    "compare_predictions_against_ground_truth",
+    "summarize_failure_patterns",
+    "recommend_pipeline_improvements"
+  ],
+
+  "supported_tasks": [
+    "prediction_error_analysis",
+    "mask_quality_analysis",
+    "worst_case_review",
+    "outlier_detection",
+    "model_bias_detection",
+    "failure_report_generation"
+  ],
+
+  "input_types": [
+    "model_predictions",
+    "ground_truth_labels",
+    "root_images",
+    "segmentation_masks",
+    "evaluation_metrics",
+    "training_logs",
+    "experiment_metadata"
+  ],
+
+  "output_types": [
+    "failure_report",
+    "ranked_failure_cases",
+    "error_summary",
+    "outlier_list",
+    "recommended_fixes",
+    "visual_diagnostics"
+  ],
+
+  "allowed_tools": [
+    "metrics_loader",
+    "prediction_comparator",
+    "mask_visualizer",
+    "outlier_detector",
+    "error_report_generator",
+    "experiment_tracker"
+  ],
+
+  "failure_categories": [
+    "under_prediction",
+    "over_prediction",
+    "poor_segmentation",
+    "missing_root_structure",
+    "false_positive_root_pixels",
+    "image_quality_issue",
+    "label_noise",
+    "distribution_shift",
+    "data_leakage_risk",
+    "model_overfitting"
+  ],
+
+  "analysis_methods": [
+    "absolute_error_ranking",
+    "relative_error_ranking",
+    "residual_analysis",
+    "mask_iou_analysis",
+    "feature_distribution_comparison",
+    "prediction_vs_actual_plotting",
+    "worst_sample_inspection"
+  ],
+
+  "quality_controls": {
+    "compare_against_ground_truth": true,
+    "flag_large_residuals": true,
+    "check_missing_files": true,
+    "validate_metric_inputs": true,
+    "preserve_original_data": true
+  },
+
+  "configuration": {
+    "top_k_failures": 20,
+    "large_error_threshold": 0.25,
+    "iou_failure_threshold": 0.5,
+    "generate_visual_report": true,
+    "save_failure_manifest": true
+  },
+
+  "permissions_file": "../../code_modules/auth/permissions/agent_permissions/failure_analysis_agent.json",
+  "prompt_file": "system_prompt.md",
+
+  "logging": {
+    "log_failure_cases": true,
+    "log_metric_summaries": true,
+    "log_recommendations": true
+  },
+
+  "monitoring": {
+    "track_failure_rate": true,
+    "track_mean_absolute_error": true,
+    "track_mask_quality_trends": true,
+    "track_outlier_frequency": true
+  },
+
+  "status": "active"
+}
