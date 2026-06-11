@@ -1,1 +1,81 @@
+{
+  "policy_id": "least_privilege_policy",
+  "version": "1.0",
+  "description": "Default deny policy implementing the principle of least privilege.",
 
+  "default_effect": "deny",
+
+  "allowed_actions": [
+    "read_own_configuration",
+    "read_assigned_prompt",
+    "read_assigned_workflow",
+    "write_execution_logs"
+  ],
+
+  "denied_actions": [
+    "create_user",
+    "delete_user",
+    "modify_permissions",
+    "access_secrets",
+    "modify_system_config",
+    "delete_records",
+    "execute_shell_command",
+    "modify_database_schema",
+    "access_payroll_data",
+    "access_financial_records"
+  ],
+
+  "allowed_resources": [
+    "agent.self",
+    "logs.execution"
+  ],
+
+  "denied_resources": [
+    "auth.secrets",
+    "system.admin",
+    "database.production",
+    "finance.*",
+    "hr.*"
+  ],
+
+  "tool_access": {
+    "default": "deny",
+    "allowed": [],
+    "requires_explicit_grant": true
+  },
+
+  "connector_access": {
+    "default": "deny",
+    "allowed": []
+  },
+
+  "data_access": {
+    "default": "deny",
+    "allowed_categories": [],
+    "restricted_categories": [
+      "authentication",
+      "credentials",
+      "financial",
+      "hr",
+      "payroll",
+      "legal",
+      "security"
+    ]
+  },
+
+  "approval_required": [
+    "bulk_update",
+    "bulk_delete",
+    "export_data",
+    "modify_permissions",
+    "create_connector",
+    "change_security_policy"
+  ],
+
+  "audit": {
+    "log_all_access_attempts": true,
+    "log_denied_actions": true,
+    "log_permission_changes": true,
+    "retention_days": 365
+  }
+}
