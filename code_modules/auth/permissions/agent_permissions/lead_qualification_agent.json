@@ -1,1 +1,82 @@
-
+{
+  "agent_id": "lead_qualification_agent",
+  "version": "1.0",
+  "description": "Permissions granted to the Lead Qualification Agent.",
+  "allowed_actions": [
+    "read_crm_contact",
+    "read_crm_company",
+    "create_lead",
+    "update_lead",
+    "add_lead_note",
+    "score_lead",
+    "qualify_lead",
+    "send_internal_notification"
+  ],
+  "denied_actions": [
+    "delete_lead",
+    "delete_contact",
+    "delete_company",
+    "modify_billing",
+    "issue_refund",
+    "manage_users",
+    "modify_permissions",
+    "access_payroll",
+    "access_hr_records"
+  ],
+  "allowed_tools": [
+    "crm_lookup",
+    "crm_update",
+    "lead_scoring",
+    "email_reader",
+    "company_research",
+    "knowledge_search"
+  ],
+  "denied_tools": [
+    "payment_processor",
+    "user_admin",
+    "payroll_system",
+    "production_database_admin"
+  ],
+  "allowed_data": {
+    "crm": [
+      "contact_name",
+      "contact_email",
+      "job_title",
+      "company_name",
+      "company_size",
+      "industry",
+      "lead_status",
+      "lead_score",
+      "interaction_history"
+    ],
+    "research": [
+      "public_company_information",
+      "website_content",
+      "linkedin_company_data"
+    ]
+  },
+  "restricted_data": [
+    "credit_card_data",
+    "banking_information",
+    "social_security_numbers",
+    "payroll_records",
+    "employee_performance_reviews",
+    "authentication_secrets"
+  ],
+  "approval_required": [
+    "bulk_crm_updates",
+    "export_contact_list",
+    "mass_email_campaign"
+  ],
+  "rate_limits": {
+    "crm_queries_per_hour": 1000,
+    "lead_updates_per_hour": 500,
+    "external_research_requests_per_hour": 200
+  },
+  "audit": {
+    "log_tool_usage": true,
+    "log_crm_updates": true,
+    "log_lead_scoring": true,
+    "retention_days": 90
+  }
+}
