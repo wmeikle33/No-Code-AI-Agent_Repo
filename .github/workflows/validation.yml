@@ -2,56 +2,142 @@ name: Agent Repo Quality Validation
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
   validate-and-test:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Pull the codebase into the virtual machine environment
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    # 2. Spin up a clean environment for running tests
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
-        cache: 'pip'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
 
-    # 3. Download the exact dependencies your code modules require
-    - name: Install Python Dependencies
-      run: |
-        python -m pip install --upgrade pip
-        if [ -f code_modules/requirements.txt ]; then pip install -r code_modules/requirements.txt; fi
-        pip install pytest
-
-    # 4. Enforce that all metadata, tool, and routing profiles are valid JSON
-    - name: Validate JSON Syntax
-      run: |
-        echo "Checking configuration files..."
-        find . -name "*.json" -not -path "*/node_modules/*" | while read -r file; do
-          jq . "$file" > /dev/null || { echo "❌ Invalid JSON syntax in $file"; exit 1; }
-        done
-        echo "✅ All JSON files are structurally sound."
-
-    # 5. Guard against empty system prompts which break AI execution
-    - name: Verify Prompts and Agent Structure
-      run: |
-        echo "Verifying markdown personas exist..."
-        find agents/ -name "system_prompt.md" | while read -r file; do
-          if [ ! -s "$file" ]; then
-            echo "❌ Error: $file is completely empty!"
-            exit 1;
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f code_modules/requirements.txt ]; then
+            pip install -r code_modules/requirements.txt
           fi
-        done
-        echo "✅ System prompts are validated."
+          pip install pytest pyyaml jsonschema
 
-    # 6. Execute programmatic unit tests to guarantee calculation accuracy
-    - name: Run Python Calculations Unit Tests
-      run: |
-        echo "Running modular math and validator tests..."
-        pytest code_modules/
+      - name: Validate JSON Syntax
+        run: |
+          echo "Checking JSON configuration files..."
+          find . -name "*.json" -not -path "*/node_modules/*" | while read -r file; do
+            python -m json.tool "$file" > /dev/null || {
+              echo "❌ Invalid JSON syntax in $file"
+              exit 1
+            }
+          done
+          echo "✅ All JSON files are valid."
+
+      - name: Validate YAML Syntax
+        run: |
+          echo "Checking YAML files..."
+          python - <<'PY'
+          import pathlib
+          import yaml
+          import sys
+
+          failed = False
+
+          for path in list(pathlib.Path(".").rglob("*.yml")) + list(pathlib.Path(".").rglob("*.yaml")):
+              if "node_modules" in path.parts:
+                  continue
+
+              try:
+                  with path.open("r", encoding="utf-8") as f:
+                      yaml.safe_load(f)
+              except Exception as exc:
+                  print(f"❌ Invalid YAML in {path}: {exc}")
+                  failed = True
+
+          if failed:
+              sys.exit(1)
+
+          print("✅ All YAML files are valid.")
+          PY
+
+      - name: Verify Agent Folder Structure
+        run: |
+          echo "Checking agent folders..."
+
+          if [ ! -d agents ]; then
+            echo "⚠️ No agents directory found. Skipping agent checks."
+            exit 0
+          fi
+
+          for agent_dir in agents/*/; do
+            [ -d "$agent_dir" ] || continue
+
+            if [ ! -f "${agent_dir}agent.json" ]; then
+              echo "❌ Missing agent.json in $agent_dir"
+              exit 1
+            fi
+
+            if [ ! -s "${agent_dir}system_prompt.md" ]; then
+              echo "❌ Missing or empty system_prompt.md in $agent_dir"
+              exit 1
+            fi
+          done
+
+          echo "✅ Agent folder structure is valid."
+
+      - name: Validate Required Agent JSON Fields
+        run: |
+          echo "Checking required fields in agent.json files..."
+
+          python - <<'PY'
+          import json
+          import pathlib
+          import sys
+
+          required_fields = [
+              "agent_id",
+              "name",
+              "version",
+              "description",
+              "agent_type",
+              "responsibilities",
+              "allowed_tools",
+              "prompt_file",
+              "status"
+          ]
+
+          failed = False
+
+          for path in pathlib.Path("agents").glob("*/agent.json"):
+              data = json.loads(path.read_text(encoding="utf-8"))
+
+              for field in required_fields:
+                  if field not in data:
+                      print(f"❌ {path} missing required field: {field}")
+                      failed = True
+
+              if data.get("prompt_file") and not (path.parent / data["prompt_file"]).exists():
+                  print(f"❌ {path} references missing prompt file: {data['prompt_file']}")
+                  failed = True
+
+          if failed:
+              sys.exit(1)
+
+          print("✅ Agent JSON files contain required fields.")
+          PY
+
+      - name: Run Python Tests
+        run: |
+          echo "Running Python tests..."
+
+          if find . -name "test_*.py" -o -name "*_test.py" | grep -q .; then
+            pytest
+          else
+            echo "⚠️ No Python tests found. Skipping pytest."
+          fi
