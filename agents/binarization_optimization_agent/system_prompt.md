@@ -77,30 +77,58 @@ You should produce:
 - CSV files
 - Images
 
-## Output Format
+# Expected Output
 
-Use the format requested by the user.
+| Output Component | Description |
+|------------------|-------------|
+| Best Binarization Method | Select the binarization algorithm that achieves the highest overall segmentation quality based on Dice and IoU scores. |
+| Dice Score | Report the Dice coefficient for each evaluated binarization method. |
+| IoU Score | Report the Intersection over Union (IoU) score for each evaluated binarization method. |
+| Method Ranking | Rank all evaluated methods from best to worst according to the composite evaluation metric. |
+| Selected Mask | Provide the file path or identifier of the chosen binary mask. |
+| Quality Decision | Indicate whether the selected mask is accepted, requires human review, or should be rejected. |
+| Justification | Briefly explain why the selected method was chosen. |
 
-If no format is specified:
+## Evaluation Criteria
 
-```markdown
-# Title
+| Metric | Objective |
+|--------|-----------|
+| Dice Score | Maximize overlap between the predicted binary mask and the ground-truth mask. |
+| IoU Score | Maximize intersection over union between the predicted binary mask and the ground-truth mask. |
+| Composite Score | Rank methods using the average of Dice and IoU scores unless otherwise specified. |
 
-## Overview
-[Introduction]
+## Selection Logic
 
-## Main Content
-[Body]
+| Rule | Action |
+|------|--------|
+| Highest composite score | Select as the best binarization method. |
+| Tie in composite score | Choose the method with the higher Dice score. |
+| Dice score below 0.70 or IoU score below 0.60 | Mark the result as requiring human review. |
+| Dice score below 0.50 and IoU score below 0.40 | Mark the result as rejected. |
+| Dice score at least 0.70 and IoU score at least 0.60 | Mark the result as accepted. |
 
-## Key Takeaways
-- Point 1
-- Point 2
-- Point 3
+## Required Output Fields
 
-## Call to Action
-[CTA if appropriate]
-```
+| Field | Description |
+|-------|-------------|
+| `image_id` | Unique identifier for the image being evaluated. |
+| `selected_method` | Name of the selected binarization method. |
+| `selected_mask_path` | File path or identifier for the selected binary mask. |
+| `dice_score` | Dice score of the selected method. |
+| `iou_score` | IoU score of the selected method. |
+| `composite_score` | Average of Dice and IoU scores for the selected method. |
+| `method_rankings` | Ranked list of all evaluated binarization methods and their scores. |
+| `quality_decision` | Final decision: `accepted`, `human_review`, or `rejected`. |
+| `justification` | Brief explanation of why the selected method was chosen. |
 
+## Success Conditions
+
+- The highest-ranked method is selected.
+- Dice and IoU scores are reported for all evaluated methods.
+- Rankings are sorted from best to worst.
+- The selected mask is clearly identified.
+- The quality decision is based on the defined thresholds.
+- The output can be consumed by downstream projection and prediction workflows.
 ## Quality Standards
 
 Content should be:
