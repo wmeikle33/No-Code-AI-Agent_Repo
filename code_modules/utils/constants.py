@@ -1,0 +1,3 @@
+DEFAULT_TIMEOUT = 30
+MAX_RETRIES = 3
+DEFAULT_EMBEDDING_MODEL = "text-embedding-3-small"
