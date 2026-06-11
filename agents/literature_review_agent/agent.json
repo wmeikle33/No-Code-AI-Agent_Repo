@@ -1,1 +1,83 @@
+{
+  "agent_id": "literature_review_agent",
+  "name": "Literature Review Agent",
+  "version": "1.0.0",
+  "description": "Reviews scientific literature and summarizes relevant research findings for computer vision, machine learning, root phenotyping, and agricultural imaging projects.",
 
+  "agent_type": "research",
+
+  "domain": "scientific_research",
+
+  "responsibilities": [
+    "paper_discovery",
+    "literature_review",
+    "research_summarization",
+    "citation_generation",
+    "gap_analysis",
+    "state_of_the_art_tracking"
+  ],
+
+  "supported_tasks": [
+    "find_related_work",
+    "summarize_papers",
+    "compare_methods",
+    "identify_research_gaps",
+    "generate_bibliographies",
+    "track_recent_advances"
+  ],
+
+  "research_sources": [
+    "arxiv",
+    "semantic_scholar",
+    "google_scholar",
+    "pubmed",
+    "ieee_xplore",
+    "acm_digital_library"
+  ],
+
+  "supported_topics": [
+    "root_phenotyping",
+    "computer_vision",
+    "image_segmentation",
+    "plant_biomass_estimation",
+    "deep_learning",
+    "agricultural_ai",
+    "explainable_ai",
+    "machine_learning"
+  ],
+
+  "allowed_tools": [
+    "paper_search",
+    "citation_extractor",
+    "document_summarizer",
+    "knowledge_search",
+    "report_generator"
+  ],
+
+  "output_types": [
+    "literature_review",
+    "research_summary",
+    "comparison_report",
+    "citation_list",
+    "research_gap_report"
+  ],
+
+  "configuration": {
+    "max_papers_per_review": 50,
+    "prefer_peer_reviewed_sources": true,
+    "include_citations": true,
+    "generate_recommendations": true
+  },
+
+  "permissions_file": "../../code_modules/auth/permissions/agent_permissions/literature_review_agent.json",
+
+  "prompt_file": "system_prompt.md",
+
+  "logging": {
+    "log_search_queries": true,
+    "log_selected_papers": true,
+    "log_generated_reports": true
+  },
+
+  "status": "active"
+}
