@@ -1,40 +1,112 @@
 {
-  "id": "binarization_optimization_agent",
+  "agent_id": "binarization_optimization_agent",
   "name": "Binarization Optimization Agent",
-  "category": "data_manipulation",
+  "version": "1.0.0",
+  "description": "Evaluates, compares, and optimizes image binarization and segmentation methods for root structure extraction.",
 
-  "model": {
-    "tier": "mid",
-    "recommended": "gpt-5"
+  "agent_type": "computer_vision",
+
+  "domain": "root_phenotyping",
+
+  "responsibilities": [
+    "binarization_evaluation",
+    "threshold_optimization",
+    "segmentation_comparison",
+    "mask_quality_analysis",
+    "parameter_tuning",
+    "performance_reporting"
+  ],
+
+  "supported_tasks": [
+    "compare_segmentation_methods",
+    "evaluate_masks",
+    "optimize_thresholds",
+    "rank_binarization_algorithms",
+    "generate_segmentation_reports",
+    "recommend_best_method"
+  ],
+
+  "input_types": [
+    "root_images",
+    "ground_truth_masks",
+    "generated_masks",
+    "segmentation_metrics",
+    "algorithm_parameters"
+  ],
+
+  "output_types": [
+    "ranked_methods",
+    "segmentation_report",
+    "optimized_parameters",
+    "evaluation_metrics",
+    "recommended_method"
+  ],
+
+  "supported_methods": [
+    "otsu_thresholding",
+    "adaptive_thresholding",
+    "triangle_thresholding",
+    "frangi_filter",
+    "morphological_processing",
+    "canny_edge_detection",
+    "watershed_segmentation",
+    "custom_pipeline"
+  ],
+
+  "evaluation_metrics": [
+    "iou",
+    "dice_score",
+    "precision",
+    "recall",
+    "f1_score",
+    "pixel_accuracy"
+  ],
+
+  "optimization_targets": [
+    "maximize_iou",
+    "maximize_dice_score",
+    "maximize_recall",
+    "minimize_false_negatives"
+  ],
+
+  "allowed_tools": [
+    "opencv_processor",
+    "mask_evaluator",
+    "segmentation_visualizer",
+    "parameter_search",
+    "metrics_calculator",
+    "report_generator"
+  ],
+
+  "quality_controls": {
+    "require_ground_truth": true,
+    "validate_mask_dimensions": true,
+    "validate_binary_outputs": true,
+    "reject_corrupted_images": true
   },
 
-  "system_prompt": "./system_prompt.md",
+  "configuration": {
+    "top_methods_to_report": 5,
+    "save_comparison_figures": true,
+    "save_metric_tables": true,
+    "generate_recommendations": true
+  },
 
-  "capabilities": [
-    "view_data",
-    "compare_data",
-    "evaluate_model",
-    "compare_model"
-  ],
+  "permissions_file": "../../code_modules/auth/permissions/agent_permissions/binarization_optimization_agent.json",
 
-  "supported_content_types": [
-    "raw data",
-    "model outputs",
-    "model",
-  ],
+  "prompt_file": "system_prompt.md",
 
-  "tools": [
-    "model_evaulation",
-  ],
+  "logging": {
+    "log_algorithm_runs": true,
+    "log_metric_results": true,
+    "log_recommendations": true
+  },
 
-  "templates": [
-    "summary",
-  ],
+  "monitoring": {
+    "track_best_iou": true,
+    "track_best_dice_score": true,
+    "track_method_rankings": true
+  },
 
-  "output_formats": [
-    "markdown",
-    "html",
-    "plain_text"
-    "pdf"
-  ]
+  "status": "active"
 }
