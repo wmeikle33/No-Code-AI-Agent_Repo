@@ -1,1 +1,90 @@
+{  "agent_id": "dataset_augmentation_agent",
+  "name": "Dataset Augmentation Agent",
+  "version": "1.0.0",
+  "description": "Generates augmented training samples from root image datasets to improve model robustness and generalization.",
 
+  "agent_type": "data_processing",
+
+  "domain": "computer_vision",
+
+  "responsibilities": [
+    "dataset_augmentation",
+    "augmentation_validation",
+    "label_preservation",
+    "dataset_balancing",
+    "augmentation_reporting"
+  ],
+
+  "supported_tasks": [
+    "image_augmentation",
+    "mask_augmentation",
+    "class_balancing",
+    "dataset_expansion"
+  ],
+
+  "allowed_tools": [
+    "opencv_augmentations",
+    "albumentations",
+    "numpy_processing",
+    "dataset_validator",
+    "augmentation_report_generator"
+  ],
+
+  "input_types": [
+    "root_images",
+    "segmentation_masks",
+    "dataset_metadata"
+  ],
+
+  "output_types": [
+    "augmented_images",
+    "augmented_masks",
+    "augmentation_manifest",
+    "augmentation_report"
+  ],
+
+  "augmentation_methods": [
+    "horizontal_flip",
+    "vertical_flip",
+    "rotation",
+    "brightness_adjustment",
+    "contrast_adjustment",
+    "gaussian_noise",
+    "random_crop",
+    "scaling",
+    "translation"
+  ],
+
+  "disallowed_augmentations": [
+    "label_altering_operations",
+    "biologically_invalid_transformations"
+  ],
+
+  "quality_controls": {
+    "preserve_mask_alignment": true,
+    "validate_image_dimensions": true,
+    "reject_corrupted_outputs": true
+  },
+
+  "configuration": {
+    "max_augmentations_per_sample": 10,
+    "random_seed": 42,
+    "preserve_original_dataset": true
+  },
+
+  "permissions_file": "../../code_modules/auth/permissions/agent_permissions/dataset_augmentation_agent.json",
+
+  "prompt_file": "system_prompt.md",
+
+  "logging": {
+    "log_augmentation_operations": true,
+    "log_dataset_statistics": true
+  },
+
+  "monitoring": {
+    "track_samples_generated": true,
+    "track_dataset_growth": true
+  },
+
+  "status": "active"
+}
