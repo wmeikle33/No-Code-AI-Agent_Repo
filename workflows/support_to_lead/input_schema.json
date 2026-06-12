@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "required": ["ticket_id", "customer_message", "customer_email"],
+  "properties": {
+    "ticket_id": { "type": "string" },
+    "customer_email": { "type": "string" },
+    "customer_name": { "type": "string" },
+    "company_name": { "type": "string" },
+    "customer_message": { "type": "string" },
+    "ticket_category": { "type": "string" },
+    "account_plan": { "type": "string" },
+    "created_at": { "type": "string" }
+  }
+}
