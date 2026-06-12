@@ -13,6 +13,7 @@
     "threshold_optimization",
     "segmentation_comparison",
     "mask_quality_analysis",
+    "ground_truth_mask_comparison",
     "parameter_tuning",
     "performance_reporting"
   ],
@@ -20,6 +21,7 @@
   "supported_tasks": [
     "compare_segmentation_methods",
     "evaluate_masks",
+    "generate_ground_truth_masks",
     "optimize_thresholds",
     "rank_binarization_algorithms",
     "generate_segmentation_reports",
@@ -31,7 +33,9 @@
     "ground_truth_masks",
     "generated_masks",
     "segmentation_metrics",
-    "algorithm_parameters"
+    "algorithm_parameters",
+    "model_goals",
+    "image_description"
   ],
 
   "output_types": [
@@ -39,7 +43,8 @@
     "segmentation_report",
     "optimized_parameters",
     "evaluation_metrics",
-    "recommended_method"
+    "recommended_method",
+    "image_mask"
   ],
 
   "supported_methods": [
@@ -72,6 +77,7 @@
   "allowed_tools": [
     "opencv_processor",
     "mask_evaluator",
+    "ground_truth_mask_generator",
     "segmentation_visualizer",
     "parameter_search",
     "metrics_calculator",
