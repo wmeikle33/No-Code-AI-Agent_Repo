@@ -1,7 +1,7 @@
 import argparse
 import json
 
-from workflows.support_to_lead import SupportToLeadWorkflow, 
+from workflows.support_to_lead import SupportToLeadWorkflow
 from workflows.research import ResearchWorkflow
 
 
