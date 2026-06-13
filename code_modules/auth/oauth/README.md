@@ -20,7 +20,7 @@ oauth_flows/
 
 ---
 
-## flows/
+## Flows
 
 Contains OAuth flow definitions and examples.
 
@@ -45,7 +45,7 @@ The flow determines how authentication occurs and how tokens are obtained.
 
 ---
 
-## providers/
+## Providers
 
 Contains provider-specific OAuth configurations.
 
@@ -82,7 +82,7 @@ Example:
 
 ---
 
-## scopes/
+## Scopes
 
 Contains scope definitions for supported providers.
 
@@ -124,7 +124,7 @@ Agents should request only the scopes they actually need.
 
 ---
 
-## token_management/
+## Token_Management
 
 Contains token lifecycle patterns and examples.
 
