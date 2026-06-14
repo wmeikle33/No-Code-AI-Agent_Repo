@@ -1,6 +1,6 @@
 {
   "agent_id": "binarization_optimization_agent",
-  "name": "Binarization Optimization Agent",
+  "name": "Greenscale Binarization Optimization Agent",
   "version": "1.0.0",
   "description": "Evaluates, compares, and optimizes image binarization and segmentation methods for root structure extraction.",
 
