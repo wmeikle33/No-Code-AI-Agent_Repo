@@ -19,6 +19,8 @@ def main():
         workflow = SupportToLeadWorkflow()
     elif args.workflow == 'customer_support":
         workflow = CustomerSupportWorkflow()
+    elif args.workflow == 'employee_support":
+        workflow = EmployeeSupportWorkflow()
     elif args.workflow == 'market_research':
         workflow = MarketResearchWorkflow()
     else:
