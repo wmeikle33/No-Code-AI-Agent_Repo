@@ -1,1 +1,57 @@
+{
+  "experiment_name": "root_binarization_comparison_demo",
+  "description": "Evaluate multiple binarization methods on root images using ground truth masks.",
 
+  "dataset": {
+    "dataset_name": "greenscale_root_images",
+    "image_directory": "data/raw",
+    "ground_truth_directory": "data/ground_truth_masks",
+    "image_format": ".png"
+  },
+
+  "images": [
+    {
+      "image_id": "root_001",
+      "image_path": "data/raw/root_001.png",
+      "ground_truth_mask": "data/ground_truth_masks/root_001_mask.png"
+    },
+    {
+      "image_id": "root_002",
+      "image_path": "data/raw/root_002.png",
+      "ground_truth_mask": "data/ground_truth_masks/root_002_mask.png"
+    }
+  ],
+
+  "binarization_methods": [
+    {
+      "name": "otsu"
+    },
+    {
+      "name": "adaptive_mean",
+      "block_size": 11,
+      "c": 2
+    },
+    {
+      "name": "adaptive_gaussian",
+      "block_size": 11,
+      "c": 2
+    }
+  ],
+
+  "evaluation_metrics": [
+    "iou",
+    "dice",
+    "precision",
+    "recall",
+    "f1_score"
+  ],
+
+  "output": {
+    "save_masks": true,
+    "save_metrics": true,
+    "save_comparison_report": true,
+    "mask_output_directory": "outputs/masks",
+    "metrics_output_file": "outputs/metrics.csv",
+    "report_output_file": "outputs/binarization_report.json"
+  }
+}
