@@ -50,6 +50,21 @@ I --> J[Workflow Orchestration]
 J --> K[Structured Output]
 ```
 
+# No-Code AI Agent Repository
+
+A reusable framework for designing, documenting, and orchestrating AI agents without requiring production code.
+
+This repository contains:
+
+1. Generic AI agent architecture patterns that can be adapted to customer support, research, HR, document Q&A, monitoring, and executive workflows.
+
+2. A complete Greenscale implementation demonstrating how the framework can be customized for a specific organization and domain.
+
+The goal is to provide both:
+
+- A reusable template for building AI agent ecosystems.
+- A real-world example showing how those templates can be applied in practice.
+  
 ## Repository Scope
 
 This repository is a redacted demonstration of a proprietary no code AI agent. It is intended to showcase project structure, engineering practices, testing, CI/CD, and workflows while protecting confidential intellectual property.
