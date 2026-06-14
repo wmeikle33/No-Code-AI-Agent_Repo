@@ -8,8 +8,6 @@ Examples:
 
 - Google Drive connector
 - Gmail connector
-- Slack connector
-- Notion connector
 - GitHub connector
 - CRM connector
 
