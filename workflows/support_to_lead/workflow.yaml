@@ -1,1 +1,23 @@
+name: support_to_lead
+description: Converts qualified customer support conversations into sales leads.
 
+steps:
+  - id: intake
+    agent: customer_support_agent
+    action: classify_customer_request
+
+  - id: detect_sales_opportunity
+    agent: lead_qualification_agent
+    action: evaluate_buying_intent
+
+  - id: qualify_lead
+    agent: lead_qualification_agent
+    action: score_lead_fit
+
+  - id: create_handoff
+    agent: lead_qualification_agent
+    action: generate_sales_handoff
+
+  - id: human_review
+    condition: lead_score >= 70 or confidence < 0.75
+    action: send_to_human_review
