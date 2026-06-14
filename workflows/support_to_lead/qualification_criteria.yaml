@@ -1,1 +1,45 @@
+lead_score:
+  buying_intent:
+    weight: 30
+    signals:
+      - asks_about_pricing
+      - asks_for_demo
+      - asks_about_upgrade
+      - requests_contract_information
 
+  company_fit:
+    weight: 25
+    signals:
+      - company_size_over_50
+      - team_use_case
+      - budget_owner_identified
+      - business_email_domain
+
+  urgency:
+    weight: 20
+    signals:
+      - needs_solution_this_month
+      - mentions_deadline
+      - current_tool_not_working
+      - active_evaluation
+
+  product_fit:
+    weight: 15
+    signals:
+      - asks_about_supported_features
+      - describes_relevant_workflow
+      - mentions_integration_needs
+
+  completeness:
+    weight: 10
+    signals:
+      - name_available
+      - email_available
+      - company_available
+      - use_case_available
+
+thresholds:
+  hot_lead: 80
+  warm_lead: 60
+  nurture: 40
+  not_qualified: 0
