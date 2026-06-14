@@ -1,0 +1,19 @@
+[
+  {
+    "text": "I keep getting an error when I try to log in.",
+    "expected_intent": "customer_support"
+  },
+  {
+    "text": "Can someone show me pricing for the enterprise plan?",
+    "expected_intent": "lead_qualification"
+  },
+  {
+    "text": "Summarize this PDF and tell me the main risks.",
+    "expected_intent": "document_qa"
+  },
+  {
+    "text": "Compare our top three competitors in the CRM market.",
+    "expected_intent": "market_research"
+  }
+]
+
