@@ -1,1 +1,19 @@
+route_to_sales_when:
+  - customer_mentions_upgrade
+  - customer_asks_about_pricing
+  - customer_requests_demo
+  - customer_mentions_team_or_company_use
+  - customer_asks_about_integrations
+  - customer_has_repeated_usage_limits
 
+do_not_route_when:
+  - billing_refund_only
+  - technical_bug_only
+  - angry_customer_without_buying_intent
+  - cancellation_request_only
+
+human_review_required_when:
+  - confidence_below: 0.75
+  - customer_is_enterprise_account
+  - possible_compliance_issue
+  - unclear_purchase_intent
