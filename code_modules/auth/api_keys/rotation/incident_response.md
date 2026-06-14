@@ -1,4 +1,4 @@
-# API Key Incident Response Policy
+# Greenscale API Key Incident Response Policy
 
 ## Purpose
 
