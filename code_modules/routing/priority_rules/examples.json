@@ -1,0 +1,18 @@
+[
+  {
+    "request": "Our production system is down.",
+    "expected_priority": "critical"
+  },
+  {
+    "request": "Can I get a refund?",
+    "expected_priority": "medium"
+  },
+  {
+    "request": "Please summarize this PDF.",
+    "expected_priority": "low"
+  },
+  {
+    "request": "We are an enterprise customer evaluating your platform.",
+    "expected_priority": "high"
+  }
+]
