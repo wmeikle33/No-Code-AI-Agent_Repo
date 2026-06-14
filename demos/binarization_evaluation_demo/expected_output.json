@@ -1,1 +1,92 @@
+{
+  "experiment_name": "root_binarization_comparison_demo",
+  "status": "completed",
+  "timestamp": "2026-06-14T12:00:00Z",
 
+  "images_processed": 2,
+
+  "evaluation_results": [
+    {
+      "image_id": "root_001",
+      "methods": [
+        {
+          "method": "otsu",
+          "iou": 0.84,
+          "dice": 0.91,
+          "precision": 0.89,
+          "recall": 0.93,
+          "f1_score": 0.91
+        },
+        {
+          "method": "adaptive_mean",
+          "iou": 0.81,
+          "dice": 0.89,
+          "precision": 0.87,
+          "recall": 0.92,
+          "f1_score": 0.89
+        },
+        {
+          "method": "adaptive_gaussian",
+          "iou": 0.86,
+          "dice": 0.92,
+          "precision": 0.90,
+          "recall": 0.94,
+          "f1_score": 0.92
+        }
+      ],
+      "best_method": "adaptive_gaussian"
+    },
+
+    {
+      "image_id": "root_002",
+      "methods": [
+        {
+          "method": "otsu",
+          "iou": 0.79,
+          "dice": 0.88,
+          "precision": 0.85,
+          "recall": 0.91,
+          "f1_score": 0.88
+        },
+        {
+          "method": "adaptive_mean",
+          "iou": 0.82,
+          "dice": 0.90,
+          "precision": 0.88,
+          "recall": 0.92,
+          "f1_score": 0.90
+        },
+        {
+          "method": "adaptive_gaussian",
+          "iou": 0.85,
+          "dice": 0.92,
+          "precision": 0.90,
+          "recall": 0.94,
+          "f1_score": 0.92
+        }
+      ],
+      "best_method": "adaptive_gaussian"
+    }
+  ],
+
+  "aggregate_results": {
+    "best_overall_method": "adaptive_gaussian",
+
+    "average_iou": 0.855,
+    "average_dice": 0.920,
+    "average_precision": 0.900,
+    "average_recall": 0.940,
+    "average_f1_score": 0.920
+  },
+
+  "artifacts": {
+    "generated_masks": [
+      "outputs/masks/root_001_adaptive_gaussian.png",
+      "outputs/masks/root_002_adaptive_gaussian.png"
+    ],
+
+    "metrics_csv": "outputs/metrics.csv",
+
+    "evaluation_report": "outputs/binarization_report.json"
+  }
+}
