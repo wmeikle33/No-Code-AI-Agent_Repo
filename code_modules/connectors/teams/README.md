@@ -22,29 +22,21 @@ Typical use cases include:
 
 ---
 
-## Example Folder Structure
+##  Folder Structure
 
 ```text
 teams/
 ├── README.md
 ├── __init__.py
-├── teams_client.py
-├── teams_connector.py
-├── message_sender.py
-├── channel_reader.py
-├── webhook_handler.py
-├── auth.py
-├── schemas.py
-└── tests/
-    ├── test_message_sender.py
-    └── test_channel_reader.py
+├── teams_actions.py
+
 ```
 
 ---
 
 ## Main Components
 
-### `teams_client.py`
+### `teams_actions.py`
 
 Low-level Microsoft Teams or Microsoft Graph API client.
 
@@ -54,106 +46,24 @@ Responsibilities:
 - Send HTTP requests
 - Handle API errors
 - Parse API responses
-
----
-
-### `teams_connector.py`
-
-High-level connector used by agents and workflows.
-
-Responsibilities:
-
 - Provide a simple interface for workflows
 - Wrap Teams-specific API logic
 - Normalize inputs and outputs
 - Return consistent connector results
-
----
-
-### `message_sender.py`
-
-Handles outbound Teams messages.
-
-Supported actions:
-
 - Send a direct message
 - Send a channel message
 - Send workflow alerts
 - Send formatted Markdown messages
-
----
-
-### `channel_reader.py`
-
-Reads messages from Teams channels.
-
-Supported actions:
-
 - Fetch recent channel messages
 - Search messages by keyword
 - Extract conversation context
 - Prepare messages for summarization
 
----
-
-### `webhook_handler.py`
-
-Handles incoming Teams webhook events.
-
-Supported events:
-
-- New message
-- Mention
-- Reaction
-- Channel update
-- Workflow trigger
-
----
-
-### `auth.py`
-
-Authentication helpers for Microsoft Teams / Microsoft Graph.
-
-Should handle:
-
-- Tenant ID
-- Client ID
-- Client Secret
-- Access Token Retrieval
-- Token Refresh Logic
-
-Environment variables:
-
-```bash
-TEAMS_TENANT_ID=
-TEAMS_CLIENT_ID=
-TEAMS_CLIENT_SECRET=
-TEAMS_DEFAULT_TEAM_ID=
-TEAMS_DEFAULT_CHANNEL_ID=
-```
-
----
-
-### `schemas.py`
-
-Shared data models for Teams messages and connector responses.
-
-Example models:
-
-```python
-TeamsMessage
-TeamsChannel
-TeamsUser
-TeamsConnectorResult
-TeamsWebhookEvent
-```
-
----
 
 ## Example Usage
 
 ```python
-from code_modules.connectors.teams.teams_connector import TeamsConnector
+from code_modules.connectors.teams.teams_actions import TeamsConnector
 
 connector = TeamsConnector()
 
