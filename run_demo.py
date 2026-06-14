@@ -3,6 +3,7 @@ import json
 
 from workflows.support_to_lead import SupportToLeadWorkflow
 from workflows.research import ResearchWorkflow
+from workflows.customer_support import CustomerSupportWorkflow
 
 
 def main():
