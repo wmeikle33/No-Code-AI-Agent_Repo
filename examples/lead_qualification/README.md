@@ -16,9 +16,7 @@ Lead Qualification Agent
 
 The request was classified as:
 
-- Customer inquiry
-- Refund related
-- Requires policy lookup
+- Customer Evaluation
 
 The routing confidence score was 0.96.
 
@@ -26,27 +24,22 @@ The routing confidence score was 0.96.
 
 Sources used:
 
-- refund_policy.md
-- subscription_faq.md
+- lead_evaluation.md
 
 Relevant policy:
 
-"Refunds are allowed within 7 days of purchase."
+"Customer who meet certain criteria are accetable."
 
 ## Human Approval Point
 
-Refunds above $500 require manager approval.
+Humans still have the final say as to whether or not this lead can be a viable business partner.
 
-Purchase amount: $29
-
-Approval required: No
+Approval required: Yes
 
 ## Final Output
 
-Customer informed that refund is eligible and refund workflow initiated.
+Partner informed whether or not purchases can be carried out successfully.
 
 ## Outcome
 
-Ticket resolved automatically.
-
-Estimated support time saved: 8 minutes.
+New business partner was added to our portfolio.
