@@ -1,9 +1,9 @@
-## Credential Rotation Policy
+## Greenscale Credential Rotation Policy
 
 Purpose
 ```bash
 
-This document defines how API keys, OAuth tokens, service account credentials, database passwords, and other secrets should be rotated in this repository.
+This document defines how Greenscale API keys, OAuth tokens, service account credentials, database passwords, and other secrets should be rotated in this repository.
 The goal is to reduce security risk if credentials are exposed, outdated, over-permissioned, or no longer needed.
 
 ```
