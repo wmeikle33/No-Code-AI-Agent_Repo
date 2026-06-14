@@ -1,1 +1,102 @@
+{
+  "tool_name": "binarization_evaluation",
 
+  "display_name": "Binarization Evaluation Demo",
+
+  "description": "Evaluates one or more image binarization methods against ground truth masks and reports segmentation performance metrics.",
+
+  "version": "1.0.0",
+
+  "category": "computer_vision",
+
+  "input_schema": {
+    "type": "object",
+
+    "required": [
+      "images",
+      "binarization_methods",
+      "evaluation_metrics"
+    ],
+
+    "properties": {
+      "images": {
+        "type": "array",
+        "description": "Images and corresponding ground truth masks to evaluate.",
+        "items": {
+          "type": "object",
+          "required": [
+            "image_path",
+            "ground_truth_mask"
+          ],
+          "properties": {
+            "image_path": {
+              "type": "string"
+            },
+            "ground_truth_mask": {
+              "type": "string"
+            }
+          }
+        }
+      },
+
+      "binarization_methods": {
+        "type": "array",
+        "description": "List of binarization algorithms to evaluate.",
+        "items": {
+          "type": "string"
+        }
+      },
+
+      "evaluation_metrics": {
+        "type": "array",
+        "description": "Metrics used to compare generated masks against ground truth.",
+        "items": {
+          "type": "string",
+          "enum": [
+            "iou",
+            "dice",
+            "precision",
+            "recall",
+            "f1_score"
+          ]
+        }
+      },
+
+      "save_masks": {
+        "type": "boolean",
+        "default": true
+      },
+
+      "save_report": {
+        "type": "boolean",
+        "default": true
+      }
+    }
+  },
+
+  "output_schema": {
+    "type": "object",
+
+    "properties": {
+      "status": {
+        "type": "string"
+      },
+
+      "images_processed": {
+        "type": "integer"
+      },
+
+      "best_method": {
+        "type": "string"
+      },
+
+      "results": {
+        "type": "array"
+      },
+
+      "output_files": {
+        "type": "array"
+      }
+    }
+  }
+}
