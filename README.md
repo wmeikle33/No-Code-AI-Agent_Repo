@@ -89,7 +89,6 @@ The included code is representative of the overall system design but does not co
 ├── agents/                   # Agent personas and instructions
 ├── code_modules/             # Python modules used by agents
 ├── knowledge/                # Retrieval/context files
-├── tools/                    # Tool and API schemas
 ├── workflows/                # Multi-agent routing logic
 ├── .env.example              # Environment variable template
 ├── AGENTS.md                 # Agent interaction guide
