@@ -8,7 +8,7 @@ manager approval due to company policy.
 
 ## User Request
 
-"I purchased the premium subscription yesterday and would like a refund."
+"I purchased some of your product yesterday and would like a refund."
 
 ## Selected Agent
 
