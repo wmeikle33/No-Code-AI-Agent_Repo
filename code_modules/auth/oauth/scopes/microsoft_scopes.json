@@ -1,1 +1,40 @@
+{
+  "provider": "microsoft",
 
+  "scope_definitions": {
+    "openid": {
+      "description": "Authenticate user",
+      "risk_level": "low"
+    },
+
+    "email": {
+      "description": "Read email address",
+      "risk_level": "low"
+    },
+
+    "profile": {
+      "description": "Read profile information",
+      "risk_level": "low"
+    },
+
+    "gmail.readonly": {
+      "description": "Read Gmail messages",
+      "risk_level": "medium"
+    },
+
+    "gmail.send": {
+      "description": "Send Gmail messages",
+      "risk_level": "high"
+    },
+
+    "calendar.readonly": {
+      "description": "Read calendar events",
+      "risk_level": "medium"
+    },
+
+    "calendar": {
+      "description": "Read and modify calendar events",
+      "risk_level": "high"
+    }
+  }
+}
