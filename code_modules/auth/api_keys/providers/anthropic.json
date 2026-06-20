@@ -1,8 +1,104 @@
 {
-  "provider": "Anthropic",
-  "auth_type": "api_key",
-  "env_variable": "ANTHROPIC_API_KEY",
-  "header_name": "Authorization",
-  "header_format": "Bearer {API_KEY}",
-  "required": true
+  "provider_name": "Anthropic",
+  "provider_id": "anthropic",
+
+  "authentication_method": "api_key",
+
+  "required_environment_variables": [
+    "ANTHROPIC_API_KEY"
+  ],
+
+  "models": [
+    {
+      "name": "claude-opus",
+      "tier": "flagship",
+      "recommended_for": [
+        "research",
+        "strategic_analysis",
+        "complex_reasoning"
+      ]
+    },
+    {
+      "name": "claude-sonnet",
+      "tier": "balanced",
+      "recommended_for": [
+        "general_agents",
+        "customer_support",
+        "document_qa"
+      ]
+    },
+    {
+      "name": "claude-haiku",
+      "tier": "fast",
+      "recommended_for": [
+        "classification",
+        "routing",
+        "summarization"
+      ]
+    }
+  ],
+
+  "capabilities": {
+    "supports_text_generation": true,
+    "supports_vision": true,
+    "supports_tool_use": true,
+    "supports_function_calling": true,
+    "supports_json_output": true,
+    "supports_streaming": true,
+    "supports_embeddings": false,
+    "supports_fine_tuning": false,
+    "supports_audio": false,
+    "supports_video": false
+  },
+
+  "strengths": [
+    "long_context_reasoning",
+    "document_analysis",
+    "report_generation",
+    "multi_step_reasoning",
+    "research_synthesis"
+  ],
+
+  "recommended_agent_types": [
+    "market_research_agent",
+    "competitive_intelligence_agent",
+    "document_q_and_a_agent",
+    "executive_assistant_agent",
+    "report_generation_agent"
+  ],
+
+  "recommended_workflows": [
+    "literature_review",
+    "market_research",
+    "executive_brief_generation",
+    "competitive_analysis",
+    "research_synthesis"
+  ],
+
+  "limitations": [
+    "no_native_embeddings",
+    "not_optimized_for_real_time_voice"
+  ],
+
+  "fallback_providers": [
+    "openai",
+    "gemini"
+  ],
+
+  "security": {
+    "key_rotation_recommended_days": 90,
+    "store_in_secret_manager": true,
+    "allow_client_side_storage": false
+  },
+
+  "monitoring": {
+    "track_token_usage": true,
+    "track_request_latency": true,
+    "track_error_rate": true
+  },
+
+  "documentation": {
+    "provider_website": "https://www.anthropic.com",
+    "api_docs": "https://docs.anthropic.com"
+  }
 }
