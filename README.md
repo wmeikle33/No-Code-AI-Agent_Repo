@@ -91,6 +91,20 @@ The included code is representative of the overall system design but does not co
 - Use retrieval context to answer employee or product-support questions
 - Optimize Greenscale specific data pipelines and workflows
 
+## Architecture
+
+This repository is structured as a reusable no-code AI agent framework with a Greenscale reference implementation.
+
+The framework layer provides reusable components for agent design, workflow orchestration, tool integration, monitoring, evaluation, and governance.
+
+The Greenscale layer demonstrates how those components can be applied to a realistic research and business automation environment.
+
+For more detail, see:
+
+- [Architecture Overview](docs/architecture/overview.md)
+- [Framework vs Greenscale Layer](docs/architecture/framework_vs_greenscale.md)
+
+
 ## Repo Structure
 
 ```text
