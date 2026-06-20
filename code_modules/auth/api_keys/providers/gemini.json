@@ -1,8 +1,108 @@
 {
-  "provider": "Gemini",
-  "auth_type": "api_key",
-  "env_variable": "GEMINI_API_KEY",
-  "header_name": "Authorization",
-  "header_format": "Bearer {API_KEY}",
-  "required": true
+  "provider_name": "Google Gemini",
+  "provider_id": "gemini",
+
+  "authentication_method": "api_key",
+
+  "required_environment_variables": [
+    "GEMINI_API_KEY"
+  ],
+
+  "models": [
+    {
+      "name": "gemini-2.5-pro",
+      "tier": "flagship",
+      "recommended_for": [
+        "research",
+        "complex_reasoning",
+        "multimodal_analysis",
+        "agent_orchestration"
+      ]
+    },
+    {
+      "name": "gemini-2.5-flash",
+      "tier": "fast",
+      "recommended_for": [
+        "chat_agents",
+        "summarization",
+        "classification",
+        "routing"
+      ]
+    }
+  ],
+
+  "capabilities": {
+    "supports_text_generation": true,
+    "supports_vision": true,
+    "supports_audio": true,
+    "supports_video": true,
+    "supports_tool_use": true,
+    "supports_function_calling": true,
+    "supports_json_output": true,
+    "supports_streaming": true,
+    "supports_embeddings": true,
+    "supports_fine_tuning": false
+  },
+
+  "strengths": [
+    "multimodal_reasoning",
+    "image_analysis",
+    "video_analysis",
+    "audio_understanding",
+    "large_context_processing",
+    "google_ecosystem_integration"
+  ],
+
+  "recommended_agent_types": [
+    "document_q_and_a_agent",
+    "research_agent",
+    "image_analysis_agent",
+    "meeting_notes_agent",
+    "executive_assistant_agent",
+    "customer_support_agent"
+  ],
+
+  "recommended_workflows": [
+    "document_analysis",
+    "meeting_summarization",
+    "multimedia_processing",
+    "research_synthesis",
+    "knowledge_extraction"
+  ],
+
+  "integration_targets": [
+    "google_drive",
+    "gmail",
+    "google_calendar",
+    "google_docs",
+    "vertex_ai"
+  ],
+
+  "limitations": [
+    "provider_specific_features_may_change",
+    "requires_google_ecosystem_for_some_advanced_integrations"
+  ],
+
+  "fallback_providers": [
+    "openai",
+    "anthropic"
+  ],
+
+  "security": {
+    "key_rotation_recommended_days": 90,
+    "store_in_secret_manager": true,
+    "allow_client_side_storage": false
+  },
+
+  "monitoring": {
+    "track_token_usage": true,
+    "track_request_latency": true,
+    "track_error_rate": true,
+    "track_multimodal_requests": true
+  },
+
+  "documentation": {
+    "provider_website": "https://ai.google.dev",
+    "api_docs": "https://ai.google.dev/docs"
+  }
 }
