@@ -124,7 +124,7 @@ Agents should request only the scopes they actually need.
 
 ---
 
-## Token_Management
+## Token Management
 
 Contains token lifecycle patterns and examples.
 
