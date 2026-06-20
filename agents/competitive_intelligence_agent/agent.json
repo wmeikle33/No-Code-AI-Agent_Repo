@@ -1,0 +1,159 @@
+{
+  "agent_name": "Competitive Intelligence Agent",
+  "agent_id": "competitive_intelligence_agent",
+  "version": "1.0.0",
+  "agent_type": "research_monitoring",
+
+  "description": "Monitors competitors, market movements, product launches, public announcements, and strategic signals to generate structured competitive intelligence briefs.",
+
+  "primary_purpose": "Help teams understand competitor activity and identify risks, opportunities, and market trends.",
+
+  "typical_users": [
+    "founders",
+    "executives",
+    "strategy_teams",
+    "product_managers",
+    "market_researchers"
+  ],
+
+  "core_capabilities": [
+    "competitor_monitoring",
+    "market_signal_detection",
+    "news_summarization",
+    "product_comparison",
+    "pricing_change_detection",
+    "strategic_risk_assessment",
+    "executive_brief_generation"
+  ],
+
+  "inputs": {
+    "required": [
+      "competitor_list",
+      "research_goal"
+    ],
+    "optional": [
+      "industry",
+      "target_market",
+      "time_range",
+      "trusted_sources",
+      "excluded_sources",
+      "keywords",
+      "comparison_criteria",
+      "output_format"
+    ]
+  },
+
+  "outputs": {
+    "default": "competitive_intelligence_brief",
+    "formats": [
+      "executive_summary",
+      "competitor_profile",
+      "market_update",
+      "risk_report",
+      "comparison_table",
+      "weekly_digest"
+    ]
+  },
+
+  "tools": [
+    "web_search",
+    "news_monitor",
+    "website_monitor",
+    "document_retrieval",
+    "summarization",
+    "citation_generator"
+  ],
+
+  "recommended_models": [
+    {
+      "provider": "anthropic",
+      "reason": "Strong long-context research synthesis and report generation."
+    },
+    {
+      "provider": "openai",
+      "reason": "General-purpose research, reasoning, and structured output generation."
+    },
+    {
+      "provider": "gemini",
+      "reason": "Useful for multimodal research and Google ecosystem integrations."
+    }
+  ],
+
+  "workflow_steps": [
+    "Clarify the research objective.",
+    "Identify relevant competitors and keywords.",
+    "Collect public information from approved sources.",
+    "Extract important market, product, pricing, hiring, funding, and partnership signals.",
+    "Compare findings against previous known information.",
+    "Score the significance of each finding.",
+    "Generate a structured intelligence brief.",
+    "Flag uncertain or high-impact claims for human review."
+  ],
+
+  "routing_rules": {
+    "route_to_this_agent_when": [
+      "The user asks about competitors.",
+      "The user wants market intelligence.",
+      "The user wants to track another company.",
+      "The user asks for strategic threats or opportunities.",
+      "The user wants a competitor comparison."
+    ],
+    "do_not_route_when": [
+      "The user only needs general market research without competitor focus.",
+      "The user asks for private, confidential, or non-public competitor information.",
+      "The user asks for illegal scraping, credentialed access, or trade secret extraction."
+    ]
+  },
+
+  "human_review_required_when": [
+    "The output includes strategic recommendations.",
+    "The claim may affect business decisions.",
+    "The source credibility is uncertain.",
+    "The finding involves legal, financial, or regulatory risk.",
+    "The agent detects possible misinformation or conflicting reports."
+  ],
+
+  "safety_and_compliance": {
+    "allowed_sources": [
+      "public_websites",
+      "news_articles",
+      "press_releases",
+      "public_filings",
+      "public_job_posts",
+      "public_product_pages",
+      "industry_reports"
+    ],
+    "disallowed_sources": [
+      "private_accounts",
+      "leaked_documents",
+      "confidential_information",
+      "paywalled_content_without_permission",
+      "unauthorized_scraping",
+      "personal_data_collection"
+    ],
+    "privacy_notes": "Only use publicly available or user-provided information. Do not infer sensitive personal data about individuals."
+  },
+
+  "evaluation_metrics": [
+    "source_quality",
+    "citation_coverage",
+    "claim_accuracy",
+    "signal_relevance",
+    "summary_clarity",
+    "risk_identification_quality",
+    "human_review_precision"
+  ],
+
+  "example_tasks": [
+    "Track recent product launches from our top 5 competitors.",
+    "Create a weekly competitive intelligence brief.",
+    "Compare competitor pricing changes over the last quarter.",
+    "Identify new market entrants in sustainable agriculture technology.",
+    "Summarize competitor hiring trends from public job postings."
+  ],
+
+  "greenscale_example_use_case": {
+    "use_case": "Monitor AgTech and sustainability competitors for product launches, partnerships, funding announcements, and research activity.",
+    "sample_output": "Weekly competitive intelligence brief with competitor updates, strategic risks, opportunities, and recommended follow-up actions."
+  }
+}
