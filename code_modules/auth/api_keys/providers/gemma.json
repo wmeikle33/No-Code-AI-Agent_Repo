@@ -1,8 +1,114 @@
 {
-  "provider": "Gemma",
-  "auth_type": "api_key",
-  "env_variable": "GEMMA_API_KEY",
-  "header_name": "Authorization",
-  "header_format": "Bearer {API_KEY}",
-  "required": true
+  "provider_name": "Gemma",
+  "provider_id": "gemma",
+
+  "provider_type": "open_weight_model",
+
+  "deployment_modes": [
+    "local",
+    "ollama",
+    "vllm",
+    "huggingface",
+    "vertex_ai"
+  ],
+
+  "authentication_method": "deployment_specific",
+
+  "required_environment_variables": [],
+
+  "models": [
+    {
+      "name": "gemma-3-1b",
+      "tier": "edge",
+      "recommended_for": [
+        "lightweight_agents",
+        "local_inference"
+      ]
+    },
+    {
+      "name": "gemma-3-4b",
+      "tier": "balanced",
+      "recommended_for": [
+        "general_agents",
+        "classification",
+        "summarization"
+      ]
+    },
+    {
+      "name": "gemma-3-12b",
+      "tier": "advanced",
+      "recommended_for": [
+        "research",
+        "analysis",
+        "reasoning"
+      ]
+    },
+    {
+      "name": "gemma-3-27b",
+      "tier": "flagship",
+      "recommended_for": [
+        "complex_reasoning",
+        "agent_orchestration",
+        "research_synthesis"
+      ]
+    }
+  ],
+
+  "capabilities": {
+    "supports_text_generation": true,
+    "supports_vision": true,
+    "supports_tool_use": true,
+    "supports_function_calling": true,
+    "supports_json_output": true,
+    "supports_streaming": true,
+    "supports_embeddings": false,
+    "supports_audio": false,
+    "supports_video": false
+  },
+
+  "strengths": [
+    "self_hosting",
+    "data_privacy",
+    "offline_deployment",
+    "cost_control",
+    "customization"
+  ],
+
+  "recommended_agent_types": [
+    "internal_knowledge_agent",
+    "document_q_and_a_agent",
+    "research_agent",
+    "customer_support_agent"
+  ],
+
+  "recommended_workflows": [
+    "private_document_analysis",
+    "on_premise_rag",
+    "internal_chatbot",
+    "knowledge_management"
+  ],
+
+  "infrastructure_requirements": {
+    "gpu_recommended": true,
+    "internet_required": false,
+    "supports_air_gapped_environments": true
+  },
+
+  "limitations": [
+    "requires_infrastructure_management",
+    "performance_depends_on_hardware",
+    "deployment_complexity_higher_than_managed_apis"
+  ],
+
+  "fallback_providers": [
+    "openai",
+    "anthropic",
+    "gemini"
+  ],
+
+  "monitoring": {
+    "track_gpu_usage": true,
+    "track_latency": true,
+    "track_memory_consumption": true
+  }
 }
