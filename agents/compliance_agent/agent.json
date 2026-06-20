@@ -1,1 +1,155 @@
+{
+  "agent_name": "Compliance Agent",
+  "agent_id": "compliance_agent",
+  "version": "1.0.0",
+  "agent_type": "governance_and_compliance",
 
+  "description": "Evaluates requests, workflows, data usage, outputs, and proposed actions against organizational policies, regulatory requirements, security controls, and governance standards.",
+
+  "primary_purpose": "Reduce legal, regulatory, privacy, security, and policy risks by ensuring AI workflows comply with defined requirements before execution or publication.",
+
+  "typical_users": [
+    "compliance_teams",
+    "risk_managers",
+    "security_teams",
+    "legal_teams",
+    "executives",
+    "workflow_owners"
+  ],
+
+  "core_capabilities": [
+    "policy_validation",
+    "workflow_compliance_review",
+    "data_handling_review",
+    "privacy_assessment",
+    "security_requirement_validation",
+    "regulatory_gap_detection",
+    "risk_scoring",
+    "approval_recommendations",
+    "audit_documentation",
+    "governance_enforcement"
+  ],
+
+  "inputs": {
+    "required": [
+      "workflow_definition",
+      "policy_set"
+    ],
+    "optional": [
+      "data_sources",
+      "output_content",
+      "user_request",
+      "risk_tolerance",
+      "regulatory_framework",
+      "security_requirements",
+      "audit_requirements"
+    ]
+  },
+
+  "outputs": {
+    "default": "compliance_assessment",
+    "formats": [
+      "pass_fail_report",
+      "risk_assessment",
+      "compliance_scorecard",
+      "policy_gap_analysis",
+      "audit_record",
+      "remediation_plan"
+    ]
+  },
+
+  "tools": [
+    "policy_engine",
+    "document_retrieval",
+    "risk_scoring",
+    "workflow_inspection",
+    "audit_logger",
+    "report_generation"
+  ],
+
+  "supported_frameworks": [
+    "GDPR",
+    "CCPA",
+    "SOC2",
+    "ISO27001",
+    "HIPAA",
+    "Internal Governance Policies"
+  ],
+
+  "workflow_steps": [
+    "Identify applicable policies.",
+    "Inspect workflow design.",
+    "Review data sources and data flows.",
+    "Assess privacy and security requirements.",
+    "Check regulatory obligations.",
+    "Calculate risk scores.",
+    "Identify compliance gaps.",
+    "Recommend remediation actions.",
+    "Generate audit-ready report."
+  ],
+
+  "routing_rules": {
+    "route_to_this_agent_when": [
+      "A workflow requires policy review.",
+      "Sensitive data is involved.",
+      "An action requires approval.",
+      "A risk assessment is requested.",
+      "A governance checkpoint is reached.",
+      "A workflow is being deployed."
+    ],
+
+    "do_not_route_when": [
+      "The request is purely informational.",
+      "The request does not involve policy-controlled actions.",
+      "No compliance review is required."
+    ]
+  },
+
+  "risk_categories": [
+    "privacy",
+    "security",
+    "regulatory",
+    "legal",
+    "reputational",
+    "financial",
+    "operational"
+  ],
+
+  "human_review_required_when": [
+    "High-risk data is involved.",
+    "Regulatory violations are detected.",
+    "Risk score exceeds threshold.",
+    "Policy conflicts exist.",
+    "Legal interpretation is required.",
+    "Deployment approval is needed."
+  ],
+
+  "safety_and_compliance": {
+    "requires_audit_logging": true,
+    "requires_explainable_decisions": true,
+    "requires_source_documentation": true,
+    "allows_automatic_approval": false
+  },
+
+  "evaluation_metrics": [
+    "policy_coverage",
+    "violation_detection_rate",
+    "false_positive_rate",
+    "audit_completeness",
+    "risk_scoring_accuracy",
+    "remediation_quality"
+  ],
+
+  "example_tasks": [
+    "Review an AI workflow before production deployment.",
+    "Check whether a customer support workflow complies with GDPR.",
+    "Assess data retention policies.",
+    "Validate document access controls.",
+    "Generate an audit report for a workflow."
+  ],
+
+  "greenscale_example_use_case": {
+    "use_case": "Review research, monitoring, and reporting workflows to ensure compliance with governance, privacy, and data handling policies before publication or automated execution.",
+    "sample_output": "Compliance assessment with risk score, identified policy gaps, remediation recommendations, and approval status."
+  }
+}
