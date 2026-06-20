@@ -1,4 +1,4 @@
-# Greenscale No-Code AI Agent Repository
+# Modular No-Code AI Agent Framework with Greenscale Example Deployment
 
 A reusable framework for designing, documenting, and orchestrating AI agents without requiring production code.
 
