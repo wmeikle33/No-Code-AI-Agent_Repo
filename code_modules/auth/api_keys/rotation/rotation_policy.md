@@ -30,6 +30,8 @@ Third-party integration tokens
 |-----------|------------------|
 | OpenAI | Every 90 days |
 | Anthropic | Every 90 days |
+| Gemma | Every 90 days |
+| Qwen  | Every 90 days |
 | Internal Services | Every 60 days |
 
 ## Process
