@@ -1,8 +1,100 @@
 {
-  "provider": "DeepSeek",
-  "auth_type": "api_key",
-  "env_variable": "DEEPSEEK_API_KEY",
-  "header_name": "Authorization",
-  "header_format": "Bearer {API_KEY}",
-  "required": true
+  "provider_name": "DeepSeek",
+  "provider_id": "deepseek",
+
+  "authentication_method": "api_key",
+
+  "required_environment_variables": [
+    "DEEPSEEK_API_KEY"
+  ],
+
+  "models": [
+    {
+      "name": "deepseek-chat",
+      "tier": "balanced",
+      "recommended_for": [
+        "general_agents",
+        "summarization",
+        "workflow_routing",
+        "light_research"
+      ]
+    },
+    {
+      "name": "deepseek-reasoner",
+      "tier": "reasoning",
+      "recommended_for": [
+        "complex_reasoning",
+        "code_generation",
+        "technical_analysis",
+        "multi_step_planning"
+      ]
+    }
+  ],
+
+  "capabilities": {
+    "supports_text_generation": true,
+    "supports_vision": false,
+    "supports_tool_use": true,
+    "supports_function_calling": true,
+    "supports_json_output": true,
+    "supports_streaming": true,
+    "supports_embeddings": false,
+    "supports_fine_tuning": false,
+    "supports_audio": false,
+    "supports_video": false
+  },
+
+  "strengths": [
+    "cost_efficient_reasoning",
+    "code_generation",
+    "technical_problem_solving",
+    "workflow_planning",
+    "structured_outputs"
+  ],
+
+  "recommended_agent_types": [
+    "code_assistant_agent",
+    "technical_support_agent",
+    "system_design_agent",
+    "workflow_routing_agent",
+    "multi_agent_coordinator"
+  ],
+
+  "recommended_workflows": [
+    "code_review",
+    "system_design",
+    "workflow_planning",
+    "technical_documentation",
+    "routing_and_classification"
+  ],
+
+  "limitations": [
+    "not_primary_choice_for_vision_tasks",
+    "not_primary_choice_for_embeddings",
+    "may_require_additional_validation_for_high_stakes_outputs"
+  ],
+
+  "fallback_providers": [
+    "openai",
+    "anthropic",
+    "gemini"
+  ],
+
+  "security": {
+    "key_rotation_recommended_days": 90,
+    "store_in_secret_manager": true,
+    "allow_client_side_storage": false
+  },
+
+  "monitoring": {
+    "track_token_usage": true,
+    "track_request_latency": true,
+    "track_error_rate": true,
+    "track_reasoning_cost": true
+  },
+
+  "documentation": {
+    "provider_website": "https://www.deepseek.com",
+    "api_docs": "https://api-docs.deepseek.com"
+  }
 }
