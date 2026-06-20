@@ -1,1 +1,111 @@
+workflow_name: system_design
+file_type: qualification_criteria
+version: "1.0"
 
+purpose: >
+  Defines the criteria used to determine whether a user request should be routed
+  to the System Design workflow.
+
+qualifies_when:
+  - user_is_designing_a_new_system
+  - user_is_improving_an_existing_architecture
+  - user_needs_component_breakdown
+  - user_needs_tradeoff_analysis
+  - user_needs_scalability_or_reliability_guidance
+  - user_needs_database_api_or_infrastructure_design
+  - user_needs_multi_agent_or_workflow_architecture
+
+does_not_qualify_when:
+  - user_only_needs_small_code_fix
+  - user_only_asks_for_syntax_help
+  - user_needs_simple_definition
+  - user_needs_business_copywriting
+  - user_needs_visual_design_only
+  - user_request_is_too_vague_without_system_context
+
+required_context:
+  - system_goal
+  - target_users
+  - core_features
+  - expected_inputs
+  - expected_outputs
+  - scale_requirements
+  - reliability_requirements
+  - security_or_privacy_constraints
+  - integration_requirements
+
+optional_context:
+  - preferred_tech_stack
+  - cloud_provider
+  - budget_constraints
+  - team_size
+  - timeline
+  - existing_system_limitations
+  - compliance_requirements
+  - performance_targets
+
+routing_signals:
+  strong:
+    - "design a system"
+    - "architecture"
+    - "scalable"
+    - "distributed system"
+    - "multi-agent"
+    - "workflow orchestration"
+    - "database schema"
+    - "API design"
+    - "infrastructure"
+  medium:
+    - "how should I structure"
+    - "what components do I need"
+    - "how do these services connect"
+    - "pipeline"
+    - "deployment"
+    - "monitoring"
+  weak:
+    - "improve this repo"
+    - "make this more complete"
+    - "what should be in this folder"
+
+qualification_scores:
+  system_scope_present: 3
+  architecture_terms_present: 2
+  scale_or_reliability_present: 2
+  integration_requirements_present: 2
+  only_code_debugging: -4
+  only_copywriting: -3
+  insufficient_context: -2
+
+thresholds:
+  auto_route_to_system_design: 5
+  ask_clarifying_question: 3
+  do_not_route: 2
+
+output_expectations:
+  - architecture_summary
+  - component_breakdown
+  - data_flow
+  - recommended_folder_structure
+  - tradeoffs
+  - risks
+  - next_implementation_steps
+
+human_review_required_when:
+  - security_sensitive_system
+  - financial_or_healthcare_system
+  - production_infrastructure_changes
+  - unclear_requirements
+  - high_cost_cloud_architecture
+  - compliance_related_decisions
+
+example_qualified_requests:
+  - "Design a scalable RAG system for internal company documents."
+  - "How should I structure a multi-agent customer support workflow?"
+  - "What architecture should I use for a KPI monitoring agent?"
+  - "Help me design the database and API layer for this repo."
+
+example_non_qualified_requests:
+  - "Fix this Python syntax error."
+  - "Write a short email response."
+  - "Explain what a hash map is."
+  - "Make this sentence sound more professional."
