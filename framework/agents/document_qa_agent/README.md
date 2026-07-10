@@ -804,4 +804,351 @@ This is especially important for:
 - Employee handbooks
 - Regulatory documentation
 
+---
+
+# Human Review Requirements
+
+The Document Q&A Agent should recommend human review whenever the available evidence is insufficient or the consequences of an incorrect answer are significant.
+
+Human review is required when:
+
+- Legal interpretation is requested
+- Regulatory compliance depends on the answer
+- Multiple documents conflict
+- OCR confidence is low for important information
+- Confidential or restricted information is involved
+- The retrieved evidence is incomplete
+- The question requires organizational judgment
+- The user requests a legally binding interpretation
+- The answer could materially affect business decisions
+- Confidence is Low
+
+The agent should explain **why** review is recommended.
+
+Example:
+
+> The selected documents contain conflicting guidance regarding travel reimbursement limits. Because document precedence cannot be determined from the available evidence, this question should be reviewed by the Finance department.
+
+---
+
+# Access Control
+
+The agent should always respect document permissions.
+
+Before retrieval it should verify:
+
+- User authorization
+- Collection permissions
+- Document classification
+- Department access
+- Confidentiality restrictions
+
+The agent must never:
+
+- Reveal restricted documents
+- Confirm the existence of confidential files
+- Return restricted passages
+- Bypass access controls
+
+If access is denied, respond appropriately without exposing protected information.
+
+---
+
+# Privacy
+
+The Document Q&A Agent should protect sensitive information.
+
+Examples include:
+
+- Personally identifiable information (PII)
+- Financial records
+- Medical information
+- Legal documents
+- Internal company secrets
+- Credentials
+- API keys
+- Security procedures
+
+Sensitive values should be redacted whenever policy requires.
+
+---
+
+# Safety Principles
+
+The agent should always:
+
+- Ground answers in retrieved evidence
+- Distinguish facts from inference
+- Clearly communicate uncertainty
+- Cite supporting passages
+- Protect confidential information
+- Respect access permissions
+- Prefer approved document versions
+- Avoid unsupported conclusions
+- Escalate ambiguous situations
+- Preserve traceability
+
+The agent must never:
+
+- Hallucinate document contents
+- Invent citations
+- Invent quotations
+- Guess page numbers
+- Guess legal meaning
+- Misrepresent conflicting documents
+
+---
+
+# Design Principles
+
+This agent follows these principles:
+
+1. Evidence before fluency.
+2. Retrieval before memory.
+3. Citations before confidence.
+4. Transparency before completeness.
+5. Approved documents before archived copies.
+6. Human review before unsupported conclusions.
+7. Traceability over convenience.
+8. Accuracy over speed.
+9. Security before accessibility.
+10. Explain uncertainty instead of guessing.
+
+---
+
+# Performance Metrics
+
+Typical evaluation metrics include:
+
+## Retrieval Metrics
+
+- Recall@k
+- Precision@k
+- Mean Reciprocal Rank (MRR)
+- Normalized Discounted Cumulative Gain (nDCG)
+
+---
+
+## Answer Quality
+
+- Answer Accuracy
+- Groundedness
+- Hallucination Rate
+- Coverage
+- Completeness
+- Citation Accuracy
+
+---
+
+## Operational Metrics
+
+- Average Response Time
+- Average Retrieval Time
+- OCR Accuracy
+- Retrieval Latency
+- Token Usage
+- Cost per Query
+
+---
+
+## User Metrics
+
+- User Satisfaction
+- Human Review Rate
+- Successful Question Resolution
+- Citation Trust Score
+
+---
+
+# Evaluation
+
+Evaluation scenarios are defined in:
+
+```text
+evaluation_cases.json
+```
+
+Typical evaluation categories include:
+
+- Direct retrieval
+- Missing information
+- Citation accuracy
+- Multi-document comparison
+- Version selection
+- Follow-up questions
+- OCR handling
+- Table interpretation
+- Ambiguous questions
+- Hallucination resistance
+- Scope control
+- Privacy protection
+
+---
+
+# Failure Modes
+
+Failure scenarios are documented in:
+
+```text
+failure_modes.md
+```
+
+Common failure categories include:
+
+- Hallucinated answers
+- Incorrect retrieval
+- Missing relevant passages
+- Citation errors
+- Wrong document version
+- OCR mistakes
+- Unsupported inference
+- Context loss
+- Privacy violations
+- Ignoring document conflicts
+- Weak confidence estimation
+
+---
+
+# Integration Points
+
+The Document Q&A Agent commonly integrates with:
+
+## Document Sources
+
+- SharePoint
+- Google Drive
+- Dropbox
+- Box
+- OneDrive
+- Local file systems
+
+---
+
+## Knowledge Platforms
+
+- Confluence
+- Notion
+- Internal Wikis
+- Knowledge Bases
+- Documentation Portals
+
+---
+
+## Search Systems
+
+- Vector databases
+- BM25 search
+- Hybrid retrieval
+- Enterprise search
+
+---
+
+## AI Infrastructure
+
+- Embedding models
+- Rerankers
+- OCR engines
+- LLM inference services
+- Citation generators
+
+---
+
+## Security Services
+
+- Identity providers
+- Access-control systems
+- Audit logging
+- Data Loss Prevention (DLP)
+- Secret management
+
+---
+
+# Dependencies
+
+The agent depends on:
+
+- Document parsers
+- Embedding generation
+- Vector indexes
+- Metadata storage
+- Chunking pipeline
+- OCR pipeline
+- Search engine
+- Citation service
+- Authentication service
+- Authorization service
+- Audit logging
+
+---
+
+# Operational Requirements
+
+A production deployment should support:
+
+- Document ingestion
+- Automatic indexing
+- Re-indexing after updates
+- Version tracking
+- Incremental indexing
+- Access synchronization
+- Retrieval logging
+- Error monitoring
+- Feedback collection
+- Evaluation pipelines
+- Health monitoring
+- Backup and recovery
+
+---
+
+# Logging Requirements
+
+Each request should record:
+
+- Request ID
+- Timestamp
+- User ID (if permitted)
+- Retrieved documents
+- Retrieved chunks
+- Search method
+- Confidence scores
+- Response latency
+- Citations generated
+- Human review recommendation
+- Errors encountered
+
+Sensitive information should not be logged unless organizational policy explicitly permits it.
+
+---
+
+# Monitoring
+
+Monitor production performance for:
+
+- Retrieval failures
+- Hallucination rate
+- Citation failures
+- Missing-document errors
+- Low-confidence responses
+- OCR failures
+- Unauthorized access attempts
+- Retrieval latency
+- User feedback
+- Document freshness
+
+---
+
+# Error Handling
+
+When failures occur, the agent should:
+
+1. Explain the limitation.
+2. Preserve transparency.
+3. Avoid unsupported answers.
+4. Recommend next steps.
+5. Escalate when appropriate.
+
+Example:
+
+> I could not locate sufficient evidence in the selected documents to answer this question reliably.
+
 Retrieved passages should be reranked before answer generation to improve precision.
