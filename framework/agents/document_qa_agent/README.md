@@ -1151,4 +1151,336 @@ Example:
 
 > I could not locate sufficient evidence in the selected documents to answer this question reliably.
 
+---
+
+# Recommended Output Schema
+
+A production implementation may standardize responses using a structured schema.
+
+Example:
+
+```json
+{
+  "request_id": "123456",
+  "question": "What is the refund period?",
+  "answer": "Customers may request a refund within 30 calendar days of purchase.",
+  "grounding_status": "Fully Grounded",
+  "confidence": {
+    "retrieval": "High",
+    "citation": "High",
+    "answer": "High",
+    "coverage": "Complete"
+  },
+  "citations": [
+    {
+      "document": "Customer Refund Policy",
+      "version": "2.1",
+      "section": "4.2",
+      "page": 8
+    }
+  ],
+  "assumptions": [],
+  "warnings": [],
+  "human_review_required": false
+}
+```
+
+---
+
+# Agent Capabilities Matrix
+
+| Capability | Supported | Human Review Required |
+|------------|:---------:|:---------------------:|
+| Answer document questions | ✅ | No |
+| Summarize documents | ✅ | No |
+| Compare document versions | ✅ | Sometimes |
+| Multi-document comparison | ✅ | Sometimes |
+| Clause extraction | ✅ | No |
+| Table interpretation | ✅ | Sometimes |
+| OCR document support | ✅ | Low-confidence OCR |
+| Generate citations | ✅ | No |
+| Explain document contents | ✅ | No |
+| Infer undocumented information | ❌ | N/A |
+| Provide legal advice | ❌ | Yes |
+| Modify documents | ❌ | Yes |
+| Ignore permissions | ❌ | Never |
+| Access restricted documents | Only if authorized | Yes |
+
+---
+
+# Example Conversations
+
+## Example 1
+
+**User**
+
+> What is the expense reimbursement limit?
+
+**Assistant**
+
+> Employees may claim up to $2,000 per business trip without executive approval.
+
+Source:
+
+Travel Policy
+
+Section 6.2
+
+Page 14
+
+Confidence: High
+
+Grounding: Fully Grounded
+
+---
+
+## Example 2
+
+**User**
+
+> What is the maternity leave policy?
+
+**Assistant**
+
+> I could not locate any section discussing maternity leave in the selected documents.
+
+You may wish to search a different employee handbook or HR policy.
+
+Confidence: High
+
+Grounding: No Evidence
+
+---
+
+## Example 3
+
+**User**
+
+> Which version of the remote work policy is current?
+
+**Assistant**
+
+> Version 4.1 is the latest approved policy.
+
+Version 4.2 exists but is marked as Draft.
+
+Source:
+
+Remote Work Policy Metadata
+
+---
+
+# Best Practices
+
+The Document Q&A Agent should:
+
+- Always retrieve before answering.
+- Prefer semantic + keyword retrieval.
+- Cite every important factual statement.
+- Explain uncertainty.
+- Preserve document context.
+- Search broadly for long documents.
+- Respect access permissions.
+- Use the latest approved version.
+- Keep answers concise.
+- Recommend human review for ambiguous situations.
+
+---
+
+# Anti-Patterns
+
+Avoid the following behaviors:
+
+- Guessing answers.
+- Using model memory instead of retrieval.
+- Inventing citations.
+- Mixing unrelated documents.
+- Ignoring conflicting sources.
+- Ignoring document versions.
+- Ignoring OCR uncertainty.
+- Exposing confidential information.
+- Giving legal interpretations.
+- Omitting citations.
+
+---
+
+# Future Improvements
+
+Potential future enhancements include:
+
+## Retrieval
+
+- Hybrid retrieval optimization
+- Better reranking
+- Hierarchical retrieval
+- Graph retrieval
+- Query decomposition
+
+---
+
+## Document Understanding
+
+- Diagram understanding
+- Image understanding
+- Better OCR
+- Improved table extraction
+- Formula interpretation
+- Handwriting recognition
+
+---
+
+## Citations
+
+- Paragraph-level citations
+- Sentence-level citations
+- Citation verification
+- Automatic citation quality scoring
+
+---
+
+## Reasoning
+
+- Better conflict resolution
+- Cross-document reasoning
+- Timeline construction
+- Knowledge graph integration
+- Evidence ranking
+
+---
+
+## Performance
+
+- Faster indexing
+- Incremental indexing
+- Streaming retrieval
+- Improved caching
+- Distributed vector search
+
+---
+
+## Security
+
+- Fine-grained permissions
+- Dynamic redaction
+- Encryption-aware retrieval
+- Audit improvements
+
+---
+
+## Evaluation
+
+- Continuous benchmarking
+- User feedback learning
+- Regression testing
+- Automated evaluation pipelines
+
+---
+
+# Related Files
+
+```
+framework/
+└── agents/
+    └── document_qa_agent/
+        ├── README.md
+        ├── agent.json
+        ├── system_prompt.md
+        ├── evaluation_cases.json
+        └── failure_modes.md
+```
+
+Related framework components:
+
+```
+framework/
+├── templates/
+│   └── agent_README_template.md
+├── knowledge/
+│   ├── chunking/
+│   ├── embeddings/
+│   ├── citations/
+│   └── retrieval/
+├── evaluation/
+├── monitoring/
+├── security/
+└── shared/
+```
+
+---
+
+# Recommended Repository Structure
+
+```
+document_qa_agent/
+├── README.md
+├── agent.json
+├── system_prompt.md
+├── evaluation_cases.json
+├── failure_modes.md
+├── examples/
+├── prompts/
+├── tests/
+├── configs/
+└── assets/
+```
+
+---
+
+# Version History
+
+| Version | Date | Description |
+|----------|------|-------------|
+| 0.1 | YYYY-MM-DD | Initial draft |
+| 0.5 | YYYY-MM-DD | Added retrieval workflow |
+| 0.8 | YYYY-MM-DD | Added grounding and citations |
+| 1.0 | YYYY-MM-DD | Production-ready specification |
+
+---
+
+# Maintainers
+
+| Role | Owner |
+|------|-------|
+| Product | |
+| Engineering | |
+| Prompt Engineering | |
+| Knowledge Management | |
+| Security | |
+| QA | |
+
+---
+
+# References
+
+Recommended reading:
+
+- Retrieval-Augmented Generation (RAG)
+- Dense Passage Retrieval
+- Hybrid Search
+- BM25
+- Vector Databases
+- Semantic Search
+- Knowledge Graphs
+- OCR Systems
+- Enterprise Search
+- Document Intelligence
+
+---
+
+# Notes
+
+This agent is intended to be an evidence-based retrieval system rather than a general-purpose conversational assistant.
+
+A successful response should be:
+
+- Accurate
+- Grounded
+- Traceable
+- Transparent
+- Secure
+- Reproducible
+- Easy to verify
+
+The highest priority is not answering every question—it is answering only those questions that can be supported by the available documents. When the evidence is insufficient, the preferred behavior is to clearly communicate that limitation and recommend appropriate next steps.
+
 Retrieved passages should be reranked before answer generation to improve precision.
