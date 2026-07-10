@@ -382,4 +382,426 @@ Supports filtering by:
 
 ## Reranking
 
+---
+
+# Chunking Strategy
+
+The quality of retrieval depends heavily on effective document chunking.
+
+Recommended chunk boundaries include:
+
+- Sections
+- Subsections
+- Paragraph groups
+- Contract clauses
+- Policy statements
+- Table units
+- Appendix sections
+
+Each chunk should preserve:
+
+- Parent heading
+- Section title
+- Page number
+- Document ID
+- Version
+- Effective date
+- Access level
+
+The agent should avoid chunk boundaries that split:
+
+- Lists
+- Tables
+- Definitions
+- Exceptions
+- Numbered procedures
+
+---
+
+# Citation Requirements
+
+Every factual claim should be traceable to its source.
+
+Whenever possible, citations should include:
+
+- Document title
+- Section
+- Page
+- Paragraph
+- Version
+- Effective date
+
+Example:
+
+> Employees receive 15 vacation days after one year of employment.
+
+Source:
+
+Employee Handbook v4.2
+
+Section 5.3
+
+Page 18
+
+---
+
+# Citation Principles
+
+The agent should:
+
+- Cite supporting evidence
+- Preserve document titles
+- Preserve section numbers
+- Preserve page numbers
+- Preserve version information
+- Avoid fabricated citations
+
+The agent must never:
+
+- Invent page numbers
+- Invent section numbers
+- Cite documents that were never retrieved
+- Cite unrelated passages
+
+---
+
+# Evidence Classification
+
+Each answer should classify supporting evidence.
+
+## Direct Evidence
+
+The answer is explicitly stated.
+
+Example:
+
+"The refund period is 30 days."
+
+---
+
+## Strong Evidence
+
+Multiple passages strongly support the conclusion.
+
+---
+
+## Partial Evidence
+
+Only part of the answer appears in the documents.
+
+---
+
+## Inference
+
+The answer is inferred from several passages.
+
+Clearly label:
+
+> This appears to imply...
+
+---
+
+## Conflicting Evidence
+
+Multiple documents disagree.
+
+Both documents should be cited.
+
+---
+
+## No Evidence
+
+No supporting passage was found.
+
+The agent should clearly state this.
+
+---
+
+# Grounding Status
+
+Each response may include a grounding status.
+
+| Status | Meaning |
+|----------|---------|
+| Fully Grounded | Entire answer supported |
+| Mostly Grounded | Minor inference required |
+| Partially Grounded | Some unsupported portions |
+| Conflicting Sources | Documents disagree |
+| No Evidence | No supporting passage located |
+
+---
+
+# Confidence Model
+
+Confidence should be determined using evidence quality rather than model certainty.
+
+The confidence model consists of four components.
+
+---
+
+## Retrieval Confidence
+
+How likely retrieval found the correct passages.
+
+Factors include:
+
+- Search score
+- Reranker score
+- Number of matching chunks
+- Metadata quality
+
+---
+
+## Citation Confidence
+
+How well citations support the answer.
+
+Factors include:
+
+- Exact wording
+- Context completeness
+- Citation precision
+
+---
+
+## Answer Confidence
+
+Overall confidence that the generated answer is correct.
+
+Should consider:
+
+- Retrieval confidence
+- Citation confidence
+- Number of supporting passages
+- Document quality
+
+---
+
+## Coverage
+
+Whether retrieved information completely answers the question.
+
+Possible values:
+
+- Complete
+- Mostly Complete
+- Partial
+- Minimal
+- None
+
+Example:
+
+```json
+{
+  "retrieval_confidence": "High",
+  "citation_confidence": "High",
+  "answer_confidence": "Medium",
+  "coverage": "Partial"
+}
+```
+
+---
+
+# Document Version Handling
+
+The agent should recognize document versions.
+
+When multiple versions exist:
+
+1. Identify each version.
+2. Prefer the latest approved version.
+3. Warn about archived versions.
+4. Mention draft status.
+5. Cite the version used.
+
+Example:
+
+```
+Travel Policy
+Version 4.2
+Effective January 2026
+```
+
+---
+
+# Version Selection Rules
+
+Preferred order:
+
+1. Latest approved version
+2. Latest effective version
+3. User-selected version
+4. Archived version (only if requested)
+
+---
+
+# Document Conflict Resolution
+
+Documents sometimes disagree.
+
+Example:
+
+Policy A:
+
+> Submit expenses within 30 days.
+
+Policy B:
+
+> Submit expenses within 45 days.
+
+The agent should:
+
+- Identify both statements.
+- Cite both documents.
+- Explain the conflict.
+- Recommend human review if precedence is unknown.
+
+The agent should never invent precedence.
+
+---
+
+# Multi-Document Comparison
+
+When comparing documents, identify:
+
+- New sections
+- Removed sections
+- Changed wording
+- Policy updates
+- Added requirements
+- Removed requirements
+
+The comparison should preserve attribution.
+
+Example:
+
+| Topic | 2025 | 2026 |
+|----------|----------|----------|
+| Vacation | 15 days | 20 days |
+
+---
+
+# Table Interpretation
+
+Tables require special handling.
+
+The agent should preserve:
+
+- Row relationships
+- Column relationships
+- Units
+- Totals
+- Headers
+
+The agent should avoid:
+
+- Mixing rows
+- Losing units
+- Confusing merged cells
+
+---
+
+# OCR Handling
+
+Scanned documents may contain OCR errors.
+
+The agent should:
+
+- Detect OCR confidence
+- Flag uncertain values
+- Recommend verification for low-confidence text
+- Preserve page references
+
+Common OCR issues include:
+
+- Decimal errors
+- Currency errors
+- Missing minus signs
+- Character substitutions
+- Broken tables
+
+---
+
+# Response Structure
+
+A standard response should contain:
+
+1. Direct Answer
+2. Explanation
+3. Supporting Evidence
+4. Citations
+5. Confidence
+6. Notes (if necessary)
+
+Example:
+
+Answer
+
+Employees receive 15 vacation days after one year.
+
+Evidence
+
+Employee Handbook
+
+Section 5.3
+
+Page 18
+
+Confidence
+
+High
+
+Grounding
+
+Fully Grounded
+
+---
+
+# Unknown Information
+
+When documents do not answer the question, respond clearly.
+
+Example:
+
+> I could not find this information in the selected documents.
+
+The agent should never fabricate an answer.
+
+---
+
+# Clarification Strategy
+
+The agent should ask follow-up questions when:
+
+- Multiple documents match
+- Multiple versions exist
+- The request is ambiguous
+- Several policies share the same name
+- The requested entity is unclear
+
+Example:
+
+> Which Employee Handbook are you referring to, 2025 or 2026?
+
+---
+
+# Long Document Handling
+
+Large documents should not rely on only the highest-ranked chunk.
+
+The agent should:
+
+- Search multiple sections
+- Retrieve several relevant chunks
+- Merge evidence carefully
+- Preserve citations
+
+This is especially important for:
+
+- Contracts
+- Research papers
+- Technical manuals
+- Employee handbooks
+- Regulatory documentation
+
 Retrieved passages should be reranked before answer generation to improve precision.
