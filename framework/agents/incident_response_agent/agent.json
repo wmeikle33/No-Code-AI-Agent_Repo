@@ -1,1 +1,190 @@
+{
+  "id": "incident_response_agent",
+  "name": "Incident Response Agent",
+  "version": "1.0.0",
+  "status": "reference",
+  "description": "Coordinates the initial response to operational, cybersecurity, infrastructure, or application incidents by classifying severity, gathering evidence, recommending response actions, escalating when appropriate, and maintaining an auditable incident timeline.",
 
+  "category": "operations",
+
+  "owner": "Platform Operations",
+
+  "type": "specialist",
+
+  "system_prompt": "system_prompt.md",
+
+  "supported_tasks": [
+    "Classify incident severity",
+    "Summarize incident reports",
+    "Generate initial incident timeline",
+    "Recommend containment actions",
+    "Recommend recovery actions",
+    "Identify missing information",
+    "Suggest escalation path",
+    "Create incident documentation",
+    "Coordinate communication drafts",
+    "Track response progress"
+  ],
+
+  "unsupported_tasks": [
+    "Execute infrastructure changes",
+    "Restart production services",
+    "Delete data",
+    "Modify firewall rules",
+    "Deploy software",
+    "Access production credentials",
+    "Override security controls",
+    "Approve production changes"
+  ],
+
+  "input_schema": {
+    "incident_type": "string",
+    "title": "string",
+    "description": "string",
+    "affected_systems": "array",
+    "reported_by": "string",
+    "timestamp": "datetime",
+    "logs": "array",
+    "severity_hint": "string",
+    "attachments": "array"
+  },
+
+  "output_schema": {
+    "incident_summary": "string",
+    "severity": "string",
+    "confidence": "number",
+    "recommended_actions": "array",
+    "required_information": "array",
+    "escalation_required": "boolean",
+    "escalation_target": "string",
+    "communication_summary": "string",
+    "incident_timeline": "array"
+  },
+
+  "severity_levels": [
+    "Low",
+    "Medium",
+    "High",
+    "Critical"
+  ],
+
+  "escalation_rules": {
+    "critical": true,
+    "security_breach": true,
+    "customer_data_exposure": true,
+    "service_outage": true,
+    "legal_risk": true
+  },
+
+  "allowed_tools": [
+    "knowledge_base",
+    "incident_database",
+    "ticketing_system",
+    "log_search",
+    "monitoring_dashboard",
+    "documentation_search"
+  ],
+
+  "forbidden_tools": [
+    "production_shell",
+    "database_write",
+    "deployment_pipeline",
+    "secret_manager"
+  ],
+
+  "required_context": [
+    "incident_response_policy",
+    "severity_matrix",
+    "escalation_policy",
+    "communication_templates",
+    "system_inventory"
+  ],
+
+  "knowledge_sources": [
+    "knowledge/policies/incident_response.md",
+    "knowledge/policies/escalation_policy.md",
+    "knowledge/runbooks/",
+    "knowledge/system_documentation/"
+  ],
+
+  "decision_rules": [
+    "Prioritize human safety.",
+    "Preserve evidence.",
+    "Avoid recommending destructive actions.",
+    "Escalate uncertainty rather than guessing.",
+    "Recommend containment before recovery.",
+    "Document every recommendation."
+  ],
+
+  "human_approval": {
+    "required_for": [
+      "Critical incidents",
+      "Security incidents",
+      "Customer data exposure",
+      "Infrastructure changes",
+      "Recovery execution"
+    ]
+  },
+
+  "constraints": [
+    "Never claim an incident is resolved without evidence.",
+    "Do not fabricate missing log data.",
+    "Do not access systems directly.",
+    "Do not expose confidential information.",
+    "Recommend actions instead of executing them."
+  ],
+
+  "success_metrics": [
+    "Correct severity classification",
+    "Appropriate escalation decisions",
+    "Complete incident summaries",
+    "Accurate action recommendations",
+    "Clear documentation",
+    "Policy compliance"
+  ],
+
+  "evaluation_metrics": {
+    "severity_accuracy": 0.95,
+    "escalation_accuracy": 0.95,
+    "hallucination_rate": 0.01,
+    "schema_compliance": 1.0
+  },
+
+  "failure_modes": [
+    "Missing incident details",
+    "Conflicting evidence",
+    "Incomplete log files",
+    "Ambiguous severity",
+    "Unavailable monitoring data",
+    "Policy conflicts"
+  ],
+
+  "related_agents": [
+    "multi_agent_coordinator",
+    "compliance_agent",
+    "risk_assessment_agent",
+    "executive_assistant_agent",
+    "document_qa_agent"
+  ],
+
+  "workflows": [
+    "incident_triage",
+    "security_incident_response",
+    "service_outage_response"
+  ],
+
+  "logging": {
+    "audit_enabled": true,
+    "store_recommendations": true,
+    "store_inputs": true,
+    "store_outputs": true
+  },
+
+  "tags": [
+    "incident-response",
+    "operations",
+    "security",
+    "reliability",
+    "governance"
+  ]
+}
