@@ -475,5 +475,25 @@ Well-defined retention and retrieval policies help mitigate these risks.
 - Different memory types serve different purposes.
 - Not everything should be remembered.
 - Retrieval quality is as important as storage quality.
+
+# Failure Modes
+
+## Memory Drift
+
+Symptoms
+
+The assistant gradually becomes inaccurate.
+
+Root Causes
+
+Incorrect summaries
+Repeated summarization
+Hallucinated memory
+
+Prevention
+
+Periodic re-summarization
+Human review
+Versioned memory
 - Memory should be accurate, relevant, secure, and governed.
 - Effective memory systems improve personalization, consistency, and long-term agent performance.
