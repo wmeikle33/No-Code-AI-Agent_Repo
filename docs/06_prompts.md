@@ -507,5 +507,34 @@ Keeping prompts in standalone Markdown files makes them easier to review, versio
 - Prompts define how AI agents behave.
 - Production prompts consist of multiple layers, including system instructions, context, and user input.
 - Effective prompts are explicit, reusable, testable, and version controlled.
+
+# Failure Modes
+
+## Prompt Too Broad
+
+### Symptoms
+
+- Generic responses
+- Hallucinations
+- Tool misuse
+- Missing information
+
+### Root Causes
+
+- Vague instructions
+- Multiple objectives
+- No output constraints
+
+### Prevention
+
+- Specify the task clearly
+- Limit scope
+- Define the output format
+
+### Recovery
+
+- Rewrite the prompt
+- Break the task into steps
+- Add examples
 - Prompt engineering should emphasize clarity, safety, consistency, and structured outputs.
 - Well-managed prompts improve reliability, maintainability, and overall system performance.
