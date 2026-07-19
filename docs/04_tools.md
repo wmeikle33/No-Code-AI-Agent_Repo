@@ -546,3 +546,25 @@ Report Generation
 - Strong governance, validation, and permissions are essential for safe tool usage.
 - Well-designed tool interfaces improve reliability, reusability, and maintainability.
 - Tool orchestration enables AI systems to interact effectively with real-world applications and services.
+
+---
+
+# Failure Modes
+
+1. Incorrect Tool Selection
+
+2. Invalid Tool Parameters
+
+3. Tool Unavailable
+
+4. Tool Hallucination
+
+5. Permission Failure
+
+6. Tool Timeout
+
+7. Unsafe Tool Execution
+
+Diagnostic Table
+
+Checklist
